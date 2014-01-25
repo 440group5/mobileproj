@@ -9,5 +9,8 @@
     <string name="userhint">Username</string>
     <string name="passhint">Password</string>
     <string name="loginbutton">Login</string>
+    <string name="regbutton">Register</string>
+    <string name="welcomelab">NKU Parking</string>
+    
 
 </resources>

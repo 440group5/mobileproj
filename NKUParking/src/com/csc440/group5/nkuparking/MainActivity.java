@@ -13,9 +13,12 @@ package com.csc440.group5.nkuparking;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.*;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class MainActivity extends Activity 
@@ -29,6 +32,24 @@ public class MainActivity extends Activity
         
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
+        
+        OnFocusChangeListener listener = new KeyboardFocusChangeListener();
+        userText.setOnFocusChangeListener(listener);
+        passText.setOnFocusChangeListener(listener);
+    }
+    
+    private class KeyboardFocusChangeListener implements OnFocusChangeListener
+    {
+    	//This private class closes the keyboard of the username/password textviews when they lose focus.
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) 
+		{
+			if(hasFocus)
+			{
+				InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+			}
+		}
     }
 
 
@@ -37,6 +58,12 @@ public class MainActivity extends Activity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+    public void registerUser(View view)
+    {
+    	//Registers the user as a new user
+    	//TODO: add this
     }
     
     public void loginUser(View view)

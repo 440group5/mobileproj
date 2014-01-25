@@ -1,7 +1,7 @@
 /*
  * MapPage.java
  * 
- * Implements the main activity of the mobile application.
+ * Implements the actual google maps page of the app.
  * 
  * -Jordan Bossman
  * 
@@ -19,6 +19,7 @@ import android.webkit.WebView;
 public class MapPage extends Activity
 {
 	private WebView webView;
+	private final String MAP_URL = "https://www.google.com/maps?ie=UTF8&t=m&ll=39.031819,-84.462848&spn=0.011668,0.031543&z=15&source=embed";
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,11 @@ public class MapPage extends Activity
         webView = (WebView)findViewById(R.id.webView);
       
         Log.v(null, "Loading the map.....");
-        webView.loadUrl("http://www.nku.edu/campusmaps.html");
-        //webView.loadUrl("https://www.google.com/maps?ie=UTF8&t=m&ll=39.031819,-84.462848&spn=0.011668,0.031543&z=15&source=embed");
+        
+        //Ignore this warning about XSS because it is going to an already good URL.
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setVerticalScrollBarEnabled(true);
+        webView.loadUrl(MAP_URL);
     }
 
 
