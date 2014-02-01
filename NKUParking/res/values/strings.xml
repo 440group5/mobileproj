@@ -11,6 +11,14 @@
     <string name="loginbutton">Login</string>
     <string name="regbutton">Register</string>
     <string name="welcomelab">NKU Parking</string>
-    
+    <string name="registerlab">Registration Page</string>
+    <string name="firstname">First Name:</string>
+    <string name="lastname">Last Name:</string>
+    <string name="fnamehint">First Name</string>
+    <string name="lnamehint">Last Name</string>
+    <string name="reguserlab">Username:</string>
+    <string name="regpasslab">Password:</string>
+    <string name="reguserbutton">Register and Login</string>
+    <string name="spinnertext">Classification:</string>
 
 </resources>

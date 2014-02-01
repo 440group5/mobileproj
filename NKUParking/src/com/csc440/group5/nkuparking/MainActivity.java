@@ -65,8 +65,9 @@ public class MainActivity extends Activity
     
     public void registerUser(View view)
     {
-    	//Registers the user as a new user
-    	//TODO: add this
+    	Log.v(null, "Going to registration page....");
+    	Intent intent = new Intent(this, RegistrationActivity.class);
+    	startActivity(intent);
     }
     
     public void loginUser(View view)
