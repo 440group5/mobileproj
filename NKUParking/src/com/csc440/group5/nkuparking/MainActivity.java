@@ -26,7 +26,9 @@ public class MainActivity extends Activity
 	private EditText userText, passText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) 
+    {
+    	//Method sets up the textfields and add listeners for input used later on.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
@@ -46,6 +48,7 @@ public class MainActivity extends Activity
 		{
 			if(hasFocus)
 			{
+				//Should close the keyboard if the user clicks away.
 				InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 				manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
 			}
@@ -83,7 +86,7 @@ public class MainActivity extends Activity
     	}
     	else
     	{
-    		//popup an alert view because the information was wrong
+    		//Popup an alert view because the information was wrong
     		new AlertDialog.Builder(this)
     			.setTitle("Error")
     			.setMessage("The information is incorrect or there is not a valid username.")
