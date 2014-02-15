@@ -26,16 +26,26 @@
     
     function validate() {
         //use globals and prep database connection
+        
+        echo "<br>".DBHOST ."<br>" . DBUSER."<br>".DBPASS."<br>".DBNAME;
+        
         global $username, $password, $password2, $email;
-        $mysqli = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME) or die("Unable to connect to database"); //connect to database
+        $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME); //connect to database
+        /*
+        if(mysqli_connect_errno() ) {
+            die("could not connect to database");
+        }*/
         $query = "select * from users where username='".$username."' or email='".$email."'";
-        $result = $mysqli->query($query);
+        $result = $db->query($query);
         $flag = false;  //if any fields are wrong flag
         
         echo "<br><br>". $query . "<br><br>";
         //check result
-        if($result) {
+        if($result->num_rows > 0) {
             echo "something returned";
+        }
+        else {
+            echo "nothing returned rows: ". $result->num_rows;
         }
         
         echo "<h1>Data Entered</h1>";

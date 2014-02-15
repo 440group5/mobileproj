@@ -1,0 +1,20 @@
+[14-Feb-2014 23:53:21] PHP Notice:  Undefined index: username in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php on line 75
+[14-Feb-2014 23:53:21] PHP Stack trace:
+[14-Feb-2014 23:53:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:0
+[14-Feb-2014 23:53:21] PHP   2. validate() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:10
+[14-Feb-2014 23:53:21] PHP Notice:  Undefined index: email in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php on line 76
+[14-Feb-2014 23:53:21] PHP Stack trace:
+[14-Feb-2014 23:53:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:0
+[14-Feb-2014 23:53:21] PHP   2. validate() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:10
+[14-Feb-2014 23:53:21] PHP Notice:  Undefined variable: echoRow in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php on line 77
+[14-Feb-2014 23:53:21] PHP Stack trace:
+[14-Feb-2014 23:53:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:0
+[14-Feb-2014 23:53:21] PHP   2. validate() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:10
+[14-Feb-2014 23:53:21] PHP Notice:  Undefined index: username in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php on line 78
+[14-Feb-2014 23:53:21] PHP Stack trace:
+[14-Feb-2014 23:53:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:0
+[14-Feb-2014 23:53:21] PHP   2. validate() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:10
+[14-Feb-2014 23:53:21] PHP Notice:  Undefined index: email in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php on line 82
+[14-Feb-2014 23:53:21] PHP Stack trace:
+[14-Feb-2014 23:53:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:0
+[14-Feb-2014 23:53:21] PHP   2. validate() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/inc/register.php:10
