@@ -10,15 +10,19 @@
 
 package com.csc440.group5.nkuparking;
 
+import com.google.android.gms.maps.*;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.webkit.WebView;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MapPage extends Activity
 {
-	private WebView webView;
+	private GoogleMap map;
 	private final String MAP_URL = "https://www.google.com/maps?ie=UTF8&t=m&ll=39.031819,-84.462848&spn=0.011668,0.031543&z=15&source=embed";
 	
     @Override
@@ -28,14 +32,14 @@ public class MapPage extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_page);
         
-        webView = (WebView)findViewById(R.id.webView);
+        map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
       
         Log.v(null, "Loading the map.....");
         
         //Ignore this warning about XSS because it is going to an already good URL.
         //Uses .setJavaScriptEnabled(true) to make the google maps in the browser work.
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(MAP_URL);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl(MAP_URL);
     }
 
 
