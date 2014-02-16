@@ -11,19 +11,17 @@
 package com.csc440.group5.nkuparking;
 
 import com.google.android.gms.maps.*;
-import android.annotation.TargetApi;
+import com.google.android.gms.maps.model.LatLng;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.webkit.WebView;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MapPage extends Activity
 {
 	private GoogleMap map;
-	private final String MAP_URL = "https://www.google.com/maps?ie=UTF8&t=m&ll=39.031819,-84.462848&spn=0.011668,0.031543&z=15&source=embed";
+	private LatLng startingCoord;
+	private float zoom = 16.0f;
+	private final double START_LAT = 39.032356, START_LONG = -84.465406;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -32,14 +30,14 @@ public class MapPage extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_page);
         
+        //Set starting coordinate to NKU & load the map fragment
+        startingCoord = new LatLng(START_LAT, START_LONG);
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
-      
-        Log.v(null, "Loading the map.....");
+        map.setMyLocationEnabled(true);
+        map.getUiSettings().setAllGesturesEnabled(true);
         
-        //Ignore this warning about XSS because it is going to an already good URL.
-        //Uses .setJavaScriptEnabled(true) to make the google maps in the browser work.
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.loadUrl(MAP_URL);
+        //Move the camera to NKU
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(startingCoord, zoom));
     }
 
 
