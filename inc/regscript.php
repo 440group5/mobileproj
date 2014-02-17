@@ -1,46 +1,33 @@
-<?php
+<?php  #file needs to be deleted now
+    require("config.php");
 
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-
-        require("config.php");
-        require("secure.php");
-
-        //get variables from post
-        $username = secure($_POST["username"]);
-        $password = secure($_POST["password"]);
-        $password2 = secure($_POST["password2"]);
-        $email = secure($_POST["email"]);
-        
-        validate();
+    //get variables from post
+    $username = secure($_POST["username"]);
+    $password = secure($_POST["password"]);
+    $password2 = secure($_POST["password2"]);
+    $email = secure($_POST["email"]);
+    
+    validate();
+    /*
+    echo "<h1>Data Check</h1>";
+    echo "username = ". $username. "<br>";
+    echo "password = ". $password. "<br>";
+    echo "password2 = ". $password2. "<br>";
+    echo "email = ". $email. "<br>";
+    */
+    
+    function secure($data) //secure user input data needs work.
+    {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
     }
-    else {
-        ?>
-        <html>
-        <head>
-            <title>NKU Parking</title>
-        </head>
-        
-        <body>
-            <center>
-            <h1>NKU Parking</h1>
-            <h3>Registration Form</h3>
-            <form action="register.php" method="post">
-                Username:<input type="text" name="username"><br/>
-                Password:<input type="password" name="password"><br/>
-                Retype:<input type="password" name="password2"><br/>
-                Email:<input type="text" name="email"><br/>
-                <input type="submit" name="submit" value="Submit">
-            </form>
-            </center>
-        </body>
-        </html>
-        <?php
-    }
-
     
     function validate() {
         //use globals and prep database connection
         
+        echo "<br>".DBHOST ."<br>" . DBUSER."<br>".DBPASS."<br>".DBNAME;
         
         global $username, $password, $password2, $email;
         $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME); //connect to database
@@ -51,7 +38,25 @@
         $query = "select * from users where username='".$username."' or email='".$email."'";
         $result = $db->query($query);
         $flag = false;  //if any fields are wrong flag
+        
+        echo "<br><br>". $query . "<br><br>";
+        //check result
+        if($result->num_rows > 0) {
+            echo "something returned: ". $result->num_rows;
+        }
+        else {
+            echo "nothing returned rows: ". $result->num_rows;
+        }
+        
+        echo "<h1>Data Entered</h1>";
+        echo "username = ". $username. "<br>";
+        echo "password = ". $password. "<br>";
+        echo "password2 = ". $password2. "<br>";
+        echo "email = ". $email. "<br>";
 
+        
+        echo "<h1>Validation Check</h1><br>";
+        echo "Anything wrong should be mentioned below.<br>";
         
         if(strlen($username) < 5 ) {
             echo "Username must be atleast 5 characters long<br>";
@@ -90,27 +95,16 @@
             }
         }
         
-        $result->free;
+
         
         if($flag) {
             echo "Data would not be submited<br>";
             echo "<a href='/register.php'>Back</a><br>";
         }
         else {
-
-            $salt = generateSalt();
-            $hashPass = hash('sha256', $salt.$password);
-            $query = "insert into users (username, password, salt, email, type) values ('".$username."', '".$hashPass."', '".$salt."', '".$email."', '3')";
-            $result = $db->query($query);
-            if($result) {
-                echo "Succesfully Registered";
-            }
-            else {
-                echo "An error occured while registrering please contact support";
-            }
+            echo "data is correct and would be submitted<br>";
         }
-
+        
+        echo "done validating<br>";
     }
-    
-    
 ?>
