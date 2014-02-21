@@ -18,10 +18,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ScrollView;
 
-public class MainActivity extends Activity 
+public class MainActivity extends Activity implements OnTouchListener 
 {
 	private EditText userText, passText;
 
@@ -35,26 +37,11 @@ public class MainActivity extends Activity
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
         
-        OnFocusChangeListener listener = new KeyboardFocusChangeListener();
-        userText.setOnFocusChangeListener(listener);
-        passText.setOnFocusChangeListener(listener);
+        //Grab the top layout and add a touch event to close the android soft keyboard
+        //when the view's background is selected.
+        ScrollView layout = (ScrollView)findViewById(R.id.mainView);
+        layout.setOnTouchListener(this);
     }
-    
-    private class KeyboardFocusChangeListener implements OnFocusChangeListener
-    {
-    	//This private class closes the keyboard of the username/password textviews when they lose focus.
-		@Override
-		public void onFocusChange(View v, boolean hasFocus) 
-		{
-			if(hasFocus)
-			{
-				//Should close the keyboard if the user clicks away.
-				InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-			}
-		}
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,6 +52,7 @@ public class MainActivity extends Activity
     
     public void registerUser(View view)
     {
+    	//Registers the user.
     	Log.v(null, "Going to registration page....");
     	Intent intent = new Intent(this, RegistrationActivity.class);
     	startActivity(intent);
@@ -95,5 +83,18 @@ public class MainActivity extends Activity
     			.show();
     	}
     }
+
+	@Override
+	public boolean onTouch(View view, MotionEvent event) 
+	{
+		//Close the keyboard when the background of the view is touched.
+		if(event.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			manager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+			return true;
+		}
+		return false;
+	}
     
 }

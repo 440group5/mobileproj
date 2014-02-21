@@ -16,16 +16,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 
-public class RegistrationActivity extends Activity implements OnItemSelectedListener 
+public class RegistrationActivity extends Activity implements OnItemSelectedListener, OnTouchListener 
 {
 	private EditText userText, passText, firstText, lastText;
 	private Spinner spinner;
@@ -45,12 +48,10 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		firstText = (EditText)findViewById(R.id.firstnamefield);
 		lastText = (EditText)findViewById(R.id.lastnamefield);
 		
-		//Add listeners to each of the textfields to close the keyboard.
-        OnFocusChangeListener listener = new KeyboardFocusChangeListener();		
-		userText.setOnFocusChangeListener(listener);
-		passText.setOnFocusChangeListener(listener);
-		firstText.setOnFocusChangeListener(listener);
-		lastText.setOnFocusChangeListener(listener);
+		//Grab the view and register a touch listener to close the android soft
+		//keyboard when it is touched.
+		ScrollView layout = (ScrollView)findViewById(R.id.registrationLayout);
+		layout.setOnTouchListener(this);
 		
 		//Add the options to the spinner (dropdown box for student & faculty/staff).
 		spinner = (Spinner)findViewById(R.id.class_spinner);
@@ -59,21 +60,6 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 	}
-	
-    private class KeyboardFocusChangeListener implements OnFocusChangeListener
-    {
-    	//This private class closes the keyboard of the username/password textviews when they lose focus.
-		@Override
-		public void onFocusChange(View v, boolean hasFocus) 
-		{
-			if(hasFocus)
-			{
-				//Should close the keyboard if the user clicks away.
-				InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				manager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-			}
-		}
-    }
 	
 	public void register(View view)
 	{
@@ -146,5 +132,18 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean onTouch(View view, MotionEvent event) 
+	{
+		//Close the keyboard when the background view has been selected.
+		if(event.getAction() == MotionEvent.ACTION_DOWN)
+		{
+			InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			manager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+			return true;
+		}
+		return false;
 	}
 }
