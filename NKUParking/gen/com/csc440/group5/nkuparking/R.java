@@ -224,9 +224,13 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02001a;
         public static final int ic_plusone_standard_off_client=0x7f02001b;
         public static final int ic_plusone_tall_off_client=0x7f02001c;
+        public static final int nkulogo=0x7f02001d;
     }
     public static final class id {
-        public static final int action_settings=0x7f050020;
+        public static final int action_directions=0x7f050021;
+        public static final int action_map=0x7f050020;
+        public static final int action_settings=0x7f050023;
+        public static final int action_status=0x7f050022;
         public static final int bottomlayout=0x7f05000c;
         public static final int button1=0x7f05000e;
         public static final int class_spinner=0x7f05001e;
@@ -272,7 +276,10 @@ containing a value of this type.
         public static final int main=0x7f0b0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f06001b;
+        public static final int action_directions=0x7f06001c;
+        public static final int action_map=0x7f06001b;
+        public static final int action_settings=0x7f06001e;
+        public static final int action_status=0x7f06001d;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -368,23 +375,23 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int firstname=0x7f060025;
-        public static final int fnamehint=0x7f060027;
-        public static final int hello_world=0x7f06001c;
-        public static final int lastname=0x7f060026;
-        public static final int lnamehint=0x7f060028;
-        public static final int loginbutton=0x7f060021;
-        public static final int passhint=0x7f060020;
-        public static final int passlab=0x7f06001e;
-        public static final int regbutton=0x7f060022;
-        public static final int registerlab=0x7f060024;
-        public static final int regpasslab=0x7f06002a;
-        public static final int reguserbutton=0x7f06002b;
-        public static final int reguserlab=0x7f060029;
-        public static final int spinnertext=0x7f06002c;
-        public static final int userhint=0x7f06001f;
-        public static final int userlab=0x7f06001d;
-        public static final int welcomelab=0x7f060023;
+        public static final int firstname=0x7f060028;
+        public static final int fnamehint=0x7f06002a;
+        public static final int hello_world=0x7f06001f;
+        public static final int lastname=0x7f060029;
+        public static final int lnamehint=0x7f06002b;
+        public static final int loginbutton=0x7f060024;
+        public static final int passhint=0x7f060023;
+        public static final int passlab=0x7f060021;
+        public static final int regbutton=0x7f060025;
+        public static final int registerlab=0x7f060027;
+        public static final int regpasslab=0x7f06002d;
+        public static final int reguserbutton=0x7f06002e;
+        public static final int reguserlab=0x7f06002c;
+        public static final int spinnertext=0x7f06002f;
+        public static final int userhint=0x7f060022;
+        public static final int userlab=0x7f060020;
+        public static final int welcomelab=0x7f060026;
     }
     public static final class style {
         /** 
