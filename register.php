@@ -45,7 +45,7 @@
         global $username, $password, $password2, $email;
         $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME); //connect to database
         
-        if(mysqli_connect_errno() ) {
+        if($db->connect_errno > 0 ) {
             die("could not connect to database");
         }
         $query = "select * from users where username='".$username."' or email='".$email."'";
@@ -64,7 +64,7 @@
         }
         
 
-        if(strcmp($password, $password2) !=0 ) {
+        if(strcmp($password, $password2) !== 0 ) {
             echo "Passwords do not match<br>";
             $flag = true;
         }
@@ -80,20 +80,20 @@
             echo "<br><br>email: ". $row['email'];
             echo "<br><br>";
             
-            if(strcmp($username, $row['username']) == 0) {
+            if(strcmp($username, $row['username']) === 0) {
                 echo "Username is already in use<br>";
                 $flag = true;
             }
-            if(strcmp($email, $row['email']) == 0) {
+            if(strcmp($email, $row['email']) === 0) {
                 echo "Email is already in use<br>";
                 $flag = true;
             }
         }
         
-        $result->free;
+        $result->free();
         
         if($flag) {
-            echo "Data would not be submited<br>";
+            echo "Registration was not completed<br>";
             echo "<a href='/register.php'>Back</a><br>";
         }
         else {
@@ -109,7 +109,10 @@
                 echo "An error occured while registrering please contact support";
             }
         }
-
+        
+        $result->free();
+        $db->close();
+        
     }
     
     

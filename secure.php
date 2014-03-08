@@ -1,4 +1,4 @@
-<?php
+<?php // include when ever you need to validate data
  #functions to secure any user input
 
     function secure($data) //secure user input data needs work.
