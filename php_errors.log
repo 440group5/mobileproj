@@ -135,3 +135,128 @@
 [10-Mar-2014 16:26:08] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
 [10-Mar-2014 16:26:08] PHP Stack trace:
 [10-Mar-2014 16:26:08] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:19:33] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 13:19:33] PHP Stack trace:
+[11-Mar-2014 13:19:33] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 13:20:04] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:20:04] PHP Stack trace:
+[11-Mar-2014 13:20:04] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:20:04] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:20:04] PHP Stack trace:
+[11-Mar-2014 13:20:04] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:20:11] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:20:11] PHP Stack trace:
+[11-Mar-2014 13:20:11] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:20:17] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:20:17] PHP Stack trace:
+[11-Mar-2014 13:20:17] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:27:35] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:27:35] PHP Stack trace:
+[11-Mar-2014 13:27:35] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:27:35] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:27:35] PHP Stack trace:
+[11-Mar-2014 13:27:35] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:03] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:30:03] PHP Stack trace:
+[11-Mar-2014 13:30:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:13] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:30:13] PHP Stack trace:
+[11-Mar-2014 13:30:13] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:13] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:30:13] PHP Stack trace:
+[11-Mar-2014 13:30:13] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:44] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:30:44] PHP Stack trace:
+[11-Mar-2014 13:30:44] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:47] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:30:47] PHP Stack trace:
+[11-Mar-2014 13:30:47] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:47] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:30:47] PHP Stack trace:
+[11-Mar-2014 13:30:47] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:51] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:30:51] PHP Stack trace:
+[11-Mar-2014 13:30:51] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:30:51] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:30:51] PHP Stack trace:
+[11-Mar-2014 13:30:51] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:31:00] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:31:00] PHP Stack trace:
+[11-Mar-2014 13:31:00] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:31:03] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:31:03] PHP Stack trace:
+[11-Mar-2014 13:31:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:31:28] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:31:28] PHP Stack trace:
+[11-Mar-2014 13:31:28] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 22
+[11-Mar-2014 13:35:53] PHP Stack trace:
+[11-Mar-2014 13:35:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:35:53] PHP Stack trace:
+[11-Mar-2014 13:35:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:35:53] PHP Stack trace:
+[11-Mar-2014 13:35:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:35:53] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:35:53] PHP Stack trace:
+[11-Mar-2014 13:35:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:35:53] PHP Stack trace:
+[11-Mar-2014 13:35:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:35:53] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:36:36] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:36:36] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 46
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 46
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:36:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:36:36] PHP Notice:  Undefined index: expired in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 46
+[11-Mar-2014 13:36:36] PHP Stack trace:
+[11-Mar-2014 13:36:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:37:13] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:37:13] PHP Stack trace:
+[11-Mar-2014 13:37:13] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:37:13] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:37:13] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:37:13] PHP Stack trace:
+[11-Mar-2014 13:37:13] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:37:13] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:37:37] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:37:37] PHP Stack trace:
+[11-Mar-2014 13:37:37] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:37:37] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:37:37] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 40
+[11-Mar-2014 13:37:37] PHP Stack trace:
+[11-Mar-2014 13:37:37] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:37:37] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:40
+[11-Mar-2014 13:47:38] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 13:47:38] PHP Stack trace:
+[11-Mar-2014 13:47:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:47:38] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:47:38] PHP Stack trace:
+[11-Mar-2014 13:47:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:47:38] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:47:38] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:47:38] PHP Stack trace:
+[11-Mar-2014 13:47:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:47:38] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:47:42] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:47:42] PHP Stack trace:
+[11-Mar-2014 13:47:42] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:47:42] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
