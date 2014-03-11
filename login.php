@@ -16,7 +16,7 @@
     
     $query = "select * from users where username='".$username."'";
     $result = $db->query($query);
-    
+    $db->close();
     if(!$result) {  // if result is empty
         echo "<h2>Username does not exist</h2><br>";
         echo "<a href='/index.php'>Back</a><br>";

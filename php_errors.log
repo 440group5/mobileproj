@@ -260,3 +260,260 @@
 [11-Mar-2014 13:47:42] PHP Stack trace:
 [11-Mar-2014 13:47:42] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
 [11-Mar-2014 13:47:42] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:53:22] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 13:53:22] PHP Stack trace:
+[11-Mar-2014 13:53:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:22] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:53:22] PHP Stack trace:
+[11-Mar-2014 13:53:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:22] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:53:22] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:53:22] PHP Stack trace:
+[11-Mar-2014 13:53:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:22] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:53:28] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 13:53:28] PHP Stack trace:
+[11-Mar-2014 13:53:28] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:28] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:53:28] PHP Stack trace:
+[11-Mar-2014 13:53:28] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:28] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:53:28] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:53:28] PHP Stack trace:
+[11-Mar-2014 13:53:28] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:53:28] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:56:46] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:56:46] PHP Stack trace:
+[11-Mar-2014 13:56:46] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:56:46] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:56:52] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:56:52] PHP Stack trace:
+[11-Mar-2014 13:56:52] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:56:52] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 13:56:52] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 13:56:52] PHP Stack trace:
+[11-Mar-2014 13:56:52] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 13:56:52] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 14:10:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 14:10:07] PHP Stack trace:
+[11-Mar-2014 14:10:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 14:10:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 14:10:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 14:10:07] PHP Stack trace:
+[11-Mar-2014 14:10:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 14:10:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:01:26] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 15:01:26] PHP Stack trace:
+[11-Mar-2014 15:01:26] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:26] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:01:26] PHP Stack trace:
+[11-Mar-2014 15:01:26] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:26] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:01:26] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:01:26] PHP Stack trace:
+[11-Mar-2014 15:01:26] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:26] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:01:36] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 15:01:36] PHP Stack trace:
+[11-Mar-2014 15:01:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:01:36] PHP Stack trace:
+[11-Mar-2014 15:01:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:01:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:01:36] PHP Stack trace:
+[11-Mar-2014 15:01:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:01:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:01:39] PHP Notice:  Use of undefined constant DBHOST - assumed 'DBHOST' in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 6
+[11-Mar-2014 15:01:39] PHP Stack trace:
+[11-Mar-2014 15:01:39] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:01:39] PHP Notice:  Use of undefined constant DBUSER - assumed 'DBUSER' in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 6
+[11-Mar-2014 15:01:39] PHP Stack trace:
+[11-Mar-2014 15:01:39] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:01:39] PHP Notice:  Use of undefined constant DBPASS - assumed 'DBPASS' in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 6
+[11-Mar-2014 15:01:39] PHP Stack trace:
+[11-Mar-2014 15:01:39] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:01:39] PHP Notice:  Use of undefined constant DBNAME - assumed 'DBNAME' in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 6
+[11-Mar-2014 15:01:39] PHP Stack trace:
+[11-Mar-2014 15:01:39] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:01:39] PHP Warning:  mysqli::mysqli(): (HY000/2005): Unknown MySQL server host 'DBHOST' (1) in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 6
+[11-Mar-2014 15:01:39] PHP Stack trace:
+[11-Mar-2014 15:01:39] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:01:39] PHP   2. mysqli->mysqli() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:6
+[11-Mar-2014 15:02:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:07] PHP Stack trace:
+[11-Mar-2014 15:02:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:02:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:07] PHP Stack trace:
+[11-Mar-2014 15:02:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:02:15] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 15:02:15] PHP Stack trace:
+[11-Mar-2014 15:02:15] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:15] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:15] PHP Stack trace:
+[11-Mar-2014 15:02:15] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:15] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:02:15] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:15] PHP Stack trace:
+[11-Mar-2014 15:02:15] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:15] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:02:34] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 20
+[11-Mar-2014 15:02:34] PHP Stack trace:
+[11-Mar-2014 15:02:34] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:34] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:34] PHP Stack trace:
+[11-Mar-2014 15:02:34] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:34] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:02:34] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 38
+[11-Mar-2014 15:02:34] PHP Stack trace:
+[11-Mar-2014 15:02:34] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:02:34] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:38
+[11-Mar-2014 15:08:02] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:08:02] PHP Stack trace:
+[11-Mar-2014 15:08:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:02] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:08:02] PHP Stack trace:
+[11-Mar-2014 15:08:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:02] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:08:02] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:08:02] PHP Stack trace:
+[11-Mar-2014 15:08:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:02] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:08:14] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:08:14] PHP Stack trace:
+[11-Mar-2014 15:08:14] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:14] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:08:14] PHP Stack trace:
+[11-Mar-2014 15:08:14] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:14] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:08:14] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:08:14] PHP Stack trace:
+[11-Mar-2014 15:08:14] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:08:14] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:09:21] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:09:21] PHP Stack trace:
+[11-Mar-2014 15:09:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:09:21] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:09:21] PHP Stack trace:
+[11-Mar-2014 15:09:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:09:21] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:09:21] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:09:21] PHP Stack trace:
+[11-Mar-2014 15:09:21] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:09:21] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:11:38] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:11:38] PHP Stack trace:
+[11-Mar-2014 15:11:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:11:38] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:11:38] PHP Stack trace:
+[11-Mar-2014 15:11:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:11:38] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:11:38] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:11:38] PHP Stack trace:
+[11-Mar-2014 15:11:38] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:11:38] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:23:22] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:23:22] PHP Stack trace:
+[11-Mar-2014 15:23:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:23:22] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:23:22] PHP Stack trace:
+[11-Mar-2014 15:23:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:23:22] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:23:22] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:23:22] PHP Stack trace:
+[11-Mar-2014 15:23:22] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:23:22] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:25:26] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:25:26] PHP Stack trace:
+[11-Mar-2014 15:25:26] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:25:26] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:3
+[11-Mar-2014 15:25:44] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:25:44] PHP Stack trace:
+[11-Mar-2014 15:25:44] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:26:01] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:26:01] PHP Stack trace:
+[11-Mar-2014 15:26:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:01] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:3
+[11-Mar-2014 15:26:25] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:26:25] PHP Stack trace:
+[11-Mar-2014 15:26:25] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:25] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:26:25] PHP Stack trace:
+[11-Mar-2014 15:26:25] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:25] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:26:25] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:26:25] PHP Stack trace:
+[11-Mar-2014 15:26:25] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:25] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:26:36] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:26:36] PHP Stack trace:
+[11-Mar-2014 15:26:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:26:36] PHP Stack trace:
+[11-Mar-2014 15:26:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:26:36] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:26:36] PHP Stack trace:
+[11-Mar-2014 15:26:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:26:36] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:27:44] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:27:44] PHP Stack trace:
+[11-Mar-2014 15:27:44] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:30:07] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:30:07] PHP Stack trace:
+[11-Mar-2014 15:30:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:45:36] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:45:36] PHP Stack trace:
+[11-Mar-2014 15:45:36] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:45:36] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:3
+[11-Mar-2014 15:45:43] PHP Warning:  require(sessions.php): failed to open stream: No such file or directory in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:45:43] PHP Stack trace:
+[11-Mar-2014 15:45:43] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:45:43] PHP Fatal error:  require(): Failed opening required 'sessions.php' (include_path='.:/usr/share/pear:/usr/share/php') in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:45:43] PHP Stack trace:
+[11-Mar-2014 15:45:43] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:45:48] PHP Warning:  require(sessions.php): failed to open stream: No such file or directory in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:45:48] PHP Stack trace:
+[11-Mar-2014 15:45:48] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:45:48] PHP Fatal error:  require(): Failed opening required 'sessions.php' (include_path='.:/usr/share/pear:/usr/share/php') in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:45:48] PHP Stack trace:
+[11-Mar-2014 15:45:48] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:46:05] PHP Warning:  require(sessions.php): failed to open stream: No such file or directory in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:46:05] PHP Stack trace:
+[11-Mar-2014 15:46:05] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:46:05] PHP Fatal error:  require(): Failed opening required 'sessions.php' (include_path='.:/usr/share/pear:/usr/share/php') in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php on line 3
+[11-Mar-2014 15:46:05] PHP Stack trace:
+[11-Mar-2014 15:46:05] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:46:12] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:46:12] PHP Stack trace:
+[11-Mar-2014 15:46:12] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:46:12] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:3
+[11-Mar-2014 15:46:47] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:46:47] PHP Stack trace:
+[11-Mar-2014 15:46:47] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:46:47] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:3
+[11-Mar-2014 15:46:53] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:46:53] PHP Stack trace:
+[11-Mar-2014 15:46:53] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:46:53] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:3
+[11-Mar-2014 15:47:05] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
+[11-Mar-2014 15:47:05] PHP Stack trace:
+[11-Mar-2014 15:47:05] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:47:06] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:47:06] PHP Stack trace:
+[11-Mar-2014 15:47:06] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:47:06] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:47:06] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
+[11-Mar-2014 15:47:06] PHP Stack trace:
+[11-Mar-2014 15:47:06] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[11-Mar-2014 15:47:06] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
+[11-Mar-2014 15:47:11] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:47:11] PHP Stack trace:
+[11-Mar-2014 15:47:11] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
+[11-Mar-2014 15:47:11] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:3
+[11-Mar-2014 15:47:16] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[11-Mar-2014 15:47:16] PHP Stack trace:
+[11-Mar-2014 15:47:16] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[11-Mar-2014 15:47:16] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:3

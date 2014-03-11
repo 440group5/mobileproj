@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   require("session.php");
   require("../config.php");
   
@@ -28,9 +29,9 @@
       
       $query = "select * from spots where lot='".$lot."';";
       $spots = $db->query($query);
-
-      echo"<table>";
-      echo"<tr><th>ID</th><th>LOT</th><th>Availabiltiy</th><th>User</th></tr>";
+      $db->close();
+      echo"<table cellpadding='10'>";
+      echo"<tr><th>ID</th><th>LOT</th><th>Availabiltiy</th><th>User</th><th>Reserved</th><th>Expires</th><th>Edit</th></tr>";
       
       while($spot = $spots->fetch_array(MYSQLI_ASSOC) ) {
           if($spot['occupied'] == "1")
@@ -40,7 +41,7 @@
           else
             $availability = "Available";
             
-          echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$availability."</td><td>".$spot['username']."</td></tr>";
+          echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$availability."</td><td>".$spot['username']."</td><td>".$spot['reserve']."</td><td>".$spot['expire']."</td><td><a href='editspot.php/?id=".$spot['id']."'>Edit</a></td></tr>";
           
       }
       echo"</table><br/>";
