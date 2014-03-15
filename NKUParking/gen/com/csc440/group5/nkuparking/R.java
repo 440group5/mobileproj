@@ -268,12 +268,18 @@ containing a value of this type.
         public static final int google_play_services_version=0x7f070000;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int map_page=0x7f030001;
-        public static final int register_page=0x7f030002;
+        public static final int activity_directions_page=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_settings_page=0x7f030002;
+        public static final int activity_status_page=0x7f030003;
+        public static final int map_page=0x7f030004;
+        public static final int register_page=0x7f030005;
     }
     public static final class menu {
-        public static final int main=0x7f0b0000;
+        public static final int directions_page=0x7f0b0000;
+        public static final int main=0x7f0b0001;
+        public static final int settings_page=0x7f0b0002;
+        public static final int status_page=0x7f0b0003;
     }
     public static final class string {
         public static final int action_directions=0x7f06001c;
@@ -375,6 +381,7 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
+        public static final int directions_page=0x7f060030;
         public static final int firstname=0x7f060028;
         public static final int fnamehint=0x7f06002a;
         public static final int hello_world=0x7f06001f;
@@ -388,7 +395,9 @@ containing a value of this type.
         public static final int regpasslab=0x7f06002d;
         public static final int reguserbutton=0x7f06002e;
         public static final int reguserlab=0x7f06002c;
+        public static final int settings_page=0x7f060032;
         public static final int spinnertext=0x7f06002f;
+        public static final int status_page=0x7f060031;
         public static final int userhint=0x7f060022;
         public static final int userlab=0x7f060020;
         public static final int welcomelab=0x7f060026;

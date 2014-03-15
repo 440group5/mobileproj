@@ -15,9 +15,12 @@ import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+
 import com.csc440.group5.nkuparking.ParkingLot;
 
 public class MapPage extends Activity
@@ -99,4 +102,35 @@ public class MapPage extends Activity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	    
+	        case R.id.action_map:
+	        	Intent map = new Intent(this, MapPage.class);
+	    		startActivity(map);
+	            return true;
+	            
+	        case R.id.action_directions:
+	        	Intent directions = new Intent(this, DirectionsPage.class);
+	    		startActivity(directions);
+	            return true;
+	            
+	        case R.id.action_status:
+	        	Intent status = new Intent(this, StatusPage.class);
+	    		startActivity(status);
+	            return true;
+	            
+	        case R.id.action_settings:
+	        	Intent settings = new Intent(this, SettingsPage.class);
+	    		startActivity(settings);
+	            return true;
+	            
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 }

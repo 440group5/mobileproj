@@ -23,5 +23,8 @@
     <string name="regpasslab">Password:</string>
     <string name="reguserbutton">Register and Login</string>
     <string name="spinnertext">Classification:</string>
+    <string name="directions_page">Directions Page</string>
+    <string name="status_page">Status Page</string>
+    <string name="settings_page">Settings Page</string>
 
 </resources>
