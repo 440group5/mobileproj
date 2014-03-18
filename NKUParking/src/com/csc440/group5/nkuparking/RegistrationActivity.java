@@ -24,6 +24,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -33,7 +34,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 	private EditText userText, passText, firstText, lastText;
 	private Spinner spinner;
 	//Determines if the user is student or faculty/staff.
-	boolean isStudent, isFacultyStaff;
+	boolean isStudent, isFacultyStaff, agreementChecked;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -45,8 +46,8 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Grab all of the textfields.
 		userText = (EditText)findViewById(R.id.reguserfield);
 		passText = (EditText)findViewById(R.id.regpassfield);
-		firstText = (EditText)findViewById(R.id.firstnamefield);
-		lastText = (EditText)findViewById(R.id.lastnamefield);
+//		firstText = (EditText)findViewById(R.id.firstnamefield);
+//		lastText = (EditText)findViewById(R.id.lastnamefield);
 		
 		//Grab the view and register a touch listener to close the android soft
 		//keyboard when it is touched.
@@ -66,13 +67,13 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Build up the error so the user gets all of the errors that happened
 		StringBuffer error = new StringBuffer();
 		
-		//Check for first name.
-		if(firstText.getText().toString().equals(""))
-			error.append("Please enter your first name\n");
-		
-		//Check for last name.
-		if(lastText.getText().toString().equals(""))
-			error.append("Please enter your last name\n");
+//		//Check for first name.
+//		if(firstText.getText().toString().equals(""))
+//			error.append("Please enter your first name\n");
+//		
+//		//Check for last name.
+//		if(lastText.getText().toString().equals(""))
+//			error.append("Please enter your last name\n");
 		
 		//Check for username.
 		if(userText.getText().toString().equals(""))
@@ -85,6 +86,9 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//If both of these are false, then the user chose the "-----" option, which is invalid.
 		if(!isStudent && !isFacultyStaff)
 			error.append("Please make sure you have set your classification\n");
+		
+		if(!agreementChecked)
+			error.append("Please make sure you have agreed to the agreement\n");
 			
 		//If the error string has been built, then there was an error, if not, there was not an error 
 		//and the app should continue normal execution.
@@ -104,6 +108,11 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
     		startActivity(intent);
 		}
 		
+	}
+	
+	public void agreementClicked(View view)
+	{
+		agreementChecked = ((CheckBox) view).isChecked();
 	}
 
 	@Override

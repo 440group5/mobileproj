@@ -33,7 +33,7 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <RelativeLayout
+        <!--RelativeLayout
             android:id="@+id/namelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,13 +85,13 @@
                 android:ems="10"
                 android:hint="@string/lnamehint"
                 android:inputType="text" />
-        </RelativeLayout>
+        </RelativeLayout-->
         
         <RelativeLayout
             android:id="@+id/userpasslayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/namelayout"
+            android:layout_below="@+id/registerlab"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
@@ -169,10 +169,26 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/bottomlayout"
+            android:id="@+id/agreelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spinnerlayout"
+            android:layout_centerHorizontal="true" >
+
+			<CheckBox 
+			    android:id="@+id/agreementbox"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/agreementText"
+			    android:onClick="agreementClicked" />
+			
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/agreelayout"
             android:layout_centerHorizontal="true" >
 
             <Button
