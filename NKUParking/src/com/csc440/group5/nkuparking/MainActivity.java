@@ -50,6 +50,12 @@ public class MainActivity extends Activity implements OnTouchListener
         return true;
     }
     
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+    	//Do not show the menu on the login page 
+    	return false;
+    }
+    
     public void registerUser(View view)
     {
     	//Registers the user.

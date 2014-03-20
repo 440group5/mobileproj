@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="35dp"
+                android:layout_marginBottom="25dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/reguserlab"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -112,6 +112,7 @@
                 android:id="@+id/regpasslab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
                 android:layout_alignParentTop="false"
                 android:layout_below="@id/reguserlab"
                 android:text="@string/regpasslab"
@@ -139,17 +140,38 @@
                 android:ems="10"
                 android:hint="@string/passhint"
                 android:inputType="textPassword" />
+            
+            <TextView
+                android:id="@+id/retypepasslab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_below="@id/regpasslab"
+                android:text="@string/retypepasslab"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+                        
+            <EditText
+                android:id="@+id/retypepassfield"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/retypepasslab"
+                android:layout_below="@+id/regpassfield"
+                android:layout_toRightOf="@+id/retypepasslab"
+                android:ems="10"
+                android:hint="@string/retypepass"
+                android:inputType="textPassword" />
         </RelativeLayout>
         
         <RelativeLayout
             android:id="@+id/spinnerlayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/userpasslayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp" >
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
            
             <TextView
                 android:id="@+id/spinnerlab"
@@ -161,7 +183,7 @@
             
             <Spinner
                 android:id="@+id/class_spinner"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_alignBaseline="@id/spinnerlab"
                 android:layout_toRightOf="@id/spinnerlab" />

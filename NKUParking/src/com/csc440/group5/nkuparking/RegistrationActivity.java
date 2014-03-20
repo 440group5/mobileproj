@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -31,7 +32,7 @@ import android.widget.Spinner;
 
 public class RegistrationActivity extends Activity implements OnItemSelectedListener, OnTouchListener 
 {
-	private EditText userText, passText, firstText, lastText;
+	private EditText userText, passText, retypePassText;
 	private Spinner spinner;
 	//Determines if the user is student or faculty/staff.
 	boolean isStudent, isFacultyStaff, agreementChecked;
@@ -46,6 +47,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Grab all of the textfields.
 		userText = (EditText)findViewById(R.id.reguserfield);
 		passText = (EditText)findViewById(R.id.regpassfield);
+		retypePassText = (EditText)findViewById(R.id.retypepassfield);
 //		firstText = (EditText)findViewById(R.id.firstnamefield);
 //		lastText = (EditText)findViewById(R.id.lastnamefield);
 		
@@ -89,6 +91,16 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		
 		if(!agreementChecked)
 			error.append("Please make sure you have agreed to the agreement\n");
+		
+		//Check to make sure the retype password field has text
+		if(retypePassText.getText().toString().equals(""))
+			error.append("Please retype your password\n");
+		else
+		{
+			//Make sure both passwords entered by the user are the same
+			if(!passText.getText().toString().equals(retypePassText.getText().toString()))
+				error.append("The two password fields do not match");
+		}
 			
 		//If the error string has been built, then there was an error, if not, there was not an error 
 		//and the app should continue normal execution.
@@ -109,6 +121,12 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		}
 		
 	}
+	
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+    	//Do not show the menu on the login page 
+    	return false;
+    }
 	
 	public void agreementClicked(View view)
 	{

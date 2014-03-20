@@ -21,6 +21,8 @@
     <string name="lnamehint">Last Name</string>
     <string name="reguserlab">Username:</string>
     <string name="regpasslab">Password:</string>
+    <string name="retypepass">Re-type Password</string>
+    <string name="retypepasslab">Password:</string>
     <string name="reguserbutton">Register and Login</string>
     <string name="spinnertext">Classification:</string>
     <string name="directions_page">Directions Page</string>
