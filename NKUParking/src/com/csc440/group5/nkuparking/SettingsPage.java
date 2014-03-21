@@ -1,17 +1,49 @@
+/*
+ * Settings.java
+ * 
+ * Settings page for the app.
+ * 
+ * Copyright (c) 2014 CSCGroup5
+ */
+
 package com.csc440.group5.nkuparking;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 
-public class SettingsPage extends Activity {
-
+public class SettingsPage extends Activity 
+{
+	private SharedPreferences settings;
+	private CheckBox autoLogin;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_page);
+		
+		autoLogin = ((CheckBox)findViewById(R.id.autoLoginBox));
+		
+		//Auto check the autologin checkbox based on the value from shared prefs.
+		settings = getSharedPreferences("NKUParkingPrefs", 0);
+		boolean temp = settings.getBoolean("AutoLogin", false);
+		autoLogin.setChecked(temp);
+	}
+	
+	public void changedAutoLogin(View view)
+	{
+		//Changes the value of whether the user wants their user & pass
+		//stored on the device or not
+		settings = getSharedPreferences("NKUParkingPrefs", 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putBoolean("AutoLogin", ((CheckBox) view).isChecked());
+		editor.commit();
 	}
 
 	@Override

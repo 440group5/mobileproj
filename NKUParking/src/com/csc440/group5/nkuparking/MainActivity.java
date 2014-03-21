@@ -14,7 +14,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnFocusChangeListener;
@@ -36,6 +38,20 @@ public class MainActivity extends Activity implements OnTouchListener
         
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
+        
+        SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
+        String userPassHash = settings.getString("UserPass", null);
+        if(userPassHash != null)
+        {
+        	//TODO: send info to server to make sure it's a valid user
+        	if(userPassHash.equals("fakefake"))
+        	{
+        		//Successfully logged in, load the map page
+        		Log.v(null, "Successfully logged the user in.....");
+        		Intent intent = new Intent(this, MapPage.class);
+        		startActivity(intent);
+        	}
+        }
         
         //Grab the top layout and add a touch event to close the android soft keyboard
         //when the view's background is selected.
@@ -75,6 +91,15 @@ public class MainActivity extends Activity implements OnTouchListener
     	{
     		//load the map view because the user is a valid user
     		//TODO: connect to server instead of mock data
+    		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
+    		boolean autoLogin = settings.getBoolean("AutoLogin", false);
+    		if(autoLogin)
+    		{
+    			//write user & pass hash to shared prefs
+    			SharedPreferences.Editor editor = settings.edit();
+    			editor.putString("UserPass", concatUserPass);
+    			editor.commit();
+    		}
     		Log.v(null, "Successfully logged the user in.....");
     		Intent intent = new Intent(this, MapPage.class);
     		startActivity(intent);

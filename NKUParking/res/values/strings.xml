@@ -28,6 +28,7 @@
     <string name="directions_page">Directions Page</string>
     <string name="status_page">Status Page</string>
     <string name="settings_page">Settings Page</string>
-    <string name="agreementText">I agree that I am soley responsible if I use this app while driving.</string>
+    <string name="agreementText">I agree that I am solely responsible if I use this app while driving.</string>
+    <string name="autoLoginText">Save username and password on the device and auto login each time</string>
 
 </resources>

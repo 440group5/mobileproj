@@ -115,6 +115,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		else
 		{
 			//Load up the normal map activity page.
+			//getSharedPreferences("NKUParkingPrefs", 0);
     		Log.v(null, "Successfully registered, logging in....");
     		Intent intent = new Intent(this, MapPage.class);
     		startActivity(intent);

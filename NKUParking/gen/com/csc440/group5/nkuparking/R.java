@@ -227,40 +227,41 @@ containing a value of this type.
         public static final int nkulogo=0x7f02001d;
     }
     public static final class id {
-        public static final int action_directions=0x7f050020;
-        public static final int action_map=0x7f05001f;
-        public static final int action_settings=0x7f050022;
-        public static final int action_status=0x7f050021;
-        public static final int agreelayout=0x7f05001c;
-        public static final int agreementbox=0x7f05001d;
+        public static final int action_directions=0x7f050021;
+        public static final int action_map=0x7f050020;
+        public static final int action_settings=0x7f050023;
+        public static final int action_status=0x7f050022;
+        public static final int agreelayout=0x7f05001d;
+        public static final int agreementbox=0x7f05001e;
+        public static final int autoLoginBox=0x7f05000f;
         public static final int bottomlayout=0x7f05000c;
         public static final int button1=0x7f05000e;
-        public static final int class_spinner=0x7f05001b;
+        public static final int class_spinner=0x7f05001c;
         public static final int hybrid=0x7f050004;
         public static final int mainView=0x7f050005;
-        public static final int map=0x7f05000f;
+        public static final int map=0x7f050010;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int passField=0x7f05000b;
         public static final int passLab=0x7f050009;
         public static final int regbutton=0x7f05000d;
-        public static final int registerbutton=0x7f05001e;
-        public static final int registerlab=0x7f050011;
-        public static final int registrationLayout=0x7f050010;
-        public static final int regpassfield=0x7f050016;
-        public static final int regpasslab=0x7f050014;
-        public static final int reguserfield=0x7f050015;
-        public static final int reguserlab=0x7f050013;
-        public static final int retypepassfield=0x7f050018;
-        public static final int retypepasslab=0x7f050017;
+        public static final int registerbutton=0x7f05001f;
+        public static final int registerlab=0x7f050012;
+        public static final int registrationLayout=0x7f050011;
+        public static final int regpassfield=0x7f050017;
+        public static final int regpasslab=0x7f050015;
+        public static final int reguserfield=0x7f050016;
+        public static final int reguserlab=0x7f050014;
+        public static final int retypepassfield=0x7f050019;
+        public static final int retypepasslab=0x7f050018;
         public static final int satellite=0x7f050002;
-        public static final int spinnerlab=0x7f05001a;
-        public static final int spinnerlayout=0x7f050019;
+        public static final int spinnerlab=0x7f05001b;
+        public static final int spinnerlayout=0x7f05001a;
         public static final int terrain=0x7f050003;
         public static final int toplayout=0x7f050007;
         public static final int userField=0x7f05000a;
         public static final int userLab=0x7f050008;
-        public static final int userpasslayout=0x7f050012;
+        public static final int userpasslayout=0x7f050013;
         public static final int welcomelab=0x7f050006;
     }
     public static final class integer {
@@ -310,6 +311,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
+        public static final int autoLoginText=0x7f060036;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 

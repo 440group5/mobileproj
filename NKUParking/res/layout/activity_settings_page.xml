@@ -8,9 +8,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SettingsPage" >
 
-    <TextView
+    <!--TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings_page" />
+        android:text="@string/settings_page" /-->
+
+	<CheckBox 
+			    android:id="@+id/autoLoginBox"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/autoLoginText"
+			    android:onClick="changedAutoLogin" />
 
 </RelativeLayout>
