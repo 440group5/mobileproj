@@ -183,7 +183,7 @@
             
             <Spinner
                 android:id="@+id/class_spinner"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_alignBaseline="@id/spinnerlab"
                 android:layout_toRightOf="@id/spinnerlab" />
