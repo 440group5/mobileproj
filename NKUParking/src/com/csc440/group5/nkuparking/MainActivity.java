@@ -147,7 +147,8 @@ public class MainActivity extends Activity implements OnTouchListener
     		new AlertDialog.Builder(this)
     			.setTitle("Error")
     			.setMessage("There was an internal error and login cannot be completed.")
-    			.setPositiveButton(android.R.string.ok, null);
+    			.setPositiveButton(android.R.string.ok, null)
+    			.show();
     	}
     }
 
