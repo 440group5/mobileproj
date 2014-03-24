@@ -183,7 +183,7 @@
             
             <Spinner
                 android:id="@+id/class_spinner"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="fill_parent"
                 android:layout_alignBaseline="@id/spinnerlab"
                 android:layout_toRightOf="@id/spinnerlab" />
@@ -219,6 +219,23 @@
                 android:layout_height="wrap_content"
                 android:onClick="register"
                 android:text="@string/reguserbutton" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/disclaimerLayout"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bottomlayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/disclaimerLab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disclaimer"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp" />
         </RelativeLayout>
         
     </RelativeLayout>

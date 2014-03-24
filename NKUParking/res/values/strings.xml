@@ -30,5 +30,6 @@
     <string name="settings_page">Settings Page</string>
     <string name="agreementText">I agree that I am solely responsible if I use this app while driving.</string>
     <string name="autoLoginText">Save username and password on the device and auto login each time</string>
+    <string name="disclaimer">\* Clicking \'Register and Login\' will automatically save your username and password each time you use the app, to change this go to the settings menu.</string>
 
 </resources>
