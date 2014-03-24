@@ -43,7 +43,8 @@
         <activity
             android:name="com.csc440.group5.nkuparking.MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,7 +63,8 @@
         <activity
             android:name="com.csc440.group5.nkuparking.RegistrationActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="com.csc440.group5.nkuparking.RegistrationActivity" />
 
