@@ -10,6 +10,8 @@
 
 package com.csc440.group5.nkuparking;
 
+import java.security.MessageDigest;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -115,7 +117,29 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		else
 		{
 			//Load up the normal map activity page.
-			//getSharedPreferences("NKUParkingPrefs", 0);
+			//Hash the username and password then send it to the server
+			//TODO: uncomment this code when connected to server
+			/*
+    		MessageDigest digester;
+    		try
+    		{
+    			digester = MessageDigest.getInstance("SHA256");
+    			byte[] bytes = (userText.getText().toString() + passText.getText().toString()).getBytes("UTF8");
+    			digester.update(bytes, 0, bytes.length);
+    			String hashedUserPass = new String(digester.digest());
+    			
+    			//TODO: send hashedUserPass to server and get confirmation of registration
+    		}
+    		catch(Exception e)
+    		{
+        		new AlertDialog.Builder(this)
+    			.setTitle("Error")
+    			.setMessage("There was an error while creating your account, please try again later.")
+    			.setPositiveButton(android.R.string.ok, null)
+    			.show();
+    		}
+    		*/
+    		
     		Log.v(null, "Successfully registered, logging in....");
     		Intent intent = new Intent(this, MapPage.class);
     		startActivity(intent);

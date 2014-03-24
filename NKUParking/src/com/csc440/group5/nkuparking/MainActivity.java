@@ -10,6 +10,7 @@
 
 package com.csc440.group5.nkuparking;
 
+import java.security.MessageDigest;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,6 +29,7 @@ import android.widget.ScrollView;
 public class MainActivity extends Activity implements OnTouchListener 
 {
 	private EditText userText, passText;
+	private MessageDigest digester;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -39,12 +41,22 @@ public class MainActivity extends Activity implements OnTouchListener
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
         
+		/* ----------------------------------------------------- */
+		//TODO: Remove when connected to server, this is for development purposes only.
+        String hashedLogin;
+		try {
+        byte[] bytes = "fakefake".getBytes("UTF8");
+		digester.update(bytes, 0, bytes.length);
+		hashedLogin = new String(digester.digest()); }
+		catch(Exception e) { return; }
+		/* ----------------------------------------------------- */
+        
         SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         String userPassHash = settings.getString("UserPass", null);
         if(userPassHash != null)
         {
         	//TODO: send info to server to make sure it's a valid user
-        	if(userPassHash.equals("fakefake"))
+        	if(userPassHash.equals(hashedLogin))
         	{
         		//Successfully logged in, load the map page
         		Log.v(null, "Successfully logged the user in.....");
@@ -87,31 +99,55 @@ public class MainActivity extends Activity implements OnTouchListener
     	String password = passText.getText().toString();
     	String concatUserPass = username + password;
     	
-    	if(concatUserPass.equals("fakefake"))
+    	MessageDigest digester;
+    	//Do the SHA256 hash, if there was an error pop up an alert dialog and exit.
+    	try 
     	{
-    		//load the map view because the user is a valid user
-    		//TODO: connect to server instead of mock data
-    		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
-    		boolean autoLogin = settings.getBoolean("AutoLogin", false);
-    		if(autoLogin)
-    		{
-    			//write user & pass hash to shared prefs
-    			SharedPreferences.Editor editor = settings.edit();
-    			editor.putString("UserPass", concatUserPass);
-    			editor.commit();
-    		}
-    		Log.v(null, "Successfully logged the user in.....");
-    		Intent intent = new Intent(this, MapPage.class);
-    		startActivity(intent);
+    		digester = MessageDigest.getInstance("SHA256");
+    		byte[] bytes = concatUserPass.getBytes("UTF8");
+    		digester.update(bytes, 0, bytes.length);
+    		String hashedUserPass = new String(digester.digest());
+    		
+    		/* ----------------------------------------------------- */
+    		//TODO: Remove when connected to server, this is for development purposes only.
+    		bytes = "fakefake".getBytes("UTF8");
+    		digester.update(bytes, 0, bytes.length);
+    		String hashedLogin = new String(digester.digest());
+    		/* ----------------------------------------------------- */
+    		
+        	if(hashedUserPass.equals(hashedLogin))
+        	{
+        		//load the map view because the user is a valid user
+        		//TODO: connect to server instead of mock data
+        		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
+        		boolean autoLogin = settings.getBoolean("AutoLogin", false);
+        		if(autoLogin)
+        		{
+        			//write user & pass hash to shared prefs
+        			SharedPreferences.Editor editor = settings.edit();
+        			editor.putString("UserPass", hashedUserPass);
+        			editor.commit();
+        		}
+        		Log.v(null, "Successfully logged the user in.....");
+        		Intent intent = new Intent(this, MapPage.class);
+        		startActivity(intent);
+        	}
+        	else
+        	{
+        		//Popup an alert view because the information was wrong
+        		new AlertDialog.Builder(this)
+        			.setTitle("Error")
+        			.setMessage("The information is incorrect or there is not a valid username.")
+        			.setPositiveButton(android.R.string.yes, null)
+        			.show();
+        	}
     	}
-    	else
+    	catch(Exception e)
     	{
-    		//Popup an alert view because the information was wrong
     		new AlertDialog.Builder(this)
     			.setTitle("Error")
-    			.setMessage("The information is incorrect or there is not a valid username.")
-    			.setPositiveButton(android.R.string.yes, null)
-    			.show();
+    			.setMessage("There was an internal error and login cannot be completed.")
+    			.setPositiveButton(android.R.string.ok, null);
     	}
     }
 
