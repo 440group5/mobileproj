@@ -46,14 +46,18 @@ public class MainActivity extends Activity implements OnTouchListener
         String hashedLogin;
 		try {
         byte[] bytes = "fakefake".getBytes("UTF8");
+        digester = MessageDigest.getInstance("SHA256");
 		digester.update(bytes, 0, bytes.length);
 		hashedLogin = new String(digester.digest()); }
-		catch(Exception e) { return; }
+		catch(Exception e) {
+			Log.v(null, e.getMessage());
+			return; }
 		/* ----------------------------------------------------- */
         
         SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         String userPassHash = settings.getString("UserPass", null);
-        if(userPassHash != null)
+        boolean shouldAutoLogin = settings.getBoolean("AutoLogin", false);
+        if(userPassHash != null && shouldAutoLogin)
         {
         	//TODO: send info to server to make sure it's a valid user
         	if(userPassHash.equals(hashedLogin))

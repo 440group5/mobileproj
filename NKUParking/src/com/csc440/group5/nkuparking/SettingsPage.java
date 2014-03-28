@@ -21,6 +21,7 @@ public class SettingsPage extends Activity
 {
 	private SharedPreferences settings;
 	private CheckBox autoLogin;
+	private boolean shouldAutoLogin;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -32,17 +33,18 @@ public class SettingsPage extends Activity
 		
 		//Auto check the autologin checkbox based on the value from shared prefs.
 		settings = getSharedPreferences("NKUParkingPrefs", 0);
-		boolean temp = settings.getBoolean("AutoLogin", false);
-		autoLogin.setChecked(temp);
+		shouldAutoLogin = settings.getBoolean("AutoLogin", false);
+		autoLogin.setChecked(shouldAutoLogin);
 	}
 	
 	public void changedAutoLogin(View view)
 	{
 		//Changes the value of whether the user wants their user & pass
 		//stored on the device or not
+		shouldAutoLogin = !shouldAutoLogin;
 		settings = getSharedPreferences("NKUParkingPrefs", 0);
 		SharedPreferences.Editor editor = settings.edit();
-		editor.putBoolean("AutoLogin", ((CheckBox) view).isChecked());
+		editor.putBoolean("AutoLogin", shouldAutoLogin);
 		editor.commit();
 	}
 
