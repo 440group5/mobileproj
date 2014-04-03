@@ -29,6 +29,7 @@
                 Password:<input type="password" name="password"><br/>
                 Retype:<input type="password" name="password2"><br/>
                 Email:<input type="text" name="email"><br/>
+                <!-- Type of User:<input type="text" name="type"><br/> -->
                 <input type="submit" name="submit" value="Submit">
             </form>
             </center>
