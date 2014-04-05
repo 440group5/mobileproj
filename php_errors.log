@@ -1,23 +1,820 @@
-[13-Mar-2014 20:26:26] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
-[13-Mar-2014 20:26:26] PHP Stack trace:
-[13-Mar-2014 20:26:26] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
-[13-Mar-2014 20:26:26] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:3
-[17-Mar-2014 15:42:07] PHP Notice:  Undefined index: lot in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 21
-[17-Mar-2014 15:42:07] PHP Stack trace:
-[17-Mar-2014 15:42:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
-[17-Mar-2014 15:42:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
-[17-Mar-2014 15:42:07] PHP Stack trace:
-[17-Mar-2014 15:42:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
-[17-Mar-2014 15:42:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
-[17-Mar-2014 15:42:07] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
-[17-Mar-2014 15:42:07] PHP Stack trace:
-[17-Mar-2014 15:42:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
-[17-Mar-2014 15:42:07] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
-[17-Mar-2014 15:42:14] PHP Warning:  strtotime(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'America/New_York' for 'EDT/-4.0/DST' instead in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 39
-[17-Mar-2014 15:42:14] PHP Stack trace:
-[17-Mar-2014 15:42:14] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
-[17-Mar-2014 15:42:14] PHP   2. strtotime() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:39
-[17-Mar-2014 17:27:47] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
-[17-Mar-2014 17:27:47] PHP Stack trace:
-[17-Mar-2014 17:27:47] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:0
-[17-Mar-2014 17:27:47] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/index.php:3
+[04-Apr-2014 14:55:35] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/lots.php on line 26
+[04-Apr-2014 18:54:35] PHP Notice:  Undefined index: id in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 5
+[04-Apr-2014 18:54:35] PHP Stack trace:
+[04-Apr-2014 18:54:35] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[04-Apr-2014 18:54:43] PHP Notice:  Undefined index: id in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 5
+[04-Apr-2014 18:54:43] PHP Stack trace:
+[04-Apr-2014 18:54:43] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[04-Apr-2014 18:55:10] PHP Notice:  Undefined index: id in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php on line 5
+[04-Apr-2014 18:55:10] PHP Stack trace:
+[04-Apr-2014 18:55:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/editspot.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:01] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:01] PHP Stack trace:
+[04-Apr-2014 20:11:01] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:11:02] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:11:02] PHP Stack trace:
+[04-Apr-2014 20:11:02] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:03] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:03] PHP Stack trace:
+[04-Apr-2014 20:12:03] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0
+[04-Apr-2014 20:12:10] PHP Notice:  Undefined index: occupied in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php on line 66
+[04-Apr-2014 20:12:10] PHP Stack trace:
+[04-Apr-2014 20:12:10] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/spots.php:0

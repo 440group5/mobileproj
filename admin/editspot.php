@@ -18,6 +18,7 @@
     
     echo "<html>";
     echo "<h1>Edit Spot</h1>";
+    echo "<a href='../spots.php'>Back</a><br/>";
     echo "<form method='post' action='editspot.php'>";
     echo "ID: ".$id."<br><br>";
     echo "Lot: ".$spot['lot']."<br><br>";
