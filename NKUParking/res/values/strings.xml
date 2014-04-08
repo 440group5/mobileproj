@@ -27,9 +27,13 @@
     <string name="spinnertext">Classification:</string>
     <string name="directions_page">Directions Page</string>
     <string name="status_page">Status Page</string>
+    <string name="lot_status_page">Lot Status Page</string>
+    <string name="space_status_page">Space Status Page</string>
     <string name="settings_page">Settings Page</string>
     <string name="agreementText">I agree that I am solely responsible if I use this app while driving.</string>
     <string name="autoLoginText">Save username and password on the device and auto login each time</string>
     <string name="disclaimer">\* Clicking \'Register and Login\' will automatically save your username and password each time you use the app, to change this go to the settings menu.</string>
 
+    <string name="statphl">Placeholder Lot #</string>
+    <string name="statphb">Waiting</string>
 </resources>
