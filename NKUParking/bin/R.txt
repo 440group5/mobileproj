@@ -115,7 +115,7 @@ int string action_directions 0x7f06001c
 int string action_map 0x7f06001b
 int string action_settings 0x7f06001e
 int string action_status 0x7f06001d
-int string agreementText 0x7f060035
+int string agreementText 0x7f060037
 int string app_name 0x7f06001a
 int string auth_client_needs_enabling_title 0x7f060015
 int string auth_client_needs_installation_title 0x7f060016
@@ -123,7 +123,7 @@ int string auth_client_needs_update_title 0x7f060017
 int string auth_client_play_services_err_notification_msg 0x7f060018
 int string auth_client_requested_by_msg 0x7f060019
 int string auth_client_using_bad_version_title 0x7f060014
-int string autoLoginText 0x7f060036
+int string autoLoginText 0x7f060038
 int string common_google_play_services_enable_button 0x7f060006
 int string common_google_play_services_enable_text 0x7f060005
 int string common_google_play_services_enable_title 0x7f060004
@@ -145,13 +145,14 @@ int string common_google_play_services_update_title 0x7f060007
 int string common_signin_button_text 0x7f060012
 int string common_signin_button_text_long 0x7f060013
 int string directions_page 0x7f060032
-int string disclaimer 0x7f060037
+int string disclaimer 0x7f060039
 int string firstname 0x7f060028
 int string fnamehint 0x7f06002a
 int string hello_world 0x7f06001f
 int string lastname 0x7f060029
 int string lnamehint 0x7f06002b
 int string loginbutton 0x7f060024
+int string lot_status_page 0x7f060034
 int string passhint 0x7f060023
 int string passlab 0x7f060021
 int string regbutton 0x7f060025
@@ -161,8 +162,11 @@ int string reguserbutton 0x7f060030
 int string reguserlab 0x7f06002c
 int string retypepass 0x7f06002e
 int string retypepasslab 0x7f06002f
-int string settings_page 0x7f060034
+int string settings_page 0x7f060036
+int string space_status_page 0x7f060035
 int string spinnertext 0x7f060031
+int string statphb 0x7f06003b
+int string statphl 0x7f06003a
 int string status_page 0x7f060033
 int string userhint 0x7f060022
 int string userlab 0x7f060020
