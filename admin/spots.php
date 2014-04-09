@@ -4,7 +4,8 @@
   require("../config.php");
   
 ?>
-      <h1>Lots &amp; Spots</h1>
+      <h1>Spots</h1>
+      <a href='/admin'>Admin</a>
       <form action="spots.php" method="post">
         LOT:<select name="lot">
             <option value="A" selected>A</option>
@@ -44,10 +45,7 @@
       else
           $lot='A';
     
-      /*
-      $lot=$_POST["lot"];
-      isset($lot) || $lot='A'; //set lot or default to A
-      */
+
       $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     
       if($db->connect_errno > 0) {
@@ -63,14 +61,8 @@
       date_default_timezone_set ( "America/New_York");
       
       while($spot = $spots->fetch_array(MYSQLI_ASSOC) ) {
-          if($spot['occupied'] == "1")
-            $availability = "Occupied";
-          elseif(time() < strtotime($spot['expire']) )
-            $availability = "Reserved";
-          else
-            $availability = "Available";
-            
-          echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$availability."</td><td>".$spot['username']."</td><td>".$spot['reserve']."</td><td>".$spot['expire']."</td><td><a href='editspot.php/?id=".$spot['id']."'>Edit</a></td></tr>";
+
+          echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$spot['status']."</td><td>".$spot['username']."</td><td>".$spot['reserve']."</td><td>".$spot['expire']."</td><td><a href='editspot.php/?id=".$spot['id']."'>Edit</a></td></tr>";
           
       }
       echo"</table><br/>";
