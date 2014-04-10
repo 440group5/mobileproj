@@ -325,10 +325,7 @@ containing a value of this type.
         public static final int register_page=0x7f030005;
     }
     public static final class menu {
-        public static final int directions_page=0x7f0b0000;
-        public static final int main=0x7f0b0001;
-        public static final int settings_page=0x7f0b0002;
-        public static final int status_page=0x7f0b0003;
+        public static final int context_menu=0x7f0b0000;
     }
     public static final class string {
         public static final int action_directions=0x7f06001c;
