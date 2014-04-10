@@ -58,32 +58,33 @@ public class MapPage extends Activity
 		protected ArrayList<ParkingLot> doInBackground(Void... params)
 		{
 			//Build the Lots asynchronously.
-			lotList.add(new ParkingLot("A", "Lot A - Open Lot", 39.030569, -84.468997));
-			lotList.add(new ParkingLot("C", "Lot C - Faculty/Staff Lot", 39.031650, -84.466539));
-			lotList.add(new ParkingLot("D", "Lot D - Faculty/Staff Lot", 39.032240, -84.461732));
-			lotList.add(new ParkingLot("E", "Lot E - Faculty/Staff Lot", 39.033813, -84.465048));
-			lotList.add(new ParkingLot("F", "Lot F - Student Lot", 39.034353, -84.464137));
-			lotList.add(new ParkingLot("G", "Lot G - Open Lot", 39.029586, -84.469147));
-			lotList.add(new ParkingLot("I", "Lot I - Student Lot", 39.033275, -84.463403));
-			lotList.add(new ParkingLot("J", "Lot J - Faculty/Staff Lot", 39.030242, -84.461554));
-			lotList.add(new ParkingLot("K", "Lot K - Open Lot", 39.031553, -84.468237));
-			lotList.add(new ParkingLot("L", "Lot L - Open Lot", 39.032869, -84.468344));
-			lotList.add(new ParkingLot("M", "Lot M - Student Lot", 39.033643, -84.466995));
-			lotList.add(new ParkingLot("N", "Lot N - Reserved Lot", 39.02963, -84.462902));
-			lotList.add(new ParkingLot("O", "Lot O - Open/VIP Lot", 39.031161, -84.45933));
-			lotList.add(new ParkingLot("P", "Lot P - Student Lot", 39.034545, -84.467398));
-			lotList.add(new ParkingLot("Q", "Lot Q - Student Lot", 39.036795, -84.46669));
-			lotList.add(new ParkingLot("R", "Lot R - Student Lot (Ceramics Permit)", 39.036931, -84.465037));
-			lotList.add(new ParkingLot("S", "Lot S - Open Lot", 39.028469, -84.466405));
-			lotList.add(new ParkingLot("T", "Lot T - Open Lot", 39.028633, -84.462243));
-			lotList.add(new ParkingLot("U", "Lot U - Student Lot", 39.036169, -84.465173));
-			lotList.add(new ParkingLot("V", "Lot V - Faculty/Staff Lot", 39.028757, -84.4638));
-			lotList.add(new ParkingLot("W", "Lot W - Student Lot", 39.032522, -84.463036));
-			lotList.add(new ParkingLot("X", "Lot X - Open Lot", 39.027865, -84.462392));
-			lotList.add(new ParkingLot("Y", "Lot Y - Student Lot", 39.033911, -84.468868));
-			lotList.add(new ParkingLot("Welcome Center Garage", "", 39.032303, -84.460835));
-			lotList.add(new ParkingLot("University Drive Garage", "", 39.03018, -84.461148));
-			lotList.add(new ParkingLot("Kenton Drive Garage", "", 39.030286, -84.467913));
+			//ParkingLot Constructor: ParkingLot(name, description, latitude, longitude, number of spaces)
+			lotList.add(new ParkingLot("A", "Lot A - Open Lot", 39.030569, -84.468997, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("C", "Lot C - Faculty/Staff Lot", 39.031650, -84.466539, 0, ParkingLot.FACULTY_STAFF_LOT));
+			lotList.add(new ParkingLot("D", "Lot D - Faculty/Staff Lot", 39.032240, -84.461732, 0, ParkingLot.FACULTY_STAFF_LOT));
+			lotList.add(new ParkingLot("E", "Lot E - Faculty/Staff Lot", 39.033813, -84.465048, 0, ParkingLot.FACULTY_STAFF_LOT));
+			lotList.add(new ParkingLot("F", "Lot F - Student Lot", 39.034353, -84.464137, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("G", "Lot G - Open Lot", 39.029586, -84.469147, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("I", "Lot I - Student Lot", 39.033275, -84.463403, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("J", "Lot J - Faculty/Staff Lot", 39.030242, -84.461554, 0, ParkingLot.FACULTY_STAFF_LOT));
+			lotList.add(new ParkingLot("K", "Lot K - Open Lot", 39.031553, -84.468237, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("L", "Lot L - Open Lot", 39.032869, -84.468344, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("M", "Lot M - Student Lot", 39.033643, -84.466995, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("N", "Lot N - Reserved Lot", 39.02963, -84.462902, 0, ParkingLot.CLOSED_PARKING));
+			lotList.add(new ParkingLot("O", "Lot O - Open/VIP Lot", 39.031161, -84.45933, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("P", "Lot P - Student Lot", 39.034545, -84.467398, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("Q", "Lot Q - Student Lot", 39.036795, -84.46669, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("R", "Lot R - Student Lot (Ceramics Permit)", 39.036931, -84.465037, 0, ParkingLot.CLOSED_PARKING));
+			lotList.add(new ParkingLot("S", "Lot S - Open Lot", 39.028469, -84.466405, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("T", "Lot T - Open Lot", 39.028633, -84.462243, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("U", "Lot U - Student Lot", 39.036169, -84.465173, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("V", "Lot V - Faculty/Staff Lot", 39.028757, -84.4638, 0, ParkingLot.FACULTY_STAFF_LOT));
+			lotList.add(new ParkingLot("W", "Lot W - Student Lot", 39.032522, -84.463036, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("X", "Lot X - Open Lot", 39.027865, -84.462392, 0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("Y", "Lot Y - Student Lot", 39.033911, -84.468868, 0, ParkingLot.STUDENT_LOT));
+			lotList.add(new ParkingLot("Welcome Center Garage", "", 39.032303, -84.460835,0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("University Drive Garage", "", 39.03018, -84.461148,0, ParkingLot.OPEN_PARKING));
+			lotList.add(new ParkingLot("Kenton Drive Garage", "", 39.030286, -84.467913,0, ParkingLot.OPEN_PARKING));
 			return lotList;
 		}
 		

@@ -37,7 +37,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 	private EditText userText, passText, retypePassText;
 	private Spinner spinner;
 	//Determines if the user is student or faculty/staff.
-	boolean isStudent, isFacultyStaff, agreementChecked;
+	boolean isStudent, isFacultyStaff, isVisitor, agreementChecked;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -71,14 +71,6 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Build up the error so the user gets all of the errors that happened
 		StringBuffer error = new StringBuffer();
 		
-//		//Check for first name.
-//		if(firstText.getText().toString().equals(""))
-//			error.append("Please enter your first name\n");
-//		
-//		//Check for last name.
-//		if(lastText.getText().toString().equals(""))
-//			error.append("Please enter your last name\n");
-		
 		//Check for username.
 		if(userText.getText().toString().equals(""))
 			error.append("Please enter a username\n");
@@ -87,10 +79,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		if(passText.getText().toString().equals(""))
 			error.append("Please enter a password\n");
 		
-		//If both of these are false, then the user chose the "-----" option, which is invalid.
-		if(!isStudent && !isFacultyStaff)
-			error.append("Please make sure you have set your classification\n");
-		
+		//Check to make sure that the agreement checkbox is checked.
 		if(!agreementChecked)
 			error.append("Please make sure you have agreed to the agreement\n");
 		
@@ -164,17 +153,20 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Determines which option for the dropdown list has been clicked on.
 		switch(pos)
 		{
-			case 0: //The '-------' option.
+			case 0: //The 'Visitor' option.
 				isStudent = false;
 				isFacultyStaff = false;
+				isVisitor = true;
 				break;
 			case 1: //The 'Student' option.
 				isStudent = true;
 				isFacultyStaff = false;
+				isVisitor = false;
 				break;
 			case 2: //The 'Faculty/Staff' option.
 				isFacultyStaff = true;
 				isStudent = false;
+				isVisitor = false;
 				break;
 		}
 	}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="class_array">
-        <item>-------</item>
+        <item>Visitor</item>
         <item>Student</item>
         <item>Faculty/Staff</item>
     </string-array>
