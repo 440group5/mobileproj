@@ -31,6 +31,17 @@ public class RequestManager
 		return manager;
 	}
 	
+	/*
+	 * To correctly use the login function of API:
+	 * 
+	 * 1) request a shared instance of this class via the getSharedInstance() method
+	 * 2) call that instance name with the isCorrectLogin(username, password) method below
+	 *    ex) req.isCorrectLogin("test", "test2");
+	 * 3) the above should be called in an async task to make sure that you don't block the UI thread
+	 * 3a) if done on the UI thread it will throw a network exception
+	 * 4) the response from the isCorrectLogin() method is a boolean that is either true or false
+	 * 	  true means that the username & password are correct and false means they are incorrect
+	 */
 	interface Login 
 	{
 		//Hook for the login checking.
