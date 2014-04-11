@@ -11,6 +11,9 @@
 package com.csc440.group5.nkuparking;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,6 +28,7 @@ import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnTouchListener 
 {
@@ -41,31 +45,40 @@ public class MainActivity extends Activity implements OnTouchListener
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
         
-		/* ----------------------------------------------------- */
-		//TODO: Remove when connected to server, this is for development purposes only.
-        String hashedLogin;
-		try {
-        byte[] bytes = "fakefake".getBytes("UTF8");
-        digester = MessageDigest.getInstance("SHA256");
-		digester.update(bytes, 0, bytes.length);
-		hashedLogin = new String(digester.digest()); }
-		catch(Exception e) {
-			Log.v(null, e.getMessage());
-			return; }
-		/* ----------------------------------------------------- */
-        
         SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         String userPassHash = settings.getString("UserPass", null);
+        String username = settings.getString("Username", null);
+        String password = settings.getString("Password", null);
         boolean shouldAutoLogin = settings.getBoolean("AutoLogin", false);
-        if(userPassHash != null && shouldAutoLogin)
+        if(shouldAutoLogin)
         {
-        	//TODO: send info to server to make sure it's a valid user
-        	if(userPassHash.equals(hashedLogin))
+        	//TODO: update to use hashed user & pass not plain pass
+        	if(username != null && password != null)
         	{
-        		//Successfully logged in, load the map page
-        		Log.v(null, "Successfully logged the user in.....");
-        		Intent intent = new Intent(this, MapPage.class);
-        		startActivity(intent);
+                LoginAsync asyncLogin = new LoginAsync();
+                asyncLogin.execute(username, password);
+                boolean correctLogin;
+                try 
+                {
+                	correctLogin = asyncLogin.get().booleanValue();
+                }
+                catch (Exception e)
+                {
+            		new AlertDialog.Builder(this)
+        			.setTitle("Error")
+        			.setMessage("There was an error contacting the server for login.")
+        			.setPositiveButton(android.R.string.yes, null)
+        			.show();
+                	return;
+                }	
+                
+                if(correctLogin)
+                {
+            		//Successfully logged in, load the map page
+            		Log.v(null, "Successfully logged the user in.....");
+            		Intent intent = new Intent(this, MapPage.class);
+            		startActivity(intent);
+                }
         	}
         }
         
@@ -74,6 +87,17 @@ public class MainActivity extends Activity implements OnTouchListener
         ScrollView layout = (ScrollView)findViewById(R.id.mainView);
         layout.setOnTouchListener(this);
     }
+    
+    private class LoginAsync extends AsyncTask<String, Void, Boolean>
+	{
+    	//Asynchronously goes and sees if the login information is correct
+		@Override
+		protected Boolean doInBackground(String... params)
+		{
+			RequestManager request = RequestManager.getSharedInstance();
+			return request.isCorrectLogin(params[0], params[1]);
+		}
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,23 +136,36 @@ public class MainActivity extends Activity implements OnTouchListener
     		digester.update(bytes, 0, bytes.length);
     		String hashedUserPass = new String(digester.digest());
     		
-    		/* ----------------------------------------------------- */
-    		//TODO: Remove when connected to server, this is for development purposes only.
-    		bytes = "fakefake".getBytes("UTF8");
-    		digester.update(bytes, 0, bytes.length);
-    		String hashedLogin = new String(digester.digest());
-    		/* ----------------------------------------------------- */
+    		//Send the information to the server to see if it's correct
+            LoginAsync asyncLogin = new LoginAsync();
+            asyncLogin.execute(username, password);
+            boolean correctLogin;
+            try 
+            {
+            	correctLogin = asyncLogin.get().booleanValue();
+            }
+            catch (Exception e)
+            {
+        		new AlertDialog.Builder(this)
+    			.setTitle("Error")
+    			.setMessage("There was an error contacting the server for login.")
+    			.setPositiveButton(android.R.string.yes, null)
+    			.show();
+            	return;
+            }
     		
-        	if(hashedUserPass.equals(hashedLogin))
+        	if(correctLogin)
         	{
         		//load the map view because the user is a valid user
-        		//TODO: connect to server instead of mock data
+        		//TODO: remove writing the password when hook works correctly
         		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         		boolean autoLogin = settings.getBoolean("AutoLogin", false);
         		if(autoLogin)
         		{
         			//write user & pass hash to shared prefs
         			SharedPreferences.Editor editor = settings.edit();
+        			editor.putString("Username", username);
+        			editor.putString("Password", password);
         			editor.putString("UserPass", hashedUserPass);
         			editor.commit();
         		}
