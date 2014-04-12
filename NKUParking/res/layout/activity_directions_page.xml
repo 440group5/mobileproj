@@ -9,9 +9,11 @@
     android:background="@color/nkugold"
     tools:context=".DirectionsPage" >
 
-    <TextView
+    <EditText
+        android:id="@+id/testText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/directions_page" />
+        android:text="@string/directions_page"
+        android:inputType="none" />
 
 </RelativeLayout>

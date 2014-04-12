@@ -15,6 +15,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import retrofit.http.*;
 import retrofit.mime.TypedInput;
+import java.util.*;
 
 public class RequestManager 
 {
@@ -78,5 +79,61 @@ public class RequestManager
 			return true;
 		else
 			return false;
+	}
+	
+	/*
+	 * registration stuff
+	 */
+	
+	interface Register
+	{
+		//Hook for registration of users
+//		@GET("/hooks/hooks.php?id=register")
+//		Response
+	}
+	
+	/*
+	 * lot stuff
+	 */
+	
+	interface Lot
+	{
+		//Hook for grabbing the lot data from the server
+		@GET("/hooks/hooks.php?id=lots")
+		ArrayList<String> getLots();
+	}
+	
+	public ArrayList<ParkingLot> getLotInformation()
+	{
+		//This method contacts the server and sees if the login information is correct.
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		Lot lotService = adapter.create(Lot.class);
+		ArrayList<String> list = lotService.getLots();
+		ArrayList<ParkingLot> lotInfo = new ArrayList<ParkingLot>();
+		
+		for(int i = 0; i < list.size() - 1; i+=5)
+		{
+			int k = i;
+			char name = ((String)list.get(k)).charAt(0);
+			String desc = (String)list.get(k);
+			double longitude = Double.valueOf((String)list.get(k+1));
+			double latitude = Double.valueOf((String)list.get(k+2));
+			String status = (String)list.get(k+3);
+			int max = Integer.valueOf((String)list.get(k+4));
+			lotInfo.add(new ParkingLot(name, desc, longitude, latitude, max, status));
+		}
+		
+		return lotInfo;
+	}
+	
+	/*
+	 * spots stuff
+	 */
+	
+	interface Spots
+	{
+		
 	}
 }
