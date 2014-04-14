@@ -34,7 +34,7 @@ import android.widget.Spinner;
 
 public class RegistrationActivity extends Activity implements OnItemSelectedListener, OnTouchListener 
 {
-	private EditText userText, passText, retypePassText;
+	private EditText userText, passText, retypePassText, emailText;
 	private Spinner spinner;
 	//Determines if the user is student or faculty/staff.
 	boolean isStudent, isFacultyStaff, isVisitor, agreementChecked;
@@ -50,6 +50,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		userText = (EditText)findViewById(R.id.reguserfield);
 		passText = (EditText)findViewById(R.id.regpassfield);
 		retypePassText = (EditText)findViewById(R.id.retypepassfield);
+		emailText = (EditText)findViewById(R.id.emailField);
 //		firstText = (EditText)findViewById(R.id.firstnamefield);
 //		lastText = (EditText)findViewById(R.id.lastnamefield);
 		
@@ -82,6 +83,9 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Check to make sure that the agreement checkbox is checked.
 		if(!agreementChecked)
 			error.append("Please make sure you have agreed to the agreement\n");
+		
+		if(!emailText.equals(""))
+			error.append("Please make sure your email is properly filled out");
 		
 		//Check to make sure the retype password field has text
 		if(retypePassText.getText().toString().equals(""))

@@ -227,12 +227,12 @@ containing a value of this type.
         public static final int nkulogo=0x7f02001d;
     }
     public static final class id {
-        public static final int action_directions=0x7f050053;
-        public static final int action_map=0x7f050052;
-        public static final int action_settings=0x7f050055;
-        public static final int action_status=0x7f050054;
-        public static final int agreelayout=0x7f05004d;
-        public static final int agreementbox=0x7f05004e;
+        public static final int action_directions=0x7f050055;
+        public static final int action_map=0x7f050054;
+        public static final int action_settings=0x7f050057;
+        public static final int action_status=0x7f050056;
+        public static final int agreelayout=0x7f05004f;
+        public static final int agreementbox=0x7f050050;
         public static final int autoLoginBox=0x7f050010;
         public static final int bottomlayout=0x7f05000d;
         public static final int button1=0x7f05000f;
@@ -250,9 +250,11 @@ containing a value of this type.
         public static final int button7=0x7f050027;
         public static final int button8=0x7f05002a;
         public static final int button9=0x7f05002d;
-        public static final int class_spinner=0x7f05004c;
-        public static final int disclaimerLab=0x7f050051;
-        public static final int disclaimerLayout=0x7f050050;
+        public static final int class_spinner=0x7f05004e;
+        public static final int disclaimerLab=0x7f050053;
+        public static final int disclaimerLayout=0x7f050052;
+        public static final int emailField=0x7f05004b;
+        public static final int emailLab=0x7f05004a;
         public static final int hybrid=0x7f050004;
         public static final int mainView=0x7f050006;
         public static final int map=0x7f050040;
@@ -261,7 +263,7 @@ containing a value of this type.
         public static final int passField=0x7f05000c;
         public static final int passLab=0x7f05000a;
         public static final int regbutton=0x7f05000e;
-        public static final int registerbutton=0x7f05004f;
+        public static final int registerbutton=0x7f050051;
         public static final int registerlab=0x7f050042;
         public static final int registrationLayout=0x7f050041;
         public static final int regpassfield=0x7f050047;
@@ -271,8 +273,8 @@ containing a value of this type.
         public static final int retypepassfield=0x7f050049;
         public static final int retypepasslab=0x7f050048;
         public static final int satellite=0x7f050002;
-        public static final int spinnerlab=0x7f05004b;
-        public static final int spinnerlayout=0x7f05004a;
+        public static final int spinnerlab=0x7f05004d;
+        public static final int spinnerlayout=0x7f05004c;
         public static final int statusLayout=0x7f050011;
         public static final int tableRow0=0x7f050012;
         public static final int tableRow1=0x7f050014;
@@ -333,7 +335,7 @@ containing a value of this type.
         public static final int action_map=0x7f06001b;
         public static final int action_settings=0x7f06001e;
         public static final int action_status=0x7f06001d;
-        public static final int agreementText=0x7f060037;
+        public static final int agreementText=0x7f060039;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -358,7 +360,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
-        public static final int autoLoginText=0x7f060038;
+        public static final int autoLoginText=0x7f06003a;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -430,15 +432,17 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int directions_page=0x7f060032;
-        public static final int disclaimer=0x7f060039;
+        public static final int directions_page=0x7f060034;
+        public static final int disclaimer=0x7f06003b;
+        public static final int emailField=0x7f060032;
+        public static final int emailLab=0x7f060031;
         public static final int firstname=0x7f060028;
         public static final int fnamehint=0x7f06002a;
         public static final int hello_world=0x7f06001f;
         public static final int lastname=0x7f060029;
         public static final int lnamehint=0x7f06002b;
         public static final int loginbutton=0x7f060024;
-        public static final int lot_status_page=0x7f060034;
+        public static final int lot_status_page=0x7f060036;
         public static final int passhint=0x7f060023;
         public static final int passlab=0x7f060021;
         public static final int regbutton=0x7f060025;
@@ -448,12 +452,12 @@ containing a value of this type.
         public static final int reguserlab=0x7f06002c;
         public static final int retypepass=0x7f06002e;
         public static final int retypepasslab=0x7f06002f;
-        public static final int settings_page=0x7f060036;
-        public static final int space_status_page=0x7f060035;
-        public static final int spinnertext=0x7f060031;
-        public static final int statphb=0x7f06003b;
-        public static final int statphl=0x7f06003a;
-        public static final int status_page=0x7f060033;
+        public static final int settings_page=0x7f060038;
+        public static final int space_status_page=0x7f060037;
+        public static final int spinnertext=0x7f060033;
+        public static final int statphb=0x7f06003d;
+        public static final int statphl=0x7f06003c;
+        public static final int status_page=0x7f060035;
         public static final int userhint=0x7f060022;
         public static final int userlab=0x7f060020;
         public static final int welcomelab=0x7f060026;

@@ -24,6 +24,8 @@
     <string name="retypepass">Re-type Password</string>
     <string name="retypepasslab">Password:</string>
     <string name="reguserbutton">Register and Login</string>
+    <string name="emailLab">Email:</string>
+    <string name="emailField">Your Email</string>
     <string name="spinnertext">Classification:</string>
     <string name="directions_page">Directions Page</string>
     <string name="status_page">Status Page</string>

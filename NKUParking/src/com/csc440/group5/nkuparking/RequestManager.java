@@ -19,17 +19,14 @@ import java.util.*;
 
 public class RequestManager 
 {
+	private final static RequestManager INSTANCE = new RequestManager();
 	private final static String URL = "http://107.170.2.129/";
-	private static RequestManager manager = null;
 	private RequestManager() { }
 	
 	public static RequestManager getSharedInstance()
 	{
 		//Returns a shared instance of this controller to try and prevent race conditions
-		if(manager == null)
-			manager = new RequestManager();
-		
-		return manager;
+		return INSTANCE;
 	}
 	
 	/*
@@ -42,7 +39,15 @@ public class RequestManager
 	 * 3a) if done on the UI thread it will throw a network exception
 	 * 4) the response from the isCorrectLogin() method is a boolean that is either true or false
 	 * 	  true means that the username & password are correct and false means they are incorrect
+	 * 
+	 * Example:
+	 * 	  boolean correctLogin = request.isCorrectLogin("test", "test2");
+	 *    if(correctLogin)
+	 *    	successful login && username/pass are correct
+	 *    else
+	 *    	not successful, one or both of the username and pass are incorrect
 	 */
+	
 	interface Login 
 	{
 		//Hook for the login checking.
@@ -70,7 +75,7 @@ public class RequestManager
 		} 
 		catch (Exception e) 
 		{
-			throw new RuntimeException("error parsing the login from server");
+			throw new RuntimeException("Error parsing the login from server");
 		}
 		
 		//If there is a "1" in the output then it was successful, if not it is not a valid login.
@@ -82,14 +87,65 @@ public class RequestManager
 	}
 	
 	/*
-	 * registration stuff
+	 * To correctly use the registration function of API:
+	 * 
+	 * 1) request a shared instance of this class via the getSharedInstance() method
+	 * 2) use the method register(username, password, email) to send a registration request
+	 * 3) if the string returned is null, then it correctly registered the user
+	 * 	  but if it returns any information, it is the error(s) that the server
+	 *    encountered while trying to register the user.
+	 *    
+	 * Example call: 
+	 *    String temp = request.regsiter("test", "test2", "test@test.com");
+	 *    if(temp != null)
+	 *    	print temp;
+	 *    else
+	 *    	successful;
 	 */
 	
 	interface Register
 	{
 		//Hook for registration of users
-//		@GET("/hooks/hooks.php?id=register")
-//		Response
+		@GET("/hooks/hooks.php?id=register")
+		Response registerUser(@Query("username") String user, @Query("password") String pass, @Query("email") String email);
+	}
+	
+	public String register(String user, String pass, String email)
+	{
+		//Method to register a user for the NKUParking app.
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		Register regService = adapter.create(Register.class);
+		
+		//Send the request to register a person and grab the HTML
+		Response res = regService.registerUser(user, pass, email);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[1024];
+		
+		//Read the HTML
+		try
+		{
+			inp.in().read(bytes);
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException("Error parsing server information");
+		}
+		
+		String val = new String(bytes);
+		
+		//If the HTML contains a "0", then it was not successful and has some error statements
+		//print out those error statements (parsing the html tags).
+		//Otherwise, return null for successful registration.
+		if(val.contains("0"))
+		{
+			val.replaceAll("<.*?>", "");
+			return val;
+		}
+		else
+			return null;
 	}
 	
 	/*
