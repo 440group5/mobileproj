@@ -151,6 +151,35 @@ public class RequestManager
 	}
 	
 	/*
+	 * reserve spot stuff
+	 */
+	
+	interface Reservation
+	{
+		//Hook for reserving a spot
+		@GET("/hooks/hooks.php?id=space_reserve")
+		ArrayList<String> reserveLot(@Query("space_id") int id);
+	}
+	
+	public boolean reserveLot(int spaceId, int userId)
+	{
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		Reservation resService = adapter.create(Reservation.class);
+		ArrayList<String> list = resService.reserveLot(spaceId);
+		
+		if(!list.get(0).contains("-1"))
+		{
+			//successfully reserved said spot
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/*
 	 * lot stuff
 	 */
 	
@@ -158,7 +187,7 @@ public class RequestManager
 	{
 		//Hook for grabbing the lot data from the server
 		@GET("/hooks/hooks.php?id=lots")
-		ArrayList<String> getLots();
+		ArrayList<ArrayList<String>> getLots();
 	}
 	
 	public ArrayList<ParkingLot> getLotInformation()
@@ -168,23 +197,23 @@ public class RequestManager
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
-		ArrayList<String> list = lotService.getLots();
+		ArrayList<ArrayList<String>> list = lotService.getLots();
 		
-		if(lotInfo != null)
-			lotInfo = null;
-		
-		lotInfo = new ArrayList<ParkingLot>();
+		//Refresh the list by clearing it and then assigning it to a new instance
+		if(lotInfo == null)
+			lotInfo = new ArrayList<ParkingLot>();
+		else
+			lotInfo.clear();
 		
 		//Create ParkingLot objects from the provided JSON data.
-		for(int i = 0; i < list.size() - 1; i+=5)
+		for(int i = 0; i < list.size(); i++)
 		{
-			int k = i;
-			String name = (String)list.get(k);
-			String desc = (String)list.get(k);
-			double longitude = Double.valueOf((String)list.get(k+1));
-			double latitude = Double.valueOf((String)list.get(k+2));
-			String status = (String)list.get(k+3);
-			int max = Integer.valueOf((String)list.get(k+4));
+			String name = (String)list.get(i).get(0);
+			String desc = (String)list.get(i).get(0);
+			double longitude = Double.valueOf((String)list.get(i).get(1));
+			double latitude = Double.valueOf((String)list.get(i).get(2));
+			String status = (String)list.get(i).get(3);
+			int max = Integer.valueOf((String)list.get(i).get(4));
 			lotInfo.add(new ParkingLot(name, desc, longitude, latitude, max, status));
 		}
 		
@@ -211,9 +240,11 @@ public class RequestManager
 		Spots spotService = adapter.create(Spots.class);
 		ArrayList<ArrayList<ArrayList<String>>> list = spotService.pullParkingLotInfo();
 		
-		//Create a new list of lots for this controller if one isn't already in existance
+		//Clear or create a new instance of the array
 		if(lotInfo == null)
 			lotInfo = new ArrayList<ParkingLot>();
+		else
+			lotInfo.clear();
 		
 		//Generate a lot object & subsequent space array for each lot object
 		for(int i = 0; i < list.size(); i++)
