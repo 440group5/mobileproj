@@ -12,13 +12,14 @@
 package com.csc440.group5.nkuparking;
 
 import com.google.android.gms.maps.model.LatLng;
+import java.util.*;
 
 public class ParkingLot 
 {
 	private double latitude, longitude;
 	private String description;
 	private char name;
-	private ParkingSpace[] spaces;
+	private ArrayList<ParkingSpace> spaces;
 	private int status;
 	public final static int STUDENT_LOT = 0, FACULTY_STAFF_LOT = 1, VISITOR_LOT = 2, OPEN_PARKING = 3, CLOSED_PARKING = 4;
 	private double percentFilled = 0.0;
@@ -31,19 +32,19 @@ public class ParkingLot
 		this.longitude = longitude;
 		this.name = name.charAt(0);
 		this.description = desc;
-		spaces = new ParkingSpace[numSpaces];
+		spaces = new ArrayList<ParkingSpace>(numSpaces);
 		this.status = status;
 	}
 	
-	public ParkingLot(char name, String desc, double latitude, double longitude, int numSpaces, String status)
+	public ParkingLot(String name, String desc, double latitude, double longitude, int numSpaces, String status)
 	{
 		//This constructor performs the same as the previous except it takes in a string status
 		//from the server and symbolicates it to the proper integer value.
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.name = name;
+		this.name = name.charAt(0);
 		this.description = desc;
-		spaces = new ParkingSpace[numSpaces];
+		spaces = new ArrayList<ParkingSpace>(numSpaces);
 		
 		if(status.equals("Open"))
 			this.status = OPEN_PARKING;
@@ -57,7 +58,7 @@ public class ParkingLot
 			this.status = CLOSED_PARKING;
 	}
 	
-	public ParkingSpace[] getSpaces()
+	public ArrayList<ParkingSpace> getSpaces()
 	{
 		//Returns the list of spaces in this parking lot.
 		return spaces;
@@ -81,6 +82,12 @@ public class ParkingLot
 			default:
 				return null;
 		}
+	}
+	
+	public void setSpaces(ArrayList<ParkingSpace> spaces)
+	{
+		this.spaces.clear();
+		this.spaces.addAll(spaces);
 	}
 	
 	public double getPercentFilled()

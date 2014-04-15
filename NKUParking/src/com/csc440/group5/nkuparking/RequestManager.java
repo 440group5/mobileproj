@@ -22,6 +22,7 @@ public class RequestManager
 	private final static RequestManager INSTANCE = new RequestManager();
 	private final static String URL = "http://107.170.2.129/";
 	private RequestManager() { }
+	private ArrayList<ParkingLot> lotInfo;
 	
 	public static RequestManager getSharedInstance()
 	{
@@ -137,12 +138,13 @@ public class RequestManager
 		String val = new String(bytes);
 		
 		//If the HTML contains a "0", then it was not successful and has some error statements
-		//print out those error statements (parsing the html tags).
+		//print out those error statements.
 		//Otherwise, return null for successful registration.
 		if(val.contains("0"))
 		{
-			val.replaceAll("<.*?>", "");
-			return val;
+			//Just print out what is in the <body> tags
+			String[] contents = val.split("(?=<body>)</body>");
+			return contents[1];
 		}
 		else
 			return null;
@@ -161,18 +163,22 @@ public class RequestManager
 	
 	public ArrayList<ParkingLot> getLotInformation()
 	{
-		//This method contacts the server and sees if the login information is correct.
+		//This method contacts the server and grabs all of the Lot information.
 		RestAdapter adapter = new RestAdapter.Builder()
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
 		ArrayList<String> list = lotService.getLots();
-		ArrayList<ParkingLot> lotInfo = new ArrayList<ParkingLot>();
+		
+		if(lotInfo != null)
+			lotInfo = null;
+		
+		lotInfo = new ArrayList<ParkingLot>();
 		
 		for(int i = 0; i < list.size() - 1; i+=5)
 		{
 			int k = i;
-			char name = ((String)list.get(k)).charAt(0);
+			String name = (String)list.get(k);
 			String desc = (String)list.get(k);
 			double longitude = Double.valueOf((String)list.get(k+1));
 			double latitude = Double.valueOf((String)list.get(k+2));
@@ -190,6 +196,46 @@ public class RequestManager
 	
 	interface Spots
 	{
+		@GET("/hooks/hooks.php?id=spots")
+		ArrayList<ArrayList<ArrayList<String>>> getParkingLotInformation();
+	}
+	
+	public ArrayList<ParkingLot> getParkingLotInformation()
+	{
+		//This method contacts the server and grabs all of the space information.
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
 		
+		Spots spotService = adapter.create(Spots.class);
+		ArrayList<ArrayList<ArrayList<String>>> list = spotService.getParkingLotInformation();
+		
+		if(lotInfo == null)
+			lotInfo = new ArrayList<ParkingLot>();
+		
+		for(int i = 0; i < list.size(); i++)
+		{
+			ArrayList<ParkingSpace> spaces = new ArrayList<ParkingSpace>();
+			
+			String name = ((list.get(i)).get(0)).get(0);
+			String lat = ((list.get(i)).get(0)).get(1);
+			String longitude = ((list.get(i)).get(0)).get(2);
+			String desc = ((list.get(i)).get(0)).get(3);
+			String status = ((list.get(i)).get(0)).get(4);
+			String max = ((list.get(i)).get(0)).get(5);
+			ParkingLot lotObj = new ParkingLot(name, desc, Double.parseDouble(lat), Double.parseDouble(longitude), Integer.parseInt(max), status);
+			
+			for(int k = 1; k < list.get(i).get(k).size(); k++)
+			{
+				String id = ((list.get(i)).get(k)).get(0);
+				//TODO: Update these values with the correct values from JSON
+				spaces.add(new ParkingSpace(false, false, 0));
+			}
+			
+			lotObj.setSpaces(spaces);
+			lotInfo.add(lotObj);
+		}
+		
+		return lotInfo;
 	}
 }
