@@ -4064,3 +4064,23 @@
 [08-Apr-2014 15:09:07] PHP Stack trace:
 [08-Apr-2014 15:09:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:0
 [08-Apr-2014 15:09:07] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:3
+[10-Apr-2014 13:05:07] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[10-Apr-2014 13:05:07] PHP Stack trace:
+[10-Apr-2014 13:05:07] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:0
+[10-Apr-2014 13:05:07] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:3
+[10-Apr-2014 13:05:16] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[10-Apr-2014 13:05:16] PHP Stack trace:
+[10-Apr-2014 13:05:16] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:0
+[10-Apr-2014 13:05:16] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:3
+[10-Apr-2014 13:43:30] PHP Notice:  Undefined index: id in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php on line 76
+[10-Apr-2014 13:43:30] PHP Stack trace:
+[10-Apr-2014 13:43:30] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:0
+[10-Apr-2014 14:07:47] PHP Parse error:  syntax error, unexpected T_ELSE in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php on line 90
+[10-Apr-2014 14:07:53] PHP Parse error:  syntax error, unexpected T_ELSE in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php on line 90
+[10-Apr-2014 14:16:44] PHP Notice:  Undefined index: id in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php on line 93
+[10-Apr-2014 14:16:44] PHP Stack trace:
+[10-Apr-2014 14:16:44] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/edituser.php:0
+[10-Apr-2014 18:33:49] PHP Notice:  Undefined index: type in /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/session.php on line 2
+[10-Apr-2014 18:33:49] PHP Stack trace:
+[10-Apr-2014 18:33:49] PHP   1. {main}() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/adduser.php:0
+[10-Apr-2014 18:33:49] PHP   2. require() /var/lib/stickshift/52e1a31950044648fc00006e/app-root/data/750094/admin/adduser.php:3

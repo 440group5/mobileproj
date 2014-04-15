@@ -66,7 +66,7 @@
         echo "User: <input type='text' name='user' value='".$spot['username']."'><br><br>";
         echo "Reserved: <input type='text' name='reserved' value='".$spot['reserve']."'><br><br>";
         echo "Expires: <input type='text' name='expires' value='".$spot['expire']."'><br><br>";
-        echo "<input type='submit' value='Submit'>";
+        echo "<input type='submit' name='submit' value='Submit'>";
         echo "</form>";
         echo "</html>";
     }

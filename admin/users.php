@@ -15,7 +15,7 @@
     
     echo "<html>";
     echo "<h1>Users</h1>";
-    echo "<a href='../users.php'>Back</a><br/><br/>";
+    echo "<a href='/admin'>Back</a><br/><br/>";
     echo "<a href='adduser.php'>Add user</a>";
     echo"<table cellpadding='10'>";
     echo"<tr><th>ID</th><th>Type</th><th>Username</th><th>Email</th><th>Spot</th><th>Edit</th></tr>";

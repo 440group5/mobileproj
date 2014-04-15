@@ -5,6 +5,7 @@
     require("../secure.php");
     
     $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+    
     if($db->connect_errno > 0) {
         die("Could not connect to database");
     }
@@ -12,66 +13,82 @@
     if (!empty($_POST)) {  // if post is not empty then form was submited so update the database
         
         $id = secure($_POST['id']);
-        $username = secure($_POST['username']);
-        $pass = secure($_POST['password']);
-        $email = secure($_POST['email']);
-        $spot = secure($_POST['spot']);
-        $type = secure($_POST['type']);
         
-        // check if the new username is already in use
-        $query = "select * from users where username='$username';";
-        $user = $db->query($query);
-        $user = $user->fetch_array(MYSQLI_ASSOC);
-        //var_dump($user['id']);
-        if($user['id'] != null && $id != $user['id']) {
-            echo "<a href='../users.php'>Back</a><br/>";
-            die("Username already in use");
-        }
-        
-        // check if the new email is already in use
-        $query = "select * from users where email='$email';";
-        $user = $db->query($query);
-        $user = $user->fetch_array(MYSQLI_ASSOC);
-        if($user['email'] != null && $id != $user['id']){
-            echo "<a href='../users.php'>Back</a><br/>";
-            die("Email already in use");
-        }
-        
-        
-        if($pass != '') {
-            if(strlen($pass) < 5 )
-                die("Password must be atleast 5 characters long");
-            $salt = generateSalt();
-            $hashPass = hash('sha256', $salt.$pass);
-            $query = "update users set username='$username', password='$hashPass', salt='$salt', email='$email', spot='$spot', type='$type' where id='$id';";
+        if($_POST['delete'] == "Delete") {     // If delete button was pressed delete the user
+            $query = "delete from users where id='$id';";
             $db->query($query);
             if($db->errno == 0) {
-                echo "<h1>Succesfully Udated</h1>";
+                echo "<h1>Succesfully Delete</h1>";
                 echo "<a href='../users.php'>Back</a><br/>";
             }
             else {
-                echo "<h1>An error occured while updating</h1>";
+                echo "<h1>An error occured while deleting</h1>";
                 echo $db->error;
                 echo "<a href='../users.php'>Back</a><br/>";
             }
         }
-        else {
-        
-            $query = "update users set username='$username', email='$email', spot='$spot', type='$type' where id='$id';";
-            $db->query($query);
-            if($db->errno == 0) {
-                echo "<h1>Succesfully Udated</h1>";
+        else {   // proceede to edit the user
+            $username = secure($_POST['username']);
+            $pass = secure($_POST['password']);
+            $email = secure($_POST['email']);
+            $spot = secure($_POST['spot']);
+            $type = secure($_POST['type']);
+            
+            // check if the new username is already in use
+            $query = "select * from users where username='$username';";
+            $user = $db->query($query);
+            $user = $user->fetch_array(MYSQLI_ASSOC);
+            //var_dump($user['id']);
+            if($user['id'] != null && $id != $user['id']) {
                 echo "<a href='../users.php'>Back</a><br/>";
+                die("Username already in use");
             }
-            else {
-                echo "<h1>An error occured while updating</h1>";
-                echo $db->error;
+            
+            // check if the new email is already in use
+            $query = "select * from users where email='$email';";
+            $user = $db->query($query);
+            $user = $user->fetch_array(MYSQLI_ASSOC);
+            if($user['email'] != null && $id != $user['id']){
                 echo "<a href='../users.php'>Back</a><br/>";
+                die("Email already in use");
+            }
+            
+            
+            if($pass != '') {  // If password is not blank then user wants to change it
+                if(strlen($pass) < 5 )
+                    die("Password must be atleast 5 characters long");
+                $salt = generateSalt();
+                $hashPass = hash('sha256', $salt.$pass);
+                $query = "update users set username='$username', password='$hashPass', salt='$salt', email='$email', spot='$spot', type='$type' where id='$id';";
+                $db->query($query);
+                if($db->errno == 0) {
+                    echo "<h1>Succesfully Udated</h1>";
+                    echo "<a href='../users.php'>Back</a><br/>";
+                }
+                else {
+                    echo "<h1>An error occured while updating</h1>";
+                    echo $db->error;
+                    echo "<a href='../users.php'>Back</a><br/>";
+                }
+            }
+            else {  // else update without changing the password
+            
+                $query = "update users set username='$username', email='$email', spot='$spot', type='$type' where id='$id';";
+                $db->query($query);
+                if($db->errno == 0) {
+                    echo "<h1>Succesfully Udated</h1>";
+                    echo "<a href='../users.php'>Back</a><br/>";
+                }
+                else {
+                    echo "<h1>An error occured while updating</h1>";
+                    echo $db->error;
+                    echo "<a href='../users.php'>Back</a><br/>";
+                }
             }
         }
     }
-    
-    else {
+        
+    else {  // form was not submited so show the form
         
         $id = $_GET['id'];
         
@@ -94,9 +111,11 @@
         echo "Email: <input type='text' name='email' value='".$user['email']."'><br><br>";
         echo "Spot: <input type='text' name='spot' value='".$user['spot']."'><br><br>";
         echo "Type: <input type='text' name='type' value='".$user['type']."'><i>Admin=1, Faculty=2, Student=3</i><br><br>";
+        echo "<input type='submit' name='delete' value='Delete'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         echo "<input type='submit' name='submit' value='Submit'>";
         echo "</form>";
         echo "</html>";
     }
+    
     
 ?>
