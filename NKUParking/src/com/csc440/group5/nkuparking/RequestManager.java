@@ -175,6 +175,7 @@ public class RequestManager
 		
 		lotInfo = new ArrayList<ParkingLot>();
 		
+		//Create ParkingLot objects from the provided JSON data.
 		for(int i = 0; i < list.size() - 1; i+=5)
 		{
 			int k = i;
@@ -197,10 +198,10 @@ public class RequestManager
 	interface Spots
 	{
 		@GET("/hooks/hooks.php?id=spots")
-		ArrayList<ArrayList<ArrayList<String>>> getParkingLotInformation();
+		ArrayList<ArrayList<ArrayList<String>>> pullParkingLotInfo();
 	}
 	
-	public ArrayList<ParkingLot> getParkingLotInformation()
+	public ArrayList<ParkingLot> pullParkingLotInfo()
 	{
 		//This method contacts the server and grabs all of the space information.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -208,11 +209,13 @@ public class RequestManager
 			.build();
 		
 		Spots spotService = adapter.create(Spots.class);
-		ArrayList<ArrayList<ArrayList<String>>> list = spotService.getParkingLotInformation();
+		ArrayList<ArrayList<ArrayList<String>>> list = spotService.pullParkingLotInfo();
 		
+		//Create a new list of lots for this controller if one isn't already in existance
 		if(lotInfo == null)
 			lotInfo = new ArrayList<ParkingLot>();
 		
+		//Generate a lot object & subsequent space array for each lot object
 		for(int i = 0; i < list.size(); i++)
 		{
 			ArrayList<ParkingSpace> spaces = new ArrayList<ParkingSpace>();
