@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="nkublack">#ffffff</color>
+    
+    <!-- NKU goldish background hex: #ffdf81 -->
     <color name="nkugold">#ffdf81</color>
+    
+    <color name="reserved">#E0221D</color>
+    <color name="handicapped">#2991E0</color>
+    <color name="unavailable">#1F3647</color>
+    <color name="available">#02AD9D</color>
+    <color name="generic">#AE9995</color>
 </resources>
