@@ -80,8 +80,10 @@ public class RequestManager
 		}
 		
 		//If there is a "1" in the output then it was successful, if not it is not a valid login.
-		String val = new String(bytes);
-		if(val.contains("1"))
+		String temp = new String(bytes);
+		String[] val = temp.split("(?=<body>)</body>");
+		
+		if(!val[1].contains("0"))
 			return true;
 		else
 			return false;
