@@ -9,15 +9,15 @@ package com.csc440.group5.nkuparking;
 
 import java.io.InputStream;
 import java.io.StringReader;
-
+import java.lang.reflect.Type;
 import android.util.JsonReader;
 import android.util.Log;
-
 import com.google.gson.*;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.converter.Converter;
 import retrofit.converter.GsonConverter;
 import retrofit.http.*;
 import retrofit.mime.TypedInput;
@@ -206,38 +206,84 @@ public class RequestManager
 	{
 		//Hook for grabbing the lot data from the server
 		@GET("/hooks/hooks.php?id=lots")
-		ArrayList<ArrayList<String>> getLots();
+		ArrayList<ParkingLot> getLots();
+	}
+	
+	private class ParkingLotDeserializer implements JsonDeserializer<ParkingLot>
+	{
+
+		@Override
+		public ParkingLot deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException 
+		{
+			JsonObject obj = (JsonObject) json;
+			
+			String name = obj.get("name").getAsString();
+			double latitude = obj.get("lat").getAsDouble();
+			double longitude = obj.get("long").getAsDouble();
+			String status = obj.get("status").getAsString();
+			int max = obj.get("max").getAsInt();
+			
+			return new ParkingLot(name, name, latitude, longitude, max, status);
+		}
+		
 	}
 	
 	public ArrayList<ParkingLot> getLotInformation()
 	{
 		//This method contacts the server and grabs all of the Lot information.
+		Gson gson = new GsonBuilder()
+			.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+			.registerTypeAdapter(ParkingLot.class, new ParkingLotDeserializer())
+			.create();
+		
 		RestAdapter adapter = new RestAdapter.Builder()
+			.setConverter(new GsonConverter(gson))
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
-		ArrayList<ArrayList<String>> list = lotService.getLots();
-		
-		//Refresh the list by clearing it and then assigning it to a new instance
-		if(lotInfo == null)
-			lotInfo = new ArrayList<ParkingLot>();
-		else
-			lotInfo.clear();
-		
-		//Create ParkingLot objects from the provided JSON data.
-		for(int i = 0; i < list.size(); i++)
-		{
-			String name = (String)list.get(i).get(0);
-			String desc = (String)list.get(i).get(0);
-			double longitude = Double.valueOf((String)list.get(i).get(1));
-			double latitude = Double.valueOf((String)list.get(i).get(2));
-			String status = (String)list.get(i).get(3);
-			int max = Integer.valueOf((String)list.get(i).get(4));
-			lotInfo.add(new ParkingLot(name, desc, longitude, latitude, max, status));
-		}
+		lotInfo = lotService.getLots();
 		
 		return lotInfo;
 	}
+	
+	/* OLD LOT STUFF -- HERE FOR ROLLING BACK PURPOSES IF ABOVE FAILS
+	 * 	interface Lot
+		{
+			//Hook for grabbing the lot data from the server
+			@GET("/hooks/hooks.php?id=lots")
+			ArrayList<ArrayList<String>> getLots();
+		}
+
+		public ArrayList<ParkingLot> getLotInformation()
+		{
+			//This method contacts the server and grabs all of the Lot information.
+			RestAdapter adapter = new RestAdapter.Builder()
+				.setEndpoint(URL)
+				.build();
+			Lot lotService = adapter.create(Lot.class);
+			ArrayList<ArrayList<String>> list = lotService.getLots();
+
+			//Refresh the list by clearing it and then assigning it to a new instance
+			if(lotInfo == null)
+				lotInfo = new ArrayList<ParkingLot>();
+			else
+				lotInfo.clear();
+
+			//Create ParkingLot objects from the provided JSON data.
+			for(int i = 0; i < list.size(); i++)
+			{
+				String name = (String)list.get(i).get(0);
+				String desc = (String)list.get(i).get(0);
+				double longitude = Double.valueOf((String)list.get(i).get(1));
+				double latitude = Double.valueOf((String)list.get(i).get(2));
+				String status = (String)list.get(i).get(3);
+				int max = Integer.valueOf((String)list.get(i).get(4));
+				lotInfo.add(new ParkingLot(name, desc, longitude, latitude, max, status));
+			}
+			
+			return lotInfo;
+		}
+	 */
 	
 	/*
 	 * spots stuff
