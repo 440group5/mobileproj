@@ -54,7 +54,7 @@ public class RequestManager
 	{
 		//Hook for the login checking.
 		@GET("/hooks/hooks.php?id=login")
-		Response loginUser(@Query("username") String user, @Query("password") String pass);
+		String loginUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
 	public int isCorrectLogin(String user, String pass)
@@ -66,12 +66,13 @@ public class RequestManager
 		Login loginService = adapter.create(Login.class);
 		
 		//Grab the HTML response from the login.php output
-		Response res = loginService.loginUser(user, pass);
-		TypedInput inp = res.getBody();
-		byte[] bytes = new byte[32];
-		
+//		Response res = loginService.loginUser(user, pass);
+//		TypedInput inp = res.getBody();
+//		byte[] bytes = new byte[32];
+		String loginValue = loginService.loginUser(user, pass);
+		int id = Integer.parseInt(loginValue);
 		//Read in the bytes into a 32 index array
-		try 
+		/*try 
 		{
 			inp.in().read(bytes);
 		} 
@@ -87,7 +88,12 @@ public class RequestManager
 		if(!val[1].contains("0"))
 			return -1;
 		else
-			return Integer.parseInt(val[1]);
+			return Integer.parseInt(val[1]);*/
+		
+		if(id == 0)
+			return -1;
+		else
+			return id;
 	}
 	
 	/*
