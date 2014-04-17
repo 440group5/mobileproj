@@ -8,11 +8,17 @@
 package com.csc440.group5.nkuparking;
 
 import java.io.InputStream;
+import java.io.StringReader;
+
+import android.util.JsonReader;
+import android.util.Log;
+
 import com.google.gson.*;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.converter.GsonConverter;
 import retrofit.http.*;
 import retrofit.mime.TypedInput;
 import java.util.*;
@@ -54,25 +60,27 @@ public class RequestManager
 	{
 		//Hook for the login checking.
 		@GET("/hooks/hooks.php?id=login")
-		String loginUser(@Query("username") String user, @Query("password") String pass);
+		Response loginUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
 	public int isCorrectLogin(String user, String pass)
 	{
-		//This method contacts the server and sees if the login information is correct.
+		//This method contacts the server and sees if the login information is correct.		
 		RestAdapter adapter = new RestAdapter.Builder()
 			.setEndpoint(URL)
 			.build();
 		Login loginService = adapter.create(Login.class);
 		
 		//Grab the HTML response from the login.php output
-//		Response res = loginService.loginUser(user, pass);
-//		TypedInput inp = res.getBody();
-//		byte[] bytes = new byte[32];
-		String loginValue = loginService.loginUser(user, pass);
-		int id = Integer.parseInt(loginValue);
+		Response res = loginService.loginUser(user, pass);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[32];
+
+//		List<String> loginValue = 
+//		loginService.loginUser(user, pass);
+//		int id = Integer.parseInt(loginValue.get(0));
 		//Read in the bytes into a 32 index array
-		/*try 
+		try 
 		{
 			inp.in().read(bytes);
 		} 
@@ -83,17 +91,19 @@ public class RequestManager
 		
 		//If there is a "1" in the output then it was successful, if not it is not a valid login.
 		String temp = new String(bytes);
-		String[] val = temp.split("(?=<body>)</body>");
-		
-		if(!val[1].contains("0"))
-			return -1;
-		else
-			return Integer.parseInt(val[1]);*/
-		
-		if(id == 0)
-			return -1;
-		else
-			return id;
+//		String[] val = temp.split("<body>");
+//		val = val[1].split("</body>");
+		String[] val = temp.split("\"");
+		Log.w("JSON", val[1]);
+//		if(!val[1].contains("0"))
+//			return -1;
+//		else
+//			return Integer.parseInt(val[1]);
+		return 0;
+//		if(id == 0)
+//			return -1;
+//		else
+//			return id;
 	}
 	
 	/*
