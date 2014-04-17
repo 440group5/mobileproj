@@ -42,9 +42,10 @@ public class RequestManager
 	 * 	  true means that the username & password are correct and false means they are incorrect
 	 * 
 	 * Example:
-	 * 	  boolean correctLogin = request.isCorrectLogin("test", "test2");
-	 *    if(correctLogin)
+	 * 	  int correctLogin = request.isCorrectLogin("test", "test2");
+	 *    if(correctLogin > 0)
 	 *    	successful login && username/pass are correct
+	 *    	and correctLogin = the userID
 	 *    else
 	 *    	not successful, one or both of the username and pass are incorrect
 	 */
@@ -56,7 +57,7 @@ public class RequestManager
 		Response loginUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
-	public boolean isCorrectLogin(String user, String pass)
+	public int isCorrectLogin(String user, String pass)
 	{
 		//This method contacts the server and sees if the login information is correct.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -84,9 +85,9 @@ public class RequestManager
 		String[] val = temp.split("(?=<body>)</body>");
 		
 		if(!val[1].contains("0"))
-			return true;
+			return -1;
 		else
-			return false;
+			return Integer.parseInt(val[1]);
 	}
 	
 	/*

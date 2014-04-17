@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnFocusChangeListener;
@@ -58,10 +59,10 @@ public class MainActivity extends Activity implements OnTouchListener
         	{
                 LoginAsync asyncLogin = new LoginAsync();
                 asyncLogin.execute(username, password);
-                boolean correctLogin;
+                int correctLogin;
                 try 
                 {
-                	correctLogin = asyncLogin.get().booleanValue();
+                	correctLogin = asyncLogin.get().intValue();
                 }
                 catch (Exception e)
                 {
@@ -73,10 +74,14 @@ public class MainActivity extends Activity implements OnTouchListener
                 	return;
                 }	
                 
-                if(correctLogin)
+                if(correctLogin > 0)
                 {
             		//Successfully logged in, load the map page
             		Log.v(null, "Successfully logged the user in.....");
+            		Editor editor = settings.edit();
+            		editor.putInt("User_id", correctLogin);
+            		editor.commit();
+            		
             		Intent intent = new Intent(this, MapPage.class);
             		startActivity(intent);
                 }
@@ -89,11 +94,11 @@ public class MainActivity extends Activity implements OnTouchListener
         layout.setOnTouchListener(this);
     }
     
-    private class LoginAsync extends AsyncTask<String, Void, Boolean>
+    private class LoginAsync extends AsyncTask<String, Void, Integer>
 	{
     	//Asynchronously goes and sees if the login information is correct
 		@Override
-		protected Boolean doInBackground(String... params)
+		protected Integer doInBackground(String... params)
 		{
 			RequestManager request = RequestManager.getSharedInstance();
 			return request.isCorrectLogin(params[0], params[1]);
@@ -140,10 +145,10 @@ public class MainActivity extends Activity implements OnTouchListener
     		//Send the information to the server to see if it's correct
             LoginAsync asyncLogin = new LoginAsync();
             asyncLogin.execute(username, password);
-            boolean correctLogin;
+            int correctLogin;
             try 
             {
-            	correctLogin = asyncLogin.get().booleanValue();
+            	correctLogin = asyncLogin.get().intValue();
             }
             catch (Exception e)
             {
@@ -155,10 +160,9 @@ public class MainActivity extends Activity implements OnTouchListener
             	return;
             }
     		
-        	if(correctLogin)
+        	if(correctLogin > 0)
         	{
         		//load the map view because the user is a valid user
-        		//TODO: remove writing the password when hook works correctly
         		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         		boolean autoLogin = settings.getBoolean("AutoLogin", false);
         		if(autoLogin)
@@ -168,6 +172,7 @@ public class MainActivity extends Activity implements OnTouchListener
         			editor.putString("Username", username);
         			editor.putString("Password", password);
         			editor.putString("UserPass", hashedUserPass);
+        			editor.putInt("User_id", correctLogin);
         			editor.commit();
         		}
         		Log.v(null, "Successfully logged the user in.....");
