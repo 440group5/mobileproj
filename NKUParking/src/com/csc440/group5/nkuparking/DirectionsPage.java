@@ -29,26 +29,26 @@ public class DirectionsPage extends Activity
 		getMenuInflater().inflate(R.menu.context_menu, menu);
 		EditText txt = (EditText)findViewById(R.id.testText);
 		
-//		LotAsync getLots = new LotAsync();
-//		getLots.execute();
-//		try {
-//			ParkingLot[] lots = (ParkingLot[]) getLots.get().toArray();
-//			txt.append(lots[0].getName());
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ExecutionException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		LotAsync getLots = new LotAsync();
+		getLots.execute();
+		try {
+			ParkingLot lots = (ParkingLot) getLots.get();
+			txt.append(lots.toString());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return true;
 	}
 	
-	private class LotAsync extends AsyncTask<Void, Void, ArrayList<ParkingLot>>
+	private class LotAsync extends AsyncTask<Void, Void, ParkingLot>
 	{
 		@Override
-		protected ArrayList<ParkingLot> doInBackground(Void... params)
+		protected ParkingLot doInBackground(Void... params)
 		{
 			RequestManager manager = RequestManager.getSharedInstance();
 			return manager.getLotInformation();

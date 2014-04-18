@@ -13,6 +13,8 @@ import java.lang.reflect.Type;
 import android.util.JsonReader;
 import android.util.Log;
 import com.google.gson.*;
+import com.google.gson.internal.LinkedTreeMap;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -206,7 +208,7 @@ public class RequestManager
 	{
 		//Hook for grabbing the lot data from the server
 		@GET("/hooks/hooks.php?id=lots")
-		ArrayList<ParkingLot> getLots();
+		ParkingLot getLots();
 	}
 	
 	private class ParkingLotDeserializer implements JsonDeserializer<ParkingLot>
@@ -215,35 +217,49 @@ public class RequestManager
 		@Override
 		public ParkingLot deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException 
 		{
-			JsonObject obj = (JsonObject) json;
+//			JsonObject obj = (JsonObject) json;
 			
-			String name = obj.get("name").getAsString();
-			double latitude = obj.get("lat").getAsDouble();
-			double longitude = obj.get("long").getAsDouble();
-			String status = obj.get("status").getAsString();
-			int max = obj.get("max").getAsInt();
-			
+			JsonArray test = json.getAsJsonArray();
+			JsonObject array1 = test.get(0).getAsJsonObject();
+			String name = array1.get("name").getAsString();
+			double latitude = array1.get("lat").getAsDouble();
+			double longitude = array1.get("long").getAsDouble();
+			String status = array1.get("status").getAsString();
+			int max = array1.get("max").getAsInt();
+//			JsonPrimitive name = json.getAsJsonObject().getAsJsonPrimitive("name");
+//			JsonPrimitive latitude = json.getAsJsonObject().getAsJsonPrimitive("lat");
+//			JsonPrimitive longitude = json.getAsJsonObject().getAsJsonPrimitive("long");
+//			JsonPrimitive status = json.getAsJsonObject().getAsJsonPrimitive("status");
+//			JsonPrimitive max = json.getAsJsonObject().getAsJsonPrimitive("max");
+		
+//			String name = obj.get("name").getAsString();
+//			double latitude = obj.get("lat").getAsDouble();
+//			double longitude = obj.get("long").getAsDouble();
+//			String status = obj.get("status").getAsString();
+//			int max = obj.get("max").getAsInt();
+//			return null;
 			return new ParkingLot(name, name, latitude, longitude, max, status);
 		}
 		
 	}
 	
-	public ArrayList<ParkingLot> getLotInformation()
+	//public ArrayList<ParkingLot> getLotInformation()
+	public ParkingLot getLotInformation()
 	{
 		//This method contacts the server and grabs all of the Lot information.
 		Gson gson = new GsonBuilder()
 			.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
 			.registerTypeAdapter(ParkingLot.class, new ParkingLotDeserializer())
 			.create();
-		
+	
 		RestAdapter adapter = new RestAdapter.Builder()
 			.setConverter(new GsonConverter(gson))
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
-		lotInfo = lotService.getLots();
+		return lotService.getLots();
 		
-		return lotInfo;
+//		return lotInfo;
 	}
 	
 	/* OLD LOT STUFF -- HERE FOR ROLLING BACK PURPOSES IF ABOVE FAILS

@@ -21,6 +21,7 @@ public class ParkingLot
 	private char name;
 	private ArrayList<ParkingSpace> spaces;
 	private int status;
+	private int max;
 	public final static int STUDENT_LOT = 0, FACULTY_STAFF_LOT = 1, VISITOR_LOT = 2, OPEN_PARKING = 3, CLOSED_PARKING = 4;
 	private double percentFilled = 0.0;
 	
@@ -34,6 +35,7 @@ public class ParkingLot
 		this.description = desc;
 		spaces = new ArrayList<ParkingSpace>(numSpaces);
 		this.status = status;
+		this.max = numSpaces;
 	}
 	
 	public ParkingLot(String name, String desc, double latitude, double longitude, int numSpaces, String status)
@@ -56,6 +58,8 @@ public class ParkingLot
 			this.status = VISITOR_LOT;
 		else if(status.equals("Closed"))
 			this.status = CLOSED_PARKING;
+		
+		this.max = numSpaces;
 	}
 	
 	public ArrayList<ParkingSpace> getSpaces()
@@ -118,5 +122,10 @@ public class ParkingLot
 	{
 		//Returns the coordinates of this lot.
 		return new LatLng(latitude, longitude);
+	}
+	
+	public String toString()
+	{
+		return String.format("%s %s %f %f %d %d", name, description, latitude, longitude, max, status);
 	}
 }
