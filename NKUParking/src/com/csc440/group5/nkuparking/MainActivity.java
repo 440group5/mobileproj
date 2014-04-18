@@ -129,11 +129,11 @@ public class MainActivity extends Activity implements OnTouchListener
     public void loginUser(View view)
     {
     	
-		Intent intent = new Intent(this, MapPage.class);
-		startActivity(intent);
+//		Intent intent = new Intent(this, MapPage.class);
+//		startActivity(intent);
     	
     	//Checks to make sure that a valid user is attempting to login.
-    	/*String username = userText.getText().toString();
+    	String username = userText.getText().toString();
     	String password = passText.getText().toString();
     	String concatUserPass = username + password;
     	
@@ -200,7 +200,7 @@ public class MainActivity extends Activity implements OnTouchListener
     			.setMessage("There was an internal error and login cannot be completed.")
     			.setPositiveButton(android.R.string.ok, null)
     			.show();
-    	}*/
+    	}
     }
 
 	@Override

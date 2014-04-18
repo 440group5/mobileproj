@@ -100,11 +100,25 @@ public class RequestManager
 //		val = val[1].split("</body>");
 		String[] val = temp.split("\"");
 		Log.w("JSON", val[1]);
-//		if(!val[1].contains("0"))
+		
+		try
+		{
+			int user_id = Integer.parseInt(val[3]);
+			if(user_id > 0)
+				return user_id;
+			else
+				return -1;
+		}
+		catch(Exception e)
+		{
+			return -1;
+		}
+//		
+//		if(!val[3].contains("0"))
 //			return -1;
 //		else
 //			return Integer.parseInt(val[1]);
-		return 0;
+//		return 0;
 //		if(id == 0)
 //			return -1;
 //		else
