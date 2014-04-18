@@ -14,6 +14,7 @@ import android.util.JsonReader;
 import android.util.Log;
 import com.google.gson.*;
 import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -30,7 +31,8 @@ public class RequestManager
 	private final static RequestManager INSTANCE = new RequestManager();
 	private final static String URL = "http://107.170.2.129/";
 	private RequestManager() { }
-	private ArrayList<ParkingLot> lotInfo;
+	private Map<String, ParkingLot> lotInfo = new HashMap<String, ParkingLot>();
+//	private ArrayList<ParkingLot> lotInfo = new ArrayList<ParkingLot>();
 	
 	public static RequestManager getSharedInstance()
 	{
@@ -208,24 +210,36 @@ public class RequestManager
 	{
 		//Hook for grabbing the lot data from the server
 		@GET("/hooks/hooks.php?id=lots")
-		ParkingLot getLots();
+		ArrayList<ParkingLot> getLots();
 	}
 	
-	private class ParkingLotDeserializer implements JsonDeserializer<ParkingLot>
+	private class ParkingLotDeserializer implements JsonDeserializer<ArrayList<ParkingLot>>
 	{
 
 		@Override
-		public ParkingLot deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException 
+		public ArrayList<ParkingLot> deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException 
 		{
 //			JsonObject obj = (JsonObject) json;
-			
-			JsonArray test = json.getAsJsonArray();
-			JsonObject array1 = test.get(0).getAsJsonObject();
-			String name = array1.get("name").getAsString();
-			double latitude = array1.get("lat").getAsDouble();
-			double longitude = array1.get("long").getAsDouble();
-			String status = array1.get("status").getAsString();
-			int max = array1.get("max").getAsInt();
+			ArrayList<ParkingLot> list = new ArrayList<ParkingLot>();
+			JsonArray array = json.getAsJsonArray();
+			for(int i = 0; i < array.size(); i++)
+			{
+				JsonObject obj = array.get(i).getAsJsonObject();
+				String name = obj.get("name").getAsString();
+				double latitude = obj.get("lat").getAsDouble();
+				double longitude = obj.get("long").getAsDouble();
+				String status = obj.get("status").getAsString();
+				int max = obj.get("max").getAsInt();
+				
+//				lotInfo.put(name, new ParkingLot(name, name, latitude, longitude, max, status));
+				list.add(new ParkingLot(name, name, latitude, longitude, max, status));
+			}
+//			JsonObject array1 = array.get(0).getAsJsonObject();
+//			String name = array1.get("name").getAsString();
+//			double latitude = array1.get("lat").getAsDouble();
+//			double longitude = array1.get("long").getAsDouble();
+//			String status = array1.get("status").getAsString();
+//			int max = array1.get("max").getAsInt();
 //			JsonPrimitive name = json.getAsJsonObject().getAsJsonPrimitive("name");
 //			JsonPrimitive latitude = json.getAsJsonObject().getAsJsonPrimitive("lat");
 //			JsonPrimitive longitude = json.getAsJsonObject().getAsJsonPrimitive("long");
@@ -238,13 +252,13 @@ public class RequestManager
 //			String status = obj.get("status").getAsString();
 //			int max = obj.get("max").getAsInt();
 //			return null;
-			return new ParkingLot(name, name, latitude, longitude, max, status);
+			return list;
 		}
 		
 	}
 	
 	//public ArrayList<ParkingLot> getLotInformation()
-	public ParkingLot getLotInformation()
+	public Map<String, ParkingLot> getLotInformation()
 	{
 		//This method contacts the server and grabs all of the Lot information.
 		Gson gson = new GsonBuilder()
@@ -253,11 +267,15 @@ public class RequestManager
 			.create();
 	
 		RestAdapter adapter = new RestAdapter.Builder()
-			.setConverter(new GsonConverter(gson))
+//			.setConverter(new GsonConverter(gson))
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
-		return lotService.getLots();
+		ArrayList<ParkingLot> list = lotService.getLots();
+		for(int i = 0; i < list.size(); i++)
+			lotInfo.put(list.get(i).getName(), list.get(i));
+		
+		return lotInfo;
 		
 //		return lotInfo;
 	}
@@ -322,10 +340,10 @@ public class RequestManager
 		ArrayList<ArrayList<ArrayList<String>>> list = spotService.pullParkingLotInfo();
 		
 		//Clear or create a new instance of the array
-		if(lotInfo == null)
-			lotInfo = new ArrayList<ParkingLot>();
-		else
-			lotInfo.clear();
+//		if(lotInfo == null)
+//			lotInfo = new ArrayList<ParkingLot>();
+//		else
+//			lotInfo.clear();
 		
 		//Generate a lot object & subsequent space array for each lot object
 		for(int i = 0; i < list.size(); i++)
@@ -348,9 +366,9 @@ public class RequestManager
 			}
 			
 			lotObj.setSpaces(spaces);
-			lotInfo.add(lotObj);
+//			lotInfo.add(lotObj);
 		}
-		
-		return lotInfo;
+		return null;
+//		return lotInfo;
 	}
 }

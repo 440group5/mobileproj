@@ -18,9 +18,9 @@ public class ParkingLot
 {
 	private double latitude, longitude;
 	private String description;
-	private char name;
+	private String name;
 	private ArrayList<ParkingSpace> spaces;
-	private int status;
+	private int String;
 	private int max;
 	public final static int STUDENT_LOT = 0, FACULTY_STAFF_LOT = 1, VISITOR_LOT = 2, OPEN_PARKING = 3, CLOSED_PARKING = 4;
 	private double percentFilled = 0.0;
@@ -31,10 +31,10 @@ public class ParkingLot
 		//latitude and longitude.
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.name = name.charAt(0);
+//		this.name = name.charAt(0);
 		this.description = desc;
 		spaces = new ArrayList<ParkingSpace>(numSpaces);
-		this.status = status;
+//		this.status = status;
 		this.max = numSpaces;
 	}
 	
@@ -44,20 +44,20 @@ public class ParkingLot
 		//from the server and symbolicates it to the proper integer value.
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.name = name.charAt(0);
+//		this.name = name.charAt(0);
 		this.description = desc;
 		spaces = new ArrayList<ParkingSpace>(numSpaces);
 		
-		if(status.equals("Open"))
-			this.status = OPEN_PARKING;
-		else if(status.equals("Student"))
-			this.status = STUDENT_LOT;
-		else if(status.equals("Faculty_Staff"))
-			this.status = FACULTY_STAFF_LOT;
-		else if(status.equals("Visitor"))
-			this.status = VISITOR_LOT;
-		else if(status.equals("Closed"))
-			this.status = CLOSED_PARKING;
+//		if(status.equals("Open"))
+//			this.status = OPEN_PARKING;
+//		else if(status.equals("Student"))
+//			this.status = STUDENT_LOT;
+//		else if(status.equals("Faculty_Staff"))
+//			this.status = FACULTY_STAFF_LOT;
+//		else if(status.equals("Visitor"))
+//			this.status = VISITOR_LOT;
+//		else if(status.equals("Closed"))
+//			this.status = CLOSED_PARKING;
 		
 		this.max = numSpaces;
 	}
@@ -68,25 +68,25 @@ public class ParkingLot
 		return spaces;
 	}
 	
-	public String getStatus()
-	{
-		//Returns the lot status of this lot.
-		switch(status)
-		{
-			case STUDENT_LOT:
-				return "Student Lot";
-			case FACULTY_STAFF_LOT:
-				return "Faculty/Staff Lot";
-			case VISITOR_LOT:
-				return "Visitor Lot";
-			case OPEN_PARKING:
-				return "Open Lot";
-			case CLOSED_PARKING:
-				return "Closed Lot";
-			default:
-				return null;
-		}
-	}
+//	public String getStatus()
+//	{
+//		//Returns the lot status of this lot.
+//		switch(status)
+//		{
+//			case STUDENT_LOT:
+//				return "Student Lot";
+//			case FACULTY_STAFF_LOT:
+//				return "Faculty/Staff Lot";
+//			case VISITOR_LOT:
+//				return "Visitor Lot";
+//			case OPEN_PARKING:
+//				return "Open Lot";
+//			case CLOSED_PARKING:
+//				return "Closed Lot";
+//			default:
+//				return null;
+//		}
+//	}
 	
 	public void setSpaces(ArrayList<ParkingSpace> spaces)
 	{
@@ -109,7 +109,8 @@ public class ParkingLot
 	public String getName()
 	{
 		//Returns this lot's name.
-		return String.valueOf(name);
+//		return String.valueOf(name);
+		return name;
 	}
 	
 	public String getDescription()
@@ -124,8 +125,8 @@ public class ParkingLot
 		return new LatLng(latitude, longitude);
 	}
 	
-	public String toString()
-	{
-		return String.format("%s %s %f %f %d %d", name, description, latitude, longitude, max, status);
-	}
+//	public String toString()
+//	{
+////		return String.format("%s %s %f %f %d %d", name, description, latitude, longitude, max, status);
+//	}
 }

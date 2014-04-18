@@ -46,7 +46,7 @@ public class MainActivity extends Activity implements OnTouchListener
         
         userText = (EditText)findViewById(R.id.userField);
         passText = (EditText)findViewById(R.id.passField);
-        
+
         SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
         String userPassHash = settings.getString("UserPass", null);
         String username = settings.getString("Username", null);

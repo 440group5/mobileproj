@@ -12,19 +12,26 @@ public class ParkingSpace
 	private boolean isHandicapped = false;
 	//TODO: expiration time
 	private String expirationTime;
-	private int spotID;
+	private int spot_id;
+	private int id;
+	private int lot;
+	private String status;
+	private String reserve;
+	private String expire;
+	private int user_id;
+	private String username;
 	
 	public ParkingSpace(boolean avail, boolean handicapped, int id)//, String exirationtime)
 	{
 		this.isAvailable = avail;
 		this.isHandicapped = handicapped;
-		this.spotID = id;
+		this.spot_id = id;
 		//self.expirationTime = expirationTime;
 	}
 	
 	public int getSpotID()
 	{
-		return spotID;
+		return spot_id;
 	}
 	
 	public boolean isExpired()
