@@ -11,11 +11,14 @@
 package com.csc440.group5.nkuparking;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -50,7 +53,6 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		userText = (EditText)findViewById(R.id.reguserfield);
 		passText = (EditText)findViewById(R.id.regpassfield);
 		retypePassText = (EditText)findViewById(R.id.retypepassfield);
-		emailText = (EditText)findViewById(R.id.emailField);
 //		firstText = (EditText)findViewById(R.id.firstnamefield);
 //		lastText = (EditText)findViewById(R.id.lastnamefield);
 		
@@ -72,20 +74,20 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		//Build up the error so the user gets all of the errors that happened
 		StringBuffer error = new StringBuffer();
 		
+		String user = userText.getText().toString();
+		String pass = passText.getText().toString();
+		
 		//Check for username.
-		if(userText.getText().toString().equals(""))
+		if(user.equals(""))
 			error.append("Please enter a username\n");
 		
 		//Check for password.
-		if(passText.getText().toString().equals(""))
+		if(pass.equals(""))
 			error.append("Please enter a password\n");
 		
 		//Check to make sure that the agreement checkbox is checked.
 		if(!agreementChecked)
 			error.append("Please make sure you have agreed to the agreement\n");
-		
-		if(!emailText.equals(""))
-			error.append("Please make sure your email is properly filled out");
 		
 		//Check to make sure the retype password field has text
 		if(retypePassText.getText().toString().equals(""))
@@ -96,7 +98,21 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 			if(!passText.getText().toString().equals(retypePassText.getText().toString()))
 				error.append("The two password fields do not match");
 		}
+		
+		RegisterAsync async = new RegisterAsync();
+		boolean success = false;
+		try 
+		{
+			success = async.execute(user, pass).get();
+		}
+		catch (Exception e) 
+		{
+			error.append("Error creating account, contact support");
+		}
 			
+		if(!success)
+			error.append("Error creating your account, please make sure it is properly filled out");
+		
 		//If the error string has been built, then there was an error, if not, there was not an error 
 		//and the app should continue normal execution.
 		if(!error.toString().equals(""))
@@ -132,12 +148,22 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
     			.show();
     		}
     		*/
-    		
     		Log.v(null, "Successfully registered, logging in....");
     		Intent intent = new Intent(this, MapPage.class);
     		startActivity(intent);
 		}
 		
+	}
+	
+    private class RegisterAsync extends AsyncTask<String, Void, Boolean>
+	{
+    	//Asynchronously goes and sees if the login information is correct
+		@Override
+		protected Boolean doInBackground(String... params)
+		{
+			RequestManager request = RequestManager.getSharedInstance();
+			return request.register(params[0], params[1]);
+		}
 	}
 	
     public boolean onPrepareOptionsMenu(Menu menu)

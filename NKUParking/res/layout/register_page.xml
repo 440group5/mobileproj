@@ -162,28 +162,6 @@
                 android:hint="@string/retypepass"
                 android:inputType="textPassword" />
             
-            <TextView
-                android:id="@+id/emailLab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false"
-                android:layout_below="@id/retypepasslab"
-                android:text="@string/emailLab"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="20sp" />
-                        
-            <EditText
-                android:id="@+id/emailField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/emailLab"
-                android:layout_below="@+id/retypepassfield"
-                android:layout_toRightOf="@+id/emailLab"
-                android:layout_alignLeft="@+id/retypepassfield"
-                android:ems="10"
-                android:hint="@string/emailField"
-                android:inputType="textEmailAddress" />
-            
         </RelativeLayout>
         
         <RelativeLayout

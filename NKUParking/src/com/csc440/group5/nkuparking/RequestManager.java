@@ -146,10 +146,10 @@ public class RequestManager
 	{
 		//Hook for registration of users
 		@GET("/hooks/hooks.php?id=register")
-		Response registerUser(@Query("username") String user, @Query("password") String pass, @Query("email") String email);
+		Response registerUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
-	public String register(String user, String pass, String email)
+	public boolean register(String user, String pass)
 	{
 		//Method to register a user for the NKUParking app.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -159,7 +159,7 @@ public class RequestManager
 		Register regService = adapter.create(Register.class);
 		
 		//Send the request to register a person and grab the HTML
-		Response res = regService.registerUser(user, pass, email);
+		Response res = regService.registerUser(user, pass);
 		TypedInput inp = res.getBody();
 		byte[] bytes = new byte[1024];
 		
@@ -167,25 +167,31 @@ public class RequestManager
 		try
 		{
 			inp.in().read(bytes);
+			String val = new String(bytes);
+			if(val.contains("-1"))
+				return false;
+			else
+				return true;
 		}
 		catch(Exception e)
 		{
-			throw new RuntimeException("Error parsing server information");
+//			throw new RuntimeException("Error parsing server information");
+			return false;
 		}
 		
-		String val = new String(bytes);
+//		String val = new String(bytes);
 		
 		//If the HTML contains a "0", then it was not successful and has some error statements
 		//print out those error statements.
 		//Otherwise, return null for successful registration.
-		if(val.contains("0"))
-		{
-			//Just print out what is in the <body> tags
-			String[] contents = val.split("(?=<body>)</body>");
-			return contents[1];
-		}
-		else
-			return null;
+//		if(val.contains("-"))
+//		{
+//			//Just print out what is in the <body> tags
+//			String[] contents = val.split("(?=<body>)</body>");
+//			return contents[1];
+//		}
+//		else
+//			return null;
 	}
 	
 	/*

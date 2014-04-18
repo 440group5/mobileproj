@@ -234,12 +234,12 @@ containing a value of this type.
         public static final int nkulogo=0x7f02001d;
     }
     public static final class id {
-        public static final int action_directions=0x7f050055;
-        public static final int action_map=0x7f050054;
-        public static final int action_settings=0x7f050057;
-        public static final int action_status=0x7f050056;
-        public static final int agreelayout=0x7f05004f;
-        public static final int agreementbox=0x7f050050;
+        public static final int action_directions=0x7f050053;
+        public static final int action_map=0x7f050052;
+        public static final int action_settings=0x7f050055;
+        public static final int action_status=0x7f050054;
+        public static final int agreelayout=0x7f05004d;
+        public static final int agreementbox=0x7f05004e;
         public static final int autoLoginBox=0x7f050010;
         public static final int bottomlayout=0x7f05000d;
         public static final int button1=0x7f05000f;
@@ -257,11 +257,9 @@ containing a value of this type.
         public static final int button7=0x7f050027;
         public static final int button8=0x7f05002a;
         public static final int button9=0x7f05002d;
-        public static final int class_spinner=0x7f05004e;
-        public static final int disclaimerLab=0x7f050053;
-        public static final int disclaimerLayout=0x7f050052;
-        public static final int emailField=0x7f05004b;
-        public static final int emailLab=0x7f05004a;
+        public static final int class_spinner=0x7f05004c;
+        public static final int disclaimerLab=0x7f050051;
+        public static final int disclaimerLayout=0x7f050050;
         public static final int hybrid=0x7f050004;
         public static final int mainView=0x7f050006;
         public static final int map=0x7f050040;
@@ -270,7 +268,7 @@ containing a value of this type.
         public static final int passField=0x7f05000c;
         public static final int passLab=0x7f05000a;
         public static final int regbutton=0x7f05000e;
-        public static final int registerbutton=0x7f050051;
+        public static final int registerbutton=0x7f05004f;
         public static final int registerlab=0x7f050042;
         public static final int registrationLayout=0x7f050041;
         public static final int regpassfield=0x7f050047;
@@ -280,8 +278,8 @@ containing a value of this type.
         public static final int retypepassfield=0x7f050049;
         public static final int retypepasslab=0x7f050048;
         public static final int satellite=0x7f050002;
-        public static final int spinnerlab=0x7f05004d;
-        public static final int spinnerlayout=0x7f05004c;
+        public static final int spinnerlab=0x7f05004b;
+        public static final int spinnerlayout=0x7f05004a;
         public static final int statusLayout=0x7f050011;
         public static final int tableRow0=0x7f050012;
         public static final int tableRow1=0x7f050014;
