@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
-
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,9 +17,38 @@ public class DirectionsPage extends Activity
 {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_directions_page);
+		
+        LoginAsync asyncLogin = new LoginAsync();
+        asyncLogin.execute();
+        int correctLogin = 0;
+		try {
+			correctLogin = asyncLogin.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        EditText txt = (EditText)findViewById(R.id.testText);
+        txt.append(String.format("%d", correctLogin));
+	}
+	
+    private class LoginAsync extends AsyncTask<Void, Void, Integer>
+	{
+    	//Asynchronously goes and sees if the login information is correct
+		@Override
+		protected Integer doInBackground(Void... params)
+		{
+			RequestManager request = RequestManager.getSharedInstance();
+			ArrayList<ParkingSpace> spaces = request.getSpacesForLot(new ParkingLot("81", null, 0, 0, 0, 0));
+			return spaces.size();
+		}
 	}
 
 	@Override

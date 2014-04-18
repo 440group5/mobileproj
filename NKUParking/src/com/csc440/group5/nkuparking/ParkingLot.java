@@ -31,7 +31,7 @@ public class ParkingLot
 		//latitude and longitude.
 		this.latitude = latitude;
 		this.longitude = longitude;
-//		this.name = name.charAt(0);
+		this.name = name;
 		this.description = desc;
 		spaces = new ArrayList<ParkingSpace>(numSpaces);
 //		this.status = status;
@@ -62,10 +62,20 @@ public class ParkingLot
 		this.max = numSpaces;
 	}
 	
+	public char getCharName()
+	{
+		return (char)Integer.parseInt(name);
+	}
+	
 	public ArrayList<ParkingSpace> getSpaces()
 	{
 		//Returns the list of spaces in this parking lot.
 		return spaces;
+	}
+	
+	public int getNumSpaces()
+	{
+		return spaces.size();
 	}
 	
 //	public String getStatus()

@@ -29,6 +29,11 @@ public class ParkingSpace
 		//self.expirationTime = expirationTime;
 	}
 	
+	public char getLotName()
+	{
+		return (char)lot;
+	}
+	
 	public int getSpotID()
 	{
 		return spot_id;

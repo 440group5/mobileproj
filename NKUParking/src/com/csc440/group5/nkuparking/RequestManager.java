@@ -32,6 +32,7 @@ public class RequestManager
 	private final static String URL = "http://107.170.2.129/";
 	private RequestManager() { }
 	private Map<String, ParkingLot> lotInfo = new HashMap<String, ParkingLot>();
+	private ArrayList<ParkingSpace> parkingSpaceList = new ArrayList<ParkingSpace>();
 //	private ArrayList<ParkingLot> lotInfo = new ArrayList<ParkingLot>();
 	
 	public static RequestManager getSharedInstance()
@@ -272,6 +273,8 @@ public class RequestManager
 			.build();
 		Lot lotService = adapter.create(Lot.class);
 		ArrayList<ParkingLot> list = lotService.getLots();
+		lotInfo = new HashMap<String, ParkingLot>();
+		
 		for(int i = 0; i < list.size(); i++)
 			lotInfo.put(list.get(i).getName(), list.get(i));
 		
@@ -326,10 +329,10 @@ public class RequestManager
 	interface Spots
 	{
 		@GET("/hooks/hooks.php?id=spots")
-		ArrayList<ArrayList<ArrayList<String>>> pullParkingLotInfo();
+		ArrayList<ParkingSpace> pullParkingSpaceInfo();
 	}
 	
-	public ArrayList<ParkingLot> pullParkingLotInfo()
+	public ArrayList<ParkingSpace> pullParkingSpaceInfo()
 	{
 		//This method contacts the server and grabs all of the space information.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -337,8 +340,8 @@ public class RequestManager
 			.build();
 		
 		Spots spotService = adapter.create(Spots.class);
-		ArrayList<ArrayList<ArrayList<String>>> list = spotService.pullParkingLotInfo();
-		
+		ArrayList<ParkingSpace> list = spotService.pullParkingSpaceInfo();
+		parkingSpaceList = new ArrayList<ParkingSpace>(list);
 		//Clear or create a new instance of the array
 //		if(lotInfo == null)
 //			lotInfo = new ArrayList<ParkingLot>();
@@ -346,29 +349,44 @@ public class RequestManager
 //			lotInfo.clear();
 		
 		//Generate a lot object & subsequent space array for each lot object
-		for(int i = 0; i < list.size(); i++)
-		{
-			ArrayList<ParkingSpace> spaces = new ArrayList<ParkingSpace>();
-			
-			String name = ((list.get(i)).get(0)).get(0);
-			String lat = ((list.get(i)).get(0)).get(1);
-			String longitude = ((list.get(i)).get(0)).get(2);
-			String desc = ((list.get(i)).get(0)).get(3);
-			String status = ((list.get(i)).get(0)).get(4);
-			String max = ((list.get(i)).get(0)).get(5);
-			ParkingLot lotObj = new ParkingLot(name, desc, Double.parseDouble(lat), Double.parseDouble(longitude), Integer.parseInt(max), status);
-			
-			for(int k = 1; k < list.get(i).get(k).size(); k++)
-			{
-				String id = ((list.get(i)).get(k)).get(0);
-				//TODO: Update these values with the correct values from JSON
-				spaces.add(new ParkingSpace(false, false, 0));
-			}
-			
-			lotObj.setSpaces(spaces);
-//			lotInfo.add(lotObj);
-		}
-		return null;
+//		for(int i = 0; i < list.size(); i++)
+//		{
+//			ArrayList<ParkingSpace> spaces = new ArrayList<ParkingSpace>();
+//			
+//			String name = ((list.get(i)).get(0)).get(0);
+//			String lat = ((list.get(i)).get(0)).get(1);
+//			String longitude = ((list.get(i)).get(0)).get(2);
+//			String desc = ((list.get(i)).get(0)).get(3);
+//			String status = ((list.get(i)).get(0)).get(4);
+//			String max = ((list.get(i)).get(0)).get(5);
+//			ParkingLot lotObj = new ParkingLot(name, desc, Double.parseDouble(lat), Double.parseDouble(longitude), Integer.parseInt(max), status);
+//			
+//			for(int k = 1; k < list.get(i).get(k).size(); k++)
+//			{
+//				String id = ((list.get(i)).get(k)).get(0);
+//				//TODO: Update these values with the correct values from JSON
+//				spaces.add(new ParkingSpace(false, false, 0));
+//			}
+//			
+//			lotObj.setSpaces(spaces);
+////			lotInfo.add(lotObj);
+//		}
+		return parkingSpaceList;
 //		return lotInfo;
+	}
+	
+	public ArrayList<ParkingSpace> getSpacesForLot(ParkingLot lot)
+	{
+		ArrayList<ParkingSpace> newList = new ArrayList<ParkingSpace>();
+		parkingSpaceList = pullParkingSpaceInfo();
+		
+		for(ParkingSpace space : parkingSpaceList)
+		{
+			if(space.getLotName() == lot.getCharName())
+				newList.add(space);
+		}
+		
+		lot.setSpaces(newList);
+		return newList;
 	}
 }
