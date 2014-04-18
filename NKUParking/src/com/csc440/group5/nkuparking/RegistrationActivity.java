@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,7 +101,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		}
 		
 		RegisterAsync async = new RegisterAsync();
-		boolean success = false;
+		int success = 0;
 		try 
 		{
 			success = async.execute(user, pass).get();
@@ -110,7 +111,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 			error.append("Error creating account, contact support");
 		}
 			
-		if(!success)
+		if(success < 0)
 			error.append("Error creating your account, please make sure it is properly filled out");
 		
 		//If the error string has been built, then there was an error, if not, there was not an error 
@@ -148,6 +149,14 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
     			.show();
     		}
     		*/
+			
+			SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
+			SharedPreferences.Editor edit = settings.edit();
+			edit.putString("Username", user);
+			edit.putString("Password", pass);
+			edit.putInt("User_id", success);
+			edit.commit();
+			
     		Log.v(null, "Successfully registered, logging in....");
     		Intent intent = new Intent(this, MapPage.class);
     		startActivity(intent);
@@ -155,11 +164,11 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		
 	}
 	
-    private class RegisterAsync extends AsyncTask<String, Void, Boolean>
+    private class RegisterAsync extends AsyncTask<String, Void, Integer>
 	{
     	//Asynchronously goes and sees if the login information is correct
 		@Override
-		protected Boolean doInBackground(String... params)
+		protected Integer doInBackground(String... params)
 		{
 			RequestManager request = RequestManager.getSharedInstance();
 			return request.register(params[0], params[1]);

@@ -149,7 +149,7 @@ public class RequestManager
 		Response registerUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
-	public boolean register(String user, String pass)
+	public int register(String user, String pass)
 	{
 		//Method to register a user for the NKUParking app.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -169,14 +169,14 @@ public class RequestManager
 			inp.in().read(bytes);
 			String val = new String(bytes);
 			if(val.contains("-1"))
-				return false;
+				return -1;
 			else
-				return true;
+				return (Integer)Integer.parseInt(val);
 		}
 		catch(Exception e)
 		{
 //			throw new RuntimeException("Error parsing server information");
-			return false;
+			return -1;
 		}
 		
 //		String val = new String(bytes);
