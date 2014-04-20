@@ -29,6 +29,14 @@ public class ParkingSpace
 		//self.expirationTime = expirationTime;
 	}
 	
+	public void setExpire(boolean val)
+	{
+		if(!val)
+			this.expire = "Open";
+		else
+			this.expire = "Closed";
+	}
+	
 	public char getLotName()
 	{
 		return (char)lot;

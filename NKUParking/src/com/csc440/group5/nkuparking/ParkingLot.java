@@ -73,6 +73,30 @@ public class ParkingLot
 		return spaces;
 	}
 	
+	public boolean checkIfSpotExpired(int spot_id)
+	{
+		RequestManager req = RequestManager.getSharedInstance();
+		return req.checkIfSpotIsExpired(name, spot_id);
+	}
+	
+	public boolean spotExpired(int spot_id)
+	{
+		for(ParkingSpace space : spaces)
+		{
+			if(space.getSpotID() == spot_id)
+			{
+				RequestManager req = RequestManager.getSharedInstance();
+				boolean status = req.spotAtLotExpired(name, spot_id);
+				if(status)
+					space.setExpire(false);
+				
+				return status;
+			}
+		}
+		
+		return false;
+	}
+	
 	public int getNumSpaces()
 	{
 		return spaces.size();

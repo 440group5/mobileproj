@@ -195,7 +195,9 @@ public class RequestManager
 	}
 	
 	/*
-	 * reserve spot stuff
+	 * Call the reserveSpot function and pass in the lot name & spot id
+	 * reserveSpot(String Lot, int spot_id)
+	 * Will return true if it's reserved, false if not
 	 */
 	
 	interface Reservation
@@ -224,7 +226,8 @@ public class RequestManager
 	}
 	
 	/*
-	 * lot stuff
+	 * Call the getParkingLotInformation() and it will return a map of parking lots
+	 * Each parking lot can be accessed by its appropriate key which is its name
 	 */
 	
 	interface Lot
@@ -343,7 +346,8 @@ public class RequestManager
 	 */
 	
 	/*
-	 * spots stuff
+	 * Call the pullSpotsForLot(Lot) function, which will also pull the whole dataset
+	 * If you need the whole dataset, just call it in a loop on each lot
 	 */
 	
 	interface Spots
@@ -408,5 +412,90 @@ public class RequestManager
 		
 		lot.setSpaces(newList);
 		return newList;
+	}
+	
+	/*
+	 * Check if lot is expired
+	 * This will not be called directly, but from the ParkingLot class
+	 */
+	
+	interface CheckExpire
+	{
+		@GET("/hooks/hooks.php?id=checkexpire")
+		Response checkIfSpotIsExpired(@Query("lot") String lotName, @Query("spot") int spot_id);
+	}
+	
+	public boolean checkIfSpotIsExpired(String lotName, int spot_id)
+	{
+		//Method to check if a spot is expired or not
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		CheckExpire expireService = adapter.create(CheckExpire.class);
+		
+		//Send the request
+		Response res = expireService.checkIfSpotIsExpired(lotName, spot_id);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[32];
+		
+		//Read the HTML
+		try
+		{
+			inp.in().read(bytes);
+			String val = new String(bytes);
+			if(val.contains("-1"))
+				return false;
+			else
+				return true;
+		}
+		catch(Exception e)
+		{
+//			throw new RuntimeException("Error parsing server information");
+			return false;
+		}
+	}
+	
+	/*
+	 * Will tell the server that the given spot in the given lot has expired
+	 * Not for use to be called directly, will be used by the ParkingLot class
+	 */
+	
+	interface SpotExpired
+	{
+		@GET("/hooks/hooks.php?id=checkexpire")
+		Response spotAtLotExpired(@Query("lot") String lotName, @Query("spot") int spot_id);
+	}
+	
+	public boolean spotAtLotExpired(String lotName, int spot_id)
+	{
+		//Method to tell the server that a spot expired, true means it was success
+		//and false means that the server update failed
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		SpotExpired expireService = adapter.create(SpotExpired.class);
+		
+		//Send the request
+		Response res = expireService.spotAtLotExpired(lotName, spot_id);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[32];
+		
+		//Read the HTML
+		try
+		{
+			inp.in().read(bytes);
+			String val = new String(bytes);
+			if(val.contains("-1"))
+				return false;
+			else
+				return true;
+		}
+		catch(Exception e)
+		{
+//			throw new RuntimeException("Error parsing server information");
+			return false;
+		}
 	}
 }
