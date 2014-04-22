@@ -11,6 +11,8 @@
 
 package com.csc440.group5.nkuparking;
 
+import android.content.SharedPreferences;
+
 import com.google.android.gms.maps.model.LatLng;
 import java.util.*;
 
@@ -79,14 +81,14 @@ public class ParkingLot
 		return req.checkIfSpotIsExpired(name, spot_id);
 	}
 	
-	public boolean spotExpired(int spot_id)
+	public boolean spotExpired(int spot_id, int user_id)
 	{
 		for(ParkingSpace space : spaces)
 		{
 			if(space.getSpotID() == spot_id)
 			{
 				RequestManager req = RequestManager.getSharedInstance();
-				boolean status = req.spotAtLotExpired(name, spot_id);
+				boolean status = req.spotAtLotExpired(name, spot_id, user_id);
 				if(status)
 					space.setExpire(false);
 				

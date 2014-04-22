@@ -15,7 +15,6 @@ import android.util.Log;
 import com.google.gson.*;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
-
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -146,10 +145,10 @@ public class RequestManager
 	{
 		//Hook for registration of users
 		@GET("/hooks/hooks.php?id=register")
-		Response registerUser(@Query("username") String user, @Query("password") String pass);
+		Response registerUser(@Query("username") String user, @Query("password") String pass, @Query("status") int status);
 	}
 	
-	public int register(String user, String pass)
+	public int register(String user, String pass, int status)
 	{
 		//Method to register a user for the NKUParking app.
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -159,7 +158,7 @@ public class RequestManager
 		Register regService = adapter.create(Register.class);
 		
 		//Send the request to register a person and grab the HTML
-		Response res = regService.registerUser(user, pass);
+		Response res = regService.registerUser(user, pass, status);
 		TypedInput inp = res.getBody();
 		byte[] bytes = new byte[1024];
 		
@@ -459,15 +458,17 @@ public class RequestManager
 	/*
 	 * Will tell the server that the given spot in the given lot has expired
 	 * Not for use to be called directly, will be used by the ParkingLot class
+	 * To get the User ID for the account on this device = getSharedPreferences("NKUParkingPrefs,0);
+	 * Then get the int from the key "User_id" and that is the id to pass in
 	 */
 	
 	interface SpotExpired
 	{
 		@GET("/hooks/hooks.php?id=checkexpire")
-		Response spotAtLotExpired(@Query("lot") String lotName, @Query("spot") int spot_id);
+		Response spotAtLotExpired(@Query("lot") String lotName, @Query("spot") int spot_id, @Query("user_id") int user_id);
 	}
 	
-	public boolean spotAtLotExpired(String lotName, int spot_id)
+	public boolean spotAtLotExpired(String lotName, int spot_id, int user_id)
 	{
 		//Method to tell the server that a spot expired, true means it was success
 		//and false means that the server update failed
@@ -478,7 +479,7 @@ public class RequestManager
 		SpotExpired expireService = adapter.create(SpotExpired.class);
 		
 		//Send the request
-		Response res = expireService.spotAtLotExpired(lotName, spot_id);
+		Response res = expireService.spotAtLotExpired(lotName, spot_id, user_id);
 		TypedInput inp = res.getBody();
 		byte[] bytes = new byte[32];
 		

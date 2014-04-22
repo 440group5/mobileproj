@@ -101,10 +101,17 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		}
 		
 		RegisterAsync async = new RegisterAsync();
+		
+		int status = 0;
+		if(isStudent)
+			status = 3;
+		else 
+			status = 2;
+		
 		int success = 0;
 		try 
 		{
-			success = async.execute(user, pass).get();
+			success = async.execute(user, pass, String.format("%d", status)).get();
 		}
 		catch (Exception e) 
 		{
@@ -171,7 +178,7 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 		protected Integer doInBackground(String... params)
 		{
 			RequestManager request = RequestManager.getSharedInstance();
-			return request.register(params[0], params[1]);
+			return request.register(params[0], params[1], Integer.parseInt(params[2]));
 		}
 	}
 	
