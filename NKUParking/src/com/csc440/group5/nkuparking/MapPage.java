@@ -12,7 +12,9 @@ package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
 import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.csc440.group5.nkuparking.ParkingLot;
 
@@ -91,9 +94,28 @@ public class MapPage extends Activity
 		protected void onPostExecute(ArrayList<ParkingLot> result)
 		{
 			//Add the markers to the map.
-			for(ParkingLot lot : result)
+			for(ParkingLot lot : result){
 				map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
-		}
+				map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+					
+					@Override
+					public void onInfoWindowClick(Marker marker) {
+						
+					/* ---Navigate to directions page.---
+					 				 					
+					Intent directions = new Intent(MapPage.this, DirectionsPage.class);
+					startActivity(directions);
+					*/
+						
+					//Pop up a toast when the info window is clicked.
+					Toast.makeText(getBaseContext(), 
+					"Lot Selected", 
+					Toast.LENGTH_SHORT).show();				
+					  } 
+					}
+				);
+			  }
+			}
 	}
 
     @Override
