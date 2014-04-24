@@ -2,9 +2,6 @@ package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
