@@ -22,7 +22,6 @@ public class ParkingLot
 	private String description;
 	private String name;
 	private ArrayList<ParkingSpace> spaces;
-	private int String;
 	private int max;
 	public final static int STUDENT_LOT = 0, FACULTY_STAFF_LOT = 1, VISITOR_LOT = 2, OPEN_PARKING = 3, CLOSED_PARKING = 4;
 	private double percentFilled = 0.0;

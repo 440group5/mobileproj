@@ -11,6 +11,11 @@
         android:showAsAction="never"
         android:title="@string/action_directions"/>
     <item
+        android:id="@+id/action_search"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_search"/>
+    <item
         android:id="@+id/action_status"
         android:orderInCategory="100"
         android:showAsAction="never"

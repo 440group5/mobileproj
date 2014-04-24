@@ -78,6 +78,11 @@ public class StatusPage extends Activity {
 			startActivity(directions);
 			return true;
 
+		case R.id.action_search:
+			Intent search = new Intent(this, SearchPage.class);
+			startActivity(search);
+			return true; 
+
 		case R.id.action_status:
 			Intent status = new Intent(this, StatusPage.class);
 			startActivity(status);

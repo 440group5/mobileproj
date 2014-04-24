@@ -106,32 +106,37 @@ public class MapPage extends Activity
     
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	    
-	        case R.id.action_map:
-	        	Intent map = new Intent(this, MapPage.class);
-	    		startActivity(map);
-	            return true;
-	            
-	        case R.id.action_directions:
-	        	Intent directions = new Intent(this, DirectionsPage.class);
-	    		startActivity(directions);
-	            return true;
-	            
-	        case R.id.action_status:
-	        	Intent status = new Intent(this, StatusPage.class);
-	    		startActivity(status);
-	            return true;
-	            
-	        case R.id.action_settings:
-	        	Intent settings = new Intent(this, SettingsPage.class);
-	    		startActivity(settings);
-	            return true;
-	            
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+
+		case R.id.action_map:
+			Intent map = new Intent(this, MapPage.class);
+			startActivity(map);
+			return true;
+
+		case R.id.action_directions:
+			Intent directions = new Intent(this, DirectionsPage.class);
+			startActivity(directions);
+			return true;
+
+		case R.id.action_search:
+			Intent search = new Intent(this, SearchPage.class);
+			startActivity(search);
+			return true; 
+
+		case R.id.action_status:
+			Intent status = new Intent(this, StatusPage.class);
+			startActivity(status);
+			return true;
+
+		case R.id.action_settings:
+			Intent settings = new Intent(this, SettingsPage.class);
+			startActivity(settings);
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

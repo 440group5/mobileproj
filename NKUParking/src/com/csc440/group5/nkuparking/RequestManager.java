@@ -301,8 +301,6 @@ public class RequestManager
 			lotInfo.put(list.get(i).getName(), list.get(i));
 		
 		return lotInfo;
-		
-//		return lotInfo;
 	}
 	
 	/* OLD LOT STUFF -- HERE FOR ROLLING BACK PURPOSES IF ABOVE FAILS
