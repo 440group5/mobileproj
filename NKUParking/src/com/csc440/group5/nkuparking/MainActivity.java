@@ -13,6 +13,7 @@ package com.csc440.group5.nkuparking;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,11 +59,10 @@ public class MainActivity extends Activity implements OnTouchListener
         	if(username != null && password != null)
         	{
                 LoginAsync asyncLogin = new LoginAsync();
-                asyncLogin.execute(username, password);
-                int correctLogin;
+                Map<String,Integer> loginCreds;
                 try 
                 {
-                	correctLogin = asyncLogin.get().intValue();
+                	loginCreds = asyncLogin.execute(username, password).get();
                 }
                 catch (Exception e)
                 {
@@ -74,17 +74,32 @@ public class MainActivity extends Activity implements OnTouchListener
                 	return;
                 }
                 
-                if(correctLogin > 0)
+        		//Successfully logged in, load the map page
+        		Log.v(null, "Successfully logged the user in.....");
+        		
+        		int temp = loginCreds.get("status");
+        		String status; 
+        		if(temp == 2)
+        			status = "Faculty/Staff";
+        		else if(temp == 3)
+        			status = "Student";
+        		else
                 {
-            		//Successfully logged in, load the map page
-            		Log.v(null, "Successfully logged the user in.....");
-            		Editor editor = settings.edit();
-            		editor.putInt("User_id", correctLogin);
-            		editor.commit();
-            		
-            		Intent intent = new Intent(this, MapPage.class);
-            		startActivity(intent);
+            		new AlertDialog.Builder(this)
+        			.setTitle("Error")
+        			.setMessage("There was an error processing the input for the login.")
+        			.setPositiveButton(android.R.string.yes, null)
+        			.show();
+                	return;
                 }
+        		
+        		Editor editor = settings.edit();
+        		editor.putInt("User_id", loginCreds.get("user_id"));
+        		editor.putString("Status", status);
+        		editor.commit();
+        		
+        		Intent intent = new Intent(this, MapPage.class);
+        		startActivity(intent);
         	}
         }
         
@@ -94,11 +109,11 @@ public class MainActivity extends Activity implements OnTouchListener
         layout.setOnTouchListener(this);
     }
     
-    private class LoginAsync extends AsyncTask<String, Void, Integer>
+    private class LoginAsync extends AsyncTask<String, Void, Map<String,Integer>>
 	{
     	//Asynchronously goes and sees if the login information is correct
 		@Override
-		protected Integer doInBackground(String... params)
+		protected Map<String,Integer> doInBackground(String... params)
 		{
 			RequestManager request = RequestManager.getSharedInstance();
 			return request.isCorrectLogin(params[0], params[1]);
@@ -148,11 +163,10 @@ public class MainActivity extends Activity implements OnTouchListener
     		
     		//Send the information to the server to see if it's correct
             LoginAsync asyncLogin = new LoginAsync();
-            asyncLogin.execute(username, password);
-            int correctLogin;
+            Map<String,Integer> loginCreds;
             try 
             {
-            	correctLogin = asyncLogin.get().intValue();
+            	loginCreds = asyncLogin.execute(username, password).get();
             }
             catch (Exception e)
             {
@@ -163,35 +177,36 @@ public class MainActivity extends Activity implements OnTouchListener
     			.show();
             	return;
             }
+            
+    		//Successfully logged in, load the map page
+    		Log.v(null, "Successfully logged the user in.....");
     		
-        	if(correctLogin > 0)
-        	{
-        		//load the map view because the user is a valid user
-        		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
-        		boolean autoLogin = settings.getBoolean("AutoLogin", false);
-        		if(autoLogin)
-        		{
-        			//write user & pass hash to shared prefs
-        			SharedPreferences.Editor editor = settings.edit();
-        			editor.putString("Username", username);
-        			editor.putString("Password", password);
-        			editor.putString("UserPass", hashedUserPass);
-        			editor.putInt("User_id", correctLogin);
-        			editor.commit();
-        		}
-        		Log.v(null, "Successfully logged the user in.....");
-        		Intent intent = new Intent(this, MapPage.class);
-        		startActivity(intent);
-        	}
-        	else
-        	{
-        		//Popup an alert view because the information was wrong
-        		new AlertDialog.Builder(this)
-        			.setTitle("Error")
-        			.setMessage("The information is incorrect or there is not a valid username.")
-        			.setPositiveButton(android.R.string.yes, null)
-        			.show();
-        	}
+//    		int temp = loginCreds.get("status");
+//    		String status; a
+//    		if(temp == 1)
+//    			status = "Admin";
+//    		else if(temp == 2)
+//    			status = "Faculty/Staff";
+//    		else if(temp == 3)
+//    			status = "Student";
+//    		else
+//            {
+//        		new AlertDialog.Builder(this)
+//    			.setTitle("Error")
+//    			.setMessage("There was an error processing the input for the login.")
+//    			.setPositiveButton(android.R.string.yes, null)
+//    			.show();
+//            	return;
+//            }
+    		
+    		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
+    		Editor editor = settings.edit();
+    		editor.putInt("User_id", loginCreds.get("user_id"));
+    		editor.putInt("Status", loginCreds.get("status"));
+    		editor.commit();
+    		
+    		Intent intent = new Intent(this, MapPage.class);
+    		startActivity(intent);
     	}
     	catch(Exception e)
     	{

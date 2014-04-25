@@ -47,8 +47,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			return;
 		}
 
-		ArrayAdapter<String> adapter 
-		= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLots);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLots);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 	}

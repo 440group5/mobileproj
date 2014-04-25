@@ -141,6 +141,11 @@ public class ParkingLot
 		percentFilled = value;
 	}
 	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
 	public String getName()
 	{
 		//Returns this lot's name.

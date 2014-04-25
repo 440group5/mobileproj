@@ -10,6 +10,8 @@ package com.csc440.group5.nkuparking;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+
+import android.app.AlertDialog;
 import android.util.JsonReader;
 import android.util.Log;
 import com.google.gson.*;
@@ -67,7 +69,7 @@ public class RequestManager
 		Response loginUser(@Query("username") String user, @Query("password") String pass);
 	}
 	
-	public int isCorrectLogin(String user, String pass)
+	public Map<String, Integer> isCorrectLogin(String user, String pass)
 	{
 		//This method contacts the server and sees if the login information is correct.		
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -103,14 +105,25 @@ public class RequestManager
 		try
 		{
 			int user_id = Integer.parseInt(val[3]);
-			if(user_id > 0)
-				return user_id;
+			int status = Integer.parseInt(val[7]);
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			
+			if(user_id > 0 && status > 0)
+			{
+				map.put("user_id", user_id);
+				map.put("status", status);
+				
+				return map;
+			}
 			else
-				return -1;
+				return null;
 		}
 		catch(Exception e)
 		{
-			return -1;
+			String test = Log.getStackTraceString(e);
+			Log.e("debugger", test);
+			
+			return null;
 		}
 //		
 //		if(!val[3].contains("0"))
@@ -298,7 +311,11 @@ public class RequestManager
 		lotInfo = new HashMap<String, ParkingLot>();
 		
 		for(int i = 0; i < list.size(); i++)
+		{
+			String temp = list.get(i).getName();
+			list.get(i).setName(String.format("%c", (char)Integer.parseInt(temp)));
 			lotInfo.put(list.get(i).getName(), list.get(i));
+		}
 		
 		return lotInfo;
 	}
