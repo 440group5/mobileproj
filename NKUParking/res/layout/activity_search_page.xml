@@ -53,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/directions_button" />
+        android:text="@string/directions_button"
+        android:onClick="loadDirs" />
 
     <Spinner
         android:id="@+id/spinner_lots"

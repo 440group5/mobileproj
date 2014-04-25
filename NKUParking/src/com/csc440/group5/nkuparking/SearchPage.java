@@ -1,10 +1,12 @@
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,6 +52,22 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLots);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
+	}
+	
+	public void loadDirs(View view)
+	{//39.032356,-84.4654'/'39.03364,-84.466995
+		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
+        String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
+
+//        String uristr = begin + "?q=" + end + "&z=18";
+//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
+//        Uri uri = Uri.parse(uristr);
+    	Intent intent = new Intent(this, WebViewActivity.class);
+    	startActivity(intent);
+        
+//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        this.startActivity(intent);
 	}
 
 	public void onRadioButtonClicked(View view) {

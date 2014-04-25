@@ -13,11 +13,16 @@ package com.csc440.group5.nkuparking;
 import java.util.ArrayList;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,13 +31,15 @@ import android.widget.Toast;
 
 import com.csc440.group5.nkuparking.ParkingLot;
 
-public class MapPage extends Activity
+public class MapPage extends Activity implements OnMyLocationChangeListener
 {
 	private GoogleMap map;
 	private LatLng startingCoord;
 	private float zoom = 16.0f;
 	private final double START_LAT = 39.032356, START_LONG = -84.465406;
 	private ArrayList<ParkingLot> lotList = new ArrayList<ParkingLot>();
+	private Location currentLocation;
+	private boolean gpsLoaded = false;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -45,6 +52,7 @@ public class MapPage extends Activity
         startingCoord = new LatLng(START_LAT, START_LONG);
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
         map.setMyLocationEnabled(true);
+        map.setOnMyLocationChangeListener(this);
         map.getUiSettings().setAllGesturesEnabled(true);
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         
@@ -54,6 +62,15 @@ public class MapPage extends Activity
         //Move the camera to NKU
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(startingCoord, zoom));
     }
+    
+    @Override
+	public void onMyLocationChange(Location location)
+	{
+    	if(!gpsLoaded)
+    		gpsLoaded = true;
+    	
+    	currentLocation = location;
+	}
     
     private class BuildLotsAsync extends AsyncTask<Void, Void, ArrayList<ParkingLot>>
 	{
@@ -127,8 +144,29 @@ public class MapPage extends Activity
     }
     
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		if(!gpsLoaded)
+		{
+			new AlertDialog.Builder(this)
+			.setTitle("Error")
+			.setMessage("Please wait for the GPS to load before selecting any menu options. To check, please press the my location button in the upper right.")
+			.setPositiveButton(android.R.string.yes, null)
+			.show();
+			return false;
+		}
+		
+		if(currentLocation == null)
+			currentLocation = map.getMyLocation();
+		double lat = currentLocation.getLatitude();
+		double lg = currentLocation.getLongitude();
+		
+		SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
+		Editor edit = prefs.edit();
+		edit.putString("CurrentLat", String.format("%f",lat));
+		edit.putString("CurrentLong", String.format("%f", lg));
+		edit.commit();
+		
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 
