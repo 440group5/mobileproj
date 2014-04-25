@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="nkublack">#ffffff</color>
+    <color name="nkublack">#000000</color>
     
     <!-- NKU goldish background hex: #ffdf81 -->
     <color name="nkugold">#ffdf81</color>
