@@ -7,22 +7,9 @@
 
 package com.csc440.group5.nkuparking;
 
-import java.io.InputStream;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-
-import android.app.AlertDialog;
-import android.util.JsonReader;
 import android.util.Log;
-import com.google.gson.*;
-import com.google.gson.internal.LinkedTreeMap;
-import com.google.gson.reflect.TypeToken;
-import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.converter.Converter;
-import retrofit.converter.GsonConverter;
 import retrofit.http.*;
 import retrofit.mime.TypedInput;
 import java.util.*;
@@ -207,26 +194,44 @@ public class RequestManager
 	}
 	
 	/*
-	 * Call the reserveSpot function and pass in the lot name & spot id
-	 * reserveSpot(String Lot, int spot_id)
-	 * Will return true if it's reserved, false if not
+	 * This method reserves a given spot.
+	 * To call this method, you need the spot id, user id, lot name and status of the user.
+	 * To get the user_id and status from the user, you can easily just pull it from preferences.
 	 */
 	
 	interface Reservation
 	{
 		//Hook for reserving a spot
-		@GET("/hooks/hooks.php?id=space_reserve")
-		ArrayList<String> reserveLot(@Query("space_id") int id);
+		@GET("/hooks/hooks.php?id=reserve")
+		ArrayList<String> reserveLot(@Query("spot") int spot_id, @Query("user_id") int user_id, @Query("lot") String lot, @Query("status") int status);
 	}
 	
-	public boolean reserveLot(int spaceId, int userId)
+	public boolean reserveLot(int spot_id, int user_id, String lot, String userStatus)
 	{
 		RestAdapter adapter = new RestAdapter.Builder()
 			.setEndpoint(URL)
 			.build();
 		
+		//Associate the correct number to the string status
+		int status = 0;
+		try
+		{
+			if(userStatus.equals("Admin"))
+				status = 1;
+			else if(userStatus.equals("Faculty/Staff"))
+				status = 2;
+			else if(userStatus.equals("Student"))
+				status = 3;
+			else
+				throw new Exception();
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException("User status is an incorrect string or not set.");
+		}
+		
 		Reservation resService = adapter.create(Reservation.class);
-		ArrayList<String> list = resService.reserveLot(spaceId);
+		ArrayList<String> list = resService.reserveLot(spot_id, user_id, lot, status);
 		
 		if(!list.get(0).contains("-1"))
 		{
@@ -248,62 +253,11 @@ public class RequestManager
 		@GET("/hooks/hooks.php?id=lots")
 		ArrayList<ParkingLot> getLots();
 	}
-	
-	private class ParkingLotDeserializer implements JsonDeserializer<ArrayList<ParkingLot>>
-	{
 
-		@Override
-		public ArrayList<ParkingLot> deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException 
-		{
-//			JsonObject obj = (JsonObject) json;
-			ArrayList<ParkingLot> list = new ArrayList<ParkingLot>();
-			JsonArray array = json.getAsJsonArray();
-			for(int i = 0; i < array.size(); i++)
-			{
-				JsonObject obj = array.get(i).getAsJsonObject();
-				String name = obj.get("name").getAsString();
-				double latitude = obj.get("lat").getAsDouble();
-				double longitude = obj.get("long").getAsDouble();
-				String status = obj.get("status").getAsString();
-				int max = obj.get("max").getAsInt();
-				
-//				lotInfo.put(name, new ParkingLot(name, name, latitude, longitude, max, status));
-				list.add(new ParkingLot(name, name, latitude, longitude, max, status));
-			}
-//			JsonObject array1 = array.get(0).getAsJsonObject();
-//			String name = array1.get("name").getAsString();
-//			double latitude = array1.get("lat").getAsDouble();
-//			double longitude = array1.get("long").getAsDouble();
-//			String status = array1.get("status").getAsString();
-//			int max = array1.get("max").getAsInt();
-//			JsonPrimitive name = json.getAsJsonObject().getAsJsonPrimitive("name");
-//			JsonPrimitive latitude = json.getAsJsonObject().getAsJsonPrimitive("lat");
-//			JsonPrimitive longitude = json.getAsJsonObject().getAsJsonPrimitive("long");
-//			JsonPrimitive status = json.getAsJsonObject().getAsJsonPrimitive("status");
-//			JsonPrimitive max = json.getAsJsonObject().getAsJsonPrimitive("max");
-		
-//			String name = obj.get("name").getAsString();
-//			double latitude = obj.get("lat").getAsDouble();
-//			double longitude = obj.get("long").getAsDouble();
-//			String status = obj.get("status").getAsString();
-//			int max = obj.get("max").getAsInt();
-//			return null;
-			return list;
-		}
-		
-	}
-	
-	//public ArrayList<ParkingLot> getLotInformation()
 	public Map<String, ParkingLot> getLotInformation()
 	{
 		//This method contacts the server and grabs all of the Lot information.
-		Gson gson = new GsonBuilder()
-			.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-			.registerTypeAdapter(ParkingLot.class, new ParkingLotDeserializer())
-			.create();
-	
 		RestAdapter adapter = new RestAdapter.Builder()
-//			.setConverter(new GsonConverter(gson))
 			.setEndpoint(URL)
 			.build();
 		Lot lotService = adapter.create(Lot.class);
@@ -319,46 +273,7 @@ public class RequestManager
 		
 		return lotInfo;
 	}
-	
-	/* OLD LOT STUFF -- HERE FOR ROLLING BACK PURPOSES IF ABOVE FAILS
-	 * 	interface Lot
-		{
-			//Hook for grabbing the lot data from the server
-			@GET("/hooks/hooks.php?id=lots")
-			ArrayList<ArrayList<String>> getLots();
-		}
 
-		public ArrayList<ParkingLot> getLotInformation()
-		{
-			//This method contacts the server and grabs all of the Lot information.
-			RestAdapter adapter = new RestAdapter.Builder()
-				.setEndpoint(URL)
-				.build();
-			Lot lotService = adapter.create(Lot.class);
-			ArrayList<ArrayList<String>> list = lotService.getLots();
-
-			//Refresh the list by clearing it and then assigning it to a new instance
-			if(lotInfo == null)
-				lotInfo = new ArrayList<ParkingLot>();
-			else
-				lotInfo.clear();
-
-			//Create ParkingLot objects from the provided JSON data.
-			for(int i = 0; i < list.size(); i++)
-			{
-				String name = (String)list.get(i).get(0);
-				String desc = (String)list.get(i).get(0);
-				double longitude = Double.valueOf((String)list.get(i).get(1));
-				double latitude = Double.valueOf((String)list.get(i).get(2));
-				String status = (String)list.get(i).get(3);
-				int max = Integer.valueOf((String)list.get(i).get(4));
-				lotInfo.add(new ParkingLot(name, desc, longitude, latitude, max, status));
-			}
-			
-			return lotInfo;
-		}
-	 */
-	
 	/*
 	 * Call the pullSpotsForLot(Lot) function, which will also pull the whole dataset
 	 * If you need the whole dataset, just call it in a loop on each lot
@@ -402,7 +317,6 @@ public class RequestManager
 //			for(int k = 1; k < list.get(i).get(k).size(); k++)
 //			{
 //				String id = ((list.get(i)).get(k)).get(0);
-//				//TODO: Update these values with the correct values from JSON
 //				spaces.add(new ParkingSpace(false, false, 0));
 //			}
 //			
@@ -426,6 +340,63 @@ public class RequestManager
 		
 		lot.setSpaces(newList);
 		return newList;
+	}
+	
+	/*
+	 * User hook
+	 * This returns the spot that a user has registered
+	 * or null if the user has nothing registered.
+	 * It requires the username to be passed in.
+	 */
+	
+	interface User
+	{
+		@GET("/hooks/hooks.php?id=user")
+		Response getUserSpotInfo(@Query("username") String user);
+	}
+	
+	public ParkingSpace getUserSpotInfo(String user)
+	{
+		//Method to check if a spot is expired or not
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		User userService = adapter.create(User.class);
+		
+		//Send the request
+		Response res = userService.getUserSpotInfo(user);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[32];
+		
+		try 
+		{
+			inp.in().read(bytes);
+		} 
+		catch (Exception e) 
+		{
+			throw new RuntimeException("Error parsing from the server");
+		}
+		
+		String temp = new String(bytes);
+		String[] val = temp.split("\"");
+		Log.w("JSON", val[1]);
+		
+		//Grab the spot id & lot name from the json or throw return null
+		try
+		{
+			int spot_id = Integer.parseInt(val[3]);
+			String lot = val[7];
+			
+			return lotInfo.get(lot).getSpaceAtId(spot_id);
+		}
+		catch(Exception e)
+		{
+			String test = Log.getStackTraceString(e);
+			Log.e("debugger", test);
+			
+			return null;
+		}
 	}
 	
 	/*
@@ -479,7 +450,7 @@ public class RequestManager
 	
 	interface SpotExpired
 	{
-		@GET("/hooks/hooks.php?id=checkexpire")
+		@GET("/hooks/hooks.php?id=expire")
 		Response spotAtLotExpired(@Query("lot") String lotName, @Query("spot") int spot_id, @Query("user_id") int user_id);
 	}
 	

@@ -11,8 +11,6 @@
 
 package com.csc440.group5.nkuparking;
 
-import android.content.SharedPreferences;
-
 import com.google.android.gms.maps.model.LatLng;
 import java.util.*;
 
@@ -103,28 +101,9 @@ public class ParkingLot
 		return spaces.size();
 	}
 	
-//	public String getStatus()
-//	{
-//		//Returns the lot status of this lot.
-//		switch(status)
-//		{
-//			case STUDENT_LOT:
-//				return "Student Lot";
-//			case FACULTY_STAFF_LOT:
-//				return "Faculty/Staff Lot";
-//			case VISITOR_LOT:
-//				return "Visitor Lot";
-//			case OPEN_PARKING:
-//				return "Open Lot";
-//			case CLOSED_PARKING:
-//				return "Closed Lot";
-//			default:
-//				return null;
-//		}
-//	}
-	
 	public void setSpaces(ArrayList<ParkingSpace> spaces)
 	{
+		//Set the spaces of this lot object with the respective array
 		this.spaces.clear();
 		this.spaces.addAll(spaces);
 	}
@@ -148,9 +127,19 @@ public class ParkingLot
 	
 	public String getName()
 	{
-		//Returns this lot's name.
-//		return String.valueOf(name);
 		return name;
+	}
+	
+	public ParkingSpace getSpaceAtId(int spot_id)
+	{
+		//Returns a ParkingSpace object for the respective spot id in this lot.
+		for(int i = 0; i < spaces.size(); i++)
+		{
+			if(spaces.get(i).getSpotID() == spot_id)
+				return spaces.get(i);
+		}
+		
+		return null;
 	}
 	
 	public String getDescription()
@@ -164,9 +153,4 @@ public class ParkingLot
 		//Returns the coordinates of this lot.
 		return new LatLng(latitude, longitude);
 	}
-	
-//	public String toString()
-//	{
-////		return String.format("%s %s %f %f %d %d", name, description, latitude, longitude, max, status);
-//	}
 }

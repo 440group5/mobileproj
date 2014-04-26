@@ -12,31 +12,40 @@
 package com.csc440.group5.nkuparking;
 
 import java.security.MessageDigest;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.*;
-import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnTouchListener 
 {
 	private EditText userText, passText;
-	private MessageDigest digester;
+	
+	/*
+	 * LOGIN INFORMATION:
+	 * These are the correct values to pull user information from shared preferences:
+	 * Set up a shared preferences object (can only be done in an activity or with
+	 * an activity's reference. You can do this by SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs" 0);
+	 * Once this is done, all you have to is call prefs.getString(<key here>); to get the respective string output.
+	 * 
+	 * KEYS USED:
+	 * -Username => For the username.
+	 * -Password => For the password.
+	 * -UserPass => For the hashed (sha256) username & password.
+	 * -AutoLogin => (Returns boolean) for autologin checkbox value.
+	 * -Status => For the user's status (student, faculty/staff).
+	 */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -55,7 +64,7 @@ public class MainActivity extends Activity implements OnTouchListener
         boolean shouldAutoLogin = settings.getBoolean("AutoLogin", false);
         if(shouldAutoLogin)
         {
-        	//TODO: update to use hashed user & pass not plain pass
+        	//Send the login request and login if it works
         	if(username != null && password != null)
         	{
                 LoginAsync asyncLogin = new LoginAsync();
@@ -79,7 +88,9 @@ public class MainActivity extends Activity implements OnTouchListener
         		
         		int temp = loginCreds.get("status");
         		String status; 
-        		if(temp == 2)
+        		if(temp == 1)
+        			status = "Admin";
+        		else if(temp == 2)
         			status = "Faculty/Staff";
         		else if(temp == 3)
         			status = "Student";
