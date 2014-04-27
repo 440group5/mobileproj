@@ -36,15 +36,18 @@ public class WebViewActivity extends Activity
         setContentView(R.layout.map_web_view);
         
         SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
-        Editor edit = prefs.edit();
+//        Editor edit = prefs.edit();
         double lat = Double.parseDouble(prefs.getString("CurrentLat", "-1.0"));
         double lg = Double.parseDouble(prefs.getString("CurrentLong", "-1.0"));
-        edit.remove("CurrentLat");
-        edit.remove("CurrentLong");
-        edit.commit();
+        double toLat = Double.parseDouble(getIntent().getExtras().getString("Lat"));
+        double toLong = Double.parseDouble(getIntent().getExtras().getString("Long"));
+//        edit.remove("CurrentLat");
+//        edit.remove("CurrentLong");
+//        edit.commit();
         
-        String url = String.format("http://maps.google.com/maps?saddr=%f,%f&daddr=39.03364,-84.466995&f=d", lat, lg);
+//        String url = String.format("http://maps.google.com/maps?saddr=%f,%f&daddr=39.03364,-84.466995&f=d", lat, lg);
         
+        String url = String.format("http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f&f=d", lat, lg, toLat, toLong);
         webview = (WebView)findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient() {

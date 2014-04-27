@@ -26,7 +26,9 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	private Spinner spinner;
 	ArrayList<String> listOfLots;
 	String selectedLot;
-	Boolean randomLot;
+	ParkingLot currentLot;
+	Map<String, ParkingLot> lotInformation;
+	boolean randomLot;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -69,6 +71,10 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
 		//        Uri uri = Uri.parse(uristr);
 		Intent intent = new Intent(this, WebViewActivity.class);
+		String lat = String.format("%f", currentLot.getCoordinate().latitude);
+		String lg = String.format("%f", currentLot.getCoordinate().longitude);
+		intent.putExtra("Lat", lat);
+		intent.putExtra("Long", lg);
 		startActivity(intent);
 
 		//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
@@ -114,6 +120,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	{
 		//Determines which option for the dropdown list has been clicked on.
 		selectedLot = listOfLots.get(pos);
+		currentLot = lotInformation.get(selectedLot);
 	}
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) 
@@ -159,11 +166,11 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		@Override
 		protected ArrayList<String> doInBackground(Void... params)
 		{			
-			Map<String, ParkingLot> lots = RequestManager.getSharedInstance().getLotInformation();
-			ArrayList<String> lotNameList = new ArrayList<String>(lots.size());
-			for(String key: lots.keySet() )
+			lotInformation = RequestManager.getSharedInstance().getParkingLotMap(false);
+			ArrayList<String> lotNameList = new ArrayList<String>(lotInformation.size());
+			for(String key: lotInformation.keySet() )
 			{
-				lotNameList.add( lots.get(key).getName() );
+				lotNameList.add( lotInformation.get(key).getName() );
 			}
 
 			return lotNameList;
