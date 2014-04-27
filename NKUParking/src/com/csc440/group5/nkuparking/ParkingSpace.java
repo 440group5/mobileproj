@@ -71,9 +71,22 @@ public class ParkingSpace
 		return isHandicapped;
 	}
 	
+	public void setAvailable()
+	{
+		status = "Open";
+	}
+	
+	public void setUnavailable()
+	{
+		status = "Reserved";
+	}
+	
 	public boolean isAvailable()
 	{
 		//Returns if the space is available or not.
-		return isAvailable;
+		if(status.equals("Open"))
+			return true;
+		else
+			return false;
 	}
 }

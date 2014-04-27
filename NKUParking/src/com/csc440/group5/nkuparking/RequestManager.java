@@ -236,6 +236,7 @@ public class RequestManager
 		if(!list.get(0).contains("-1"))
 		{
 			//successfully reserved said spot
+			lotInfo.get(lot).getSpaceAtId(spot_id).setUnavailable();
 			return true;
 		}
 		else
@@ -526,7 +527,10 @@ public class RequestManager
 			if(val.contains("-1"))
 				return false;
 			else
+			{
+				lotInfo.get(lotName).getSpaceAtId(spot_id).setAvailable();
 				return true;
+			}
 		}
 		catch(Exception e)
 		{
