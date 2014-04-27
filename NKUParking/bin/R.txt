@@ -78,8 +78,8 @@ int id autoLoginBox 0x7f050018
 int id bottomlayout 0x7f05000d
 int id button1 0x7f05000f
 int id class_spinner 0x7f05002a
-int id directionsbutton 0x7f050016
-int id directionsbuttonstatus 0x7f05001b
+int id directionsbuttonsearch 0x7f050016
+int id directionsbuttonstatus 0x7f05001c
 int id disclaimerLab 0x7f05002f
 int id disclaimerLayout 0x7f05002e
 int id hybrid 0x7f050004
@@ -101,8 +101,8 @@ int id regpassfield 0x7f050025
 int id regpasslab 0x7f050023
 int id reguserfield 0x7f050024
 int id reguserlab 0x7f050022
-int id reservebutton 0x7f050015
-int id reservebuttonstatus 0x7f05001c
+int id reservebuttonsearch 0x7f050015
+int id reservebuttonstatus 0x7f05001b
 int id retypepassfield 0x7f050027
 int id retypepasslab 0x7f050026
 int id satellite 0x7f050002

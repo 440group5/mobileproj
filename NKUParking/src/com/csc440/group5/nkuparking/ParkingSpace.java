@@ -21,7 +21,7 @@ public class ParkingSpace
 	private int user_id;
 	private String username;
 	
-	public ParkingSpace(boolean avail, boolean handicapped, int id)//, String exirationtime)
+	public ParkingSpace(boolean avail, boolean handicapped, int id)//, String expirationtime)
 	{
 		this.isAvailable = avail;
 		this.isHandicapped = handicapped;

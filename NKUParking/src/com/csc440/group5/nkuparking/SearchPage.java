@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Map;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -15,13 +16,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class SearchPage extends Activity implements OnItemSelectedListener
 {
 	private Spinner spinner;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -54,6 +56,17 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		spinner.setOnItemSelectedListener(this);
 	}
 	
+	public void loadLotStatus(View view)
+	{
+		Context context = getApplicationContext();
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
+		toast.show();
+		
+		Intent status = new Intent(this, StatusPage.class);
+		startActivity(status);
+	}
+	
 	public void loadDirs(View view)
 	{//39.032356,-84.4654'/'39.03364,-84.466995
 		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
@@ -79,15 +92,15 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		{
 		case R.id.radio_any_spot:
 			if (checked)
-				// Pirates are the best
+				// anyspot checked
 				break;
 		case R.id.radio_lot_spot:
 			if (checked)
-				// Ninjas rule
+				// specific spot checked
 				break;
 		}
 	}
-
+	
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
 	{
@@ -149,13 +162,13 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		protected ArrayList<String> doInBackground(Void... params)
 		{			
 			Map<String, ParkingLot> lots = RequestManager.getSharedInstance().getLotInformation();
-			ArrayList<String> lotList = new ArrayList<String>(lots.size());
+			ArrayList<String> lotNameList = new ArrayList<String>(lots.size());
 			for(String key: lots.keySet() )
 			{
-				lotList.add( lots.get(key).getName() );
+				lotNameList.add( lots.get(key).getName() );
 			}
 
-			return lotList;
+			return lotNameList;
 		}
 	}
 	@Override

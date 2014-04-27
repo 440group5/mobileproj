@@ -1,10 +1,19 @@
+/*
+ * StatusPage.java
+ * 
+ * Status page of an individual lot. 
+ * 
+ * Copyright (c) 2014 CSCGroup5
+ */
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
-
+import java.util.Map;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,11 +21,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class StatusPage extends Activity 
 {
+	public ParkingLot lot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -24,20 +34,44 @@ public class StatusPage extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_page);
 
-		final Button bttnStat = (Button) findViewById(R.id.directionsbuttonstatus);
-		
-		bttnStat.setOnClickListener(new View.OnClickListener() 
-		{
-			public void onClick(View v) 
+		//testing crap
+	
+			ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
+			for(int i=0; i<30; i++)
 			{
-				// Perform action on click
-				Context context = getApplicationContext();
-				int duration = Toast.LENGTH_SHORT;
-
-				Toast toast = Toast.makeText(context, "Directions Button Pressed", duration);
-				toast.show();
+				ParkingSpace p = new ParkingSpace(false, false, i);
+				spaceList.add(p);
 			}
-		});
+			lot.setSpaces(spaceList);
+		
+
+
+		RequestAsync asyncLogin = new RequestAsync();
+		Map<String, ParkingLot> parkingLots;
+		try {
+
+			parkingLots = asyncLogin.execute().get();
+		}
+		catch (Exception e)
+		{
+			new AlertDialog.Builder(this)
+			.setTitle("Error")
+			.setMessage("There was an error contacting the server for lot information.")
+			.setPositiveButton(android.R.string.yes, null)
+			.show();
+			return;
+		}
+		Object[] keyArray = parkingLots.keySet().toArray();
+		lot = parkingLots.get(keyArray[0]);
+
+		MakeButtons(); 
+		MakeTable(lot.getNumSpaces(), lot.getSpaces() );
+	}
+
+	// Makes our Reserve and Directions buttons
+	public void MakeButtons()
+	{
+		// Reserve Button
 		final Button bttnDir = (Button) findViewById(R.id.reservebuttonstatus);
 		bttnDir.setOnClickListener(new View.OnClickListener() 
 		{
@@ -46,18 +80,37 @@ public class StatusPage extends Activity
 				// Perform action on click
 				Context context = getApplicationContext();
 				int duration = Toast.LENGTH_SHORT;
-
 				Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
 				toast.show();
 			}
 		});
 
+		// Directions Button
+		final Button bttnStat = (Button) findViewById(R.id.directionsbuttonstatus);
+		bttnStat.setOnClickListener(new View.OnClickListener() 
+		{
+			public void onClick(View v) 
+			{
+				// Perform action on click
+				Context context = getApplicationContext();
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, "Directions Button Pressed", duration);
+				toast.show();
+			}
+		});
+	}
 
+	// This is where the rows are added to the TableLayout
+	public void MakeTable(int numSpaces, ArrayList<ParkingSpace> spaceList)
+	{	
 
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
-		final ArrayList<Button> bttnlist = new ArrayList<Button>();
+		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
+
+		int spaceIndex=0;
 		// rows
-		for(int y=0; y<20; y++) 
+		//for(int y=0; y<20; y++)
+		while( spaceIndex < numSpaces)
 		{
 			TableRow row = new TableRow(this);
 			// columns
@@ -67,9 +120,10 @@ public class StatusPage extends Activity
 				final Button b = new Button(this);
 				//b.setText(x+","+y); // text on button
 
-				if( x!=1 && x!=4 && x!=7 )
+				if( x!=1 && x!=4 && x!=7 )	// not spacing columns
 				{
-					if( y>2 )	// if available space
+					// Available Space
+					if( spaceList.get(spaceIndex).isAvailable() )	
 					{
 						bttnlist.add(b);	//add to list of clickable spaces
 						b.setBackgroundColor( getResources().getColor(R.color.available) );
@@ -86,47 +140,46 @@ public class StatusPage extends Activity
 							}
 						});
 					}
+					// Unavailable Space
 					else
+					{
 						b.setBackgroundColor( getResources().getColor(R.color.unavailable) );
+						// Handicapped Space
+						if( spaceList.get(spaceIndex).isHandicapped() )
+							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
+					}
+					spaceIndex++;
 				}
+				// Generic Filler Space
 				else
 					b.setBackgroundColor( getResources().getColor(R.color.generic) );
-				//handicapped
-				if(x==2 && y==0)
-					b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
+
 
 				row.addView(b); //Attach TextView to its parent (row)
-				row.setWeightSum(9);
-				
+				//row.setWeightSum(9);
+
 				//Warning: do not call t.setLayoutParams(params)
 				//before attaching the view to the parent, 
 				//else null reference will result
+
 				//Use the following lines only if special formatting
 				//as shown below is needed. If not, skip.
 				//
-				
+
 				TableRow.LayoutParams params = 
 						(TableRow.LayoutParams)b.getLayoutParams();
 				params.column= x; //place at xth columns.
-				//Skip above line if being placed side by side
-
-				
-				//params.span = 1; //span these many columns, 
-				//i.e merge these many cells. Skip if not needed
 
 				params.setMargins(1,1,1,1); //To "draw" margins
 				//around (outside) the ButtonView, skip if not needed
 
-				params.weight=1;
-				
-				//params.width=20;
-				//Set width as needed (Important: this and the
-				//.height below is for layout of "text" inside 
-				//the TextView, not for layout of TextView' by its
-				//parent)
+				params.weight=1;	// Giving weight means they will fill and share evenly
 
+
+				//Set width and height as needed
+				//params.width=20;
 				params.height = TableRow.LayoutParams.WRAP_CONTENT;
-				
+
 				b.setPadding(2, 2, 2, 2); 
 				//Skip padding (space around text) above if not needed
 
@@ -134,14 +187,18 @@ public class StatusPage extends Activity
 				//Skip above if no special setting is needed
 
 			}
-			//Next add the new row to the table
+			// Add the new row to the table
 			table.addView( row, 
 					new TableLayout.LayoutParams
 					(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 
 							android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
-		} //...Here our row is all complete with 10 TextViews
+		} //...Here our table is all complete
+	}
 
-
+	// Set which lot this should load. Default is gibberish.
+	public void setLot(ParkingLot tempLot)
+	{
+		lot = tempLot;
 	}
 
 	@Override
@@ -187,4 +244,19 @@ public class StatusPage extends Activity
 		}
 	}
 
+	private class RequestAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
+	{
+		//Asynchronously goes and sees if the login information is correct
+		//Returns an object with all the lots
+		@Override
+		protected Map<String, ParkingLot> doInBackground(Void... params)
+		{						
+			Map<String, ParkingLot> lotsObj
+			= RequestManager.getSharedInstance().getLotInformation();
+			ArrayList<ParkingSpace> spaceList 
+			=RequestManager.getSharedInstance().pullParkingSpaceInfo();
+
+			return lotsObj;
+		}
+	}
 }

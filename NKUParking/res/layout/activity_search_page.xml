@@ -28,6 +28,7 @@
             android:id="@+id/radio_any_spot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:onClick="onRadioButtonClicked"
             android:text="@string/search_option_two" />
 
@@ -40,19 +41,20 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/reservebutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/directionsbutton"
-        android:layout_alignParentLeft="true"
-        android:text="@string/reserve_button" />
-
-    <Button
-        android:id="@+id/directionsbutton"
-        android:layout_width="match_parent"
+        android:id="@+id/reservebuttonsearch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/directionsbuttonsearch"
+        android:text="@string/reserve_button"
+        android:onClick="loadLotStatus" />
+
+    <Button
+        android:id="@+id/directionsbuttonsearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:text="@string/directions_button"
         android:onClick="loadDirs" />
 

@@ -245,8 +245,8 @@ containing a value of this type.
         public static final int bottomlayout=0x7f05000d;
         public static final int button1=0x7f05000f;
         public static final int class_spinner=0x7f05002a;
-        public static final int directionsbutton=0x7f050016;
-        public static final int directionsbuttonstatus=0x7f05001b;
+        public static final int directionsbuttonsearch=0x7f050016;
+        public static final int directionsbuttonstatus=0x7f05001c;
         public static final int disclaimerLab=0x7f05002f;
         public static final int disclaimerLayout=0x7f05002e;
         public static final int hybrid=0x7f050004;
@@ -268,8 +268,8 @@ containing a value of this type.
         public static final int regpasslab=0x7f050023;
         public static final int reguserfield=0x7f050024;
         public static final int reguserlab=0x7f050022;
-        public static final int reservebutton=0x7f050015;
-        public static final int reservebuttonstatus=0x7f05001c;
+        public static final int reservebuttonsearch=0x7f050015;
+        public static final int reservebuttonstatus=0x7f05001b;
         public static final int retypepassfield=0x7f050027;
         public static final int retypepasslab=0x7f050026;
         public static final int satellite=0x7f050002;
