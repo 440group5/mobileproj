@@ -45,11 +45,7 @@
             android:label="@string/app_name"
             android:noHistory="true"
             android:windowSoftInputMode="stateHidden" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.csc440.group5.nkuparking.MapPage"
@@ -98,6 +94,11 @@
         <activity
             android:name="com.csc440.group5.nkuparking.StatusPage"
             android:label="@string/app_name" >
+                        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.csc440.group5.nkuparking.SettingsPage"

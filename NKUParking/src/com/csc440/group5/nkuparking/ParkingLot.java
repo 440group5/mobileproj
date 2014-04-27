@@ -98,14 +98,22 @@ public class ParkingLot
 	
 	public int getNumSpaces()
 	{
-		return spaces.size();
+		return spaces.size() - 1;
 	}
 	
 	public void setSpaces(ArrayList<ParkingSpace> spaces)
 	{
 		//Set the spaces of this lot object with the respective array
-		this.spaces.clear();
-		this.spaces.addAll(spaces);
+		if(this.spaces == null)
+		{
+			this.spaces = new ArrayList<ParkingSpace>();
+			this.spaces.addAll(spaces);
+		}
+		else
+		{
+			this.spaces.clear();
+			this.spaces.addAll(spaces);
+		}
 	}
 	
 	public double getPercentFilled()

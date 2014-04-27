@@ -15,6 +15,7 @@ public class ParkingSpace
 	private int spot_id;
 	private int id;
 	private int lot;
+	private String lotName;
 	private String status;
 	private String reserve;
 	private String expire;
@@ -37,9 +38,20 @@ public class ParkingSpace
 			this.expire = "Closed";
 	}
 	
-	public char getLotName()
+	public String getLotName()
 	{
-		return (char)lot;
+		return lotName;
+	}
+	
+	public int getLot()
+	{
+		return lot;
+//		return (char)lot;
+	}
+	
+	public void setLotName(String name)
+	{
+		this.lotName = name;
 	}
 	
 	public int getSpotID()

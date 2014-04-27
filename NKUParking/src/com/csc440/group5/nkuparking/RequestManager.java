@@ -253,6 +253,15 @@ public class RequestManager
 		@GET("/hooks/hooks.php?id=lots")
 		ArrayList<ParkingLot> getLots();
 	}
+	
+	public Map<String, ParkingLot> pullParkingLotInformation()
+	{
+		boolean result = syncSpacesWithLots();
+		if(result)
+			return lotInfo;
+		else
+			return null;
+	}
 
 	public Map<String, ParkingLot> getLotInformation()
 	{
@@ -327,20 +336,60 @@ public class RequestManager
 //		return lotInfo;
 	}
 	
-	public ArrayList<ParkingSpace> getSpacesForLot(ParkingLot lot)
+	public boolean syncSpacesWithLots()
 	{
-		ArrayList<ParkingSpace> newList = new ArrayList<ParkingSpace>();
-		parkingSpaceList = pullParkingSpaceInfo();
+//		try
+//		{
+			lotInfo = getLotInformation();
+			parkingSpaceList = pullParkingSpaceInfo();
+			ArrayList<ParkingSpace> temp = new ArrayList<ParkingSpace>(parkingSpaceList);
+			ArrayList<ParkingSpace> spaces;
 		
-		for(ParkingSpace space : parkingSpaceList)
-		{
-			if(space.getLotName() == lot.getCharName())
-				newList.add(space);
-		}
+			Set<String> keys = lotInfo.keySet();
+			for(String key : keys)
+			{
+				ParkingLot lot = lotInfo.get(key);
+				spaces = new ArrayList<ParkingSpace>();
+				
+				for(int i = 0; i < temp.size(); i++)
+				{
+					ParkingSpace space = temp.get(i);
+					space.setLotName(String.format("%c", (char)space.getLot()));
+					if(space.getLotName().equals(lot.getName()))
+					{
+						spaces.add(space);
+//						temp.remove(i);
+					}
+				}
+				
+				lot.setSpaces(spaces);
+				spaces = new ArrayList<ParkingSpace>();
+			}
 		
-		lot.setSpaces(newList);
-		return newList;
+			return true;
+//		}
+//		catch(Exception e)
+//		{
+//			return false;
+//		}
 	}
+	
+//	public ArrayList<ParkingSpace> getSpacesForLot(ParkingLot lot)
+//	{
+////		ArrayList<ParkingSpace> newList = new ArrayList<ParkingSpace>();
+////		if(lotInfo == null)
+////			lotInfo = getLotInformation();
+////		
+////		parkingSpaceList = pullParkingSpaceInfo();
+////		
+////		for(ParkingSpace space : parkingSpaceList)
+////		{
+////			if(space.getLotName() == lot.getCharName())
+////				newList.add(space);
+////		}
+//		lot.setSpaces(newList);
+//		return newList;
+//	}
 	
 	/*
 	 * User hook

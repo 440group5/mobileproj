@@ -35,15 +35,15 @@ public class StatusPage extends Activity
 		setContentView(R.layout.activity_status_page);
 
 		//testing crap
-	
-			ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
-			for(int i=0; i<30; i++)
-			{
-				ParkingSpace p = new ParkingSpace(false, false, i);
-				spaceList.add(p);
-			}
-			lot.setSpaces(spaceList);
-		
+
+		ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
+		for(int i=0; i<30; i++)
+		{
+			ParkingSpace p = new ParkingSpace(false, false, i);
+			spaceList.add(p);
+		}
+		lot.setSpaces(spaceList);
+
 
 
 		RequestAsync asyncLogin = new RequestAsync();
@@ -62,10 +62,10 @@ public class StatusPage extends Activity
 			return;
 		}
 		Object[] keyArray = parkingLots.keySet().toArray();
-		lot = parkingLots.get(keyArray[0]);
+		lot = parkingLots.get(keyArray[1]);
 
 		MakeButtons(); 
-		MakeTable(lot.getNumSpaces(), lot.getSpaces() );
+		MakeTable(lot.getSpaces() );
 	}
 
 	// Makes our Reserve and Directions buttons
@@ -101,7 +101,7 @@ public class StatusPage extends Activity
 	}
 
 	// This is where the rows are added to the TableLayout
-	public void MakeTable(int numSpaces, ArrayList<ParkingSpace> spaceList)
+	public void MakeTable(ArrayList<ParkingSpace> spaceList)
 	{	
 
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
@@ -110,7 +110,7 @@ public class StatusPage extends Activity
 		int spaceIndex=0;
 		// rows
 		//for(int y=0; y<20; y++)
-		while( spaceIndex < numSpaces)
+		while( spaceIndex < spaceList.size() )
 		{
 			TableRow row = new TableRow(this);
 			// columns
@@ -120,8 +120,9 @@ public class StatusPage extends Activity
 				final Button b = new Button(this);
 				//b.setText(x+","+y); // text on button
 
-				if( x!=1 && x!=4 && x!=7 )	// not spacing columns
+				if( x!=1 && x!=4 && x!=7 && spaceIndex<spaceList.size() )	// not spacing columns
 				{
+
 					// Available Space
 					if( spaceList.get(spaceIndex).isAvailable() )	
 					{
@@ -149,6 +150,7 @@ public class StatusPage extends Activity
 							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
 					}
 					spaceIndex++;
+
 				}
 				// Generic Filler Space
 				else
@@ -251,10 +253,10 @@ public class StatusPage extends Activity
 		@Override
 		protected Map<String, ParkingLot> doInBackground(Void... params)
 		{						
-			Map<String, ParkingLot> lotsObj
-			= RequestManager.getSharedInstance().getLotInformation();
-			ArrayList<ParkingSpace> spaceList 
-			=RequestManager.getSharedInstance().pullParkingSpaceInfo();
+			Map<String, ParkingLot> lotsObj = RequestManager.getSharedInstance().pullParkingLotInformation();
+			//			= RequestManager.getSharedInstance().getLotInformation();
+			//			ArrayList<ParkingSpace> spaceList 
+			//			=RequestManager.getSharedInstance().pullParkingSpaceInfo();
 
 			return lotsObj;
 		}

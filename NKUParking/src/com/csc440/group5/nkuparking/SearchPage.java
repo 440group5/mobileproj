@@ -24,6 +24,9 @@ import android.widget.Toast;
 public class SearchPage extends Activity implements OnItemSelectedListener
 {
 	private Spinner spinner;
+	ArrayList<String> listOfLots;
+	String selectedLot;
+	Boolean randomLot;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -31,15 +34,108 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_page);
 
+		populateSpinner();
+	}
+
+	/**
+	 * Reservation Button for Search Page.
+	 * Opens a Lot Status page so user can select a space to reserve.
+	 * @param view
+	 */
+	public void loadLotStatus(View view)
+	{
+		// Toast message for button.
+		Context context = getApplicationContext();
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
+		toast.show();
+
+		// Starts Status window
+		Intent status = new Intent(this, StatusPage.class);
+		startActivity(status);
+	}
+
+	/**
+	 * Directions Button for Search Page.
+	 * @param view
+	 */
+	public void loadDirs(View view)
+	{
+		//39.032356,-84.4654'/'39.03364,-84.466995
+		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
+		String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
+
+		//        String uristr = begin + "?q=" + end + "&z=18";
+		//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
+		//        Uri uri = Uri.parse(uristr);
+		Intent intent = new Intent(this, WebViewActivity.class);
+		startActivity(intent);
+
+		//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
+		//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		//        this.startActivity(intent);
+	}
+
+	public void onRadioButtonClicked(View view) 
+	{
+		// Is the button now checked?
+		boolean checked = ((RadioButton) view).isChecked();
+
+		// Check which radio button was clicked
+		switch(view.getId()) 
+		{
+		case R.id.radio_any_spot:
+			if (checked)
+			{
+				// any spot checked
+				randomLot=true;
+			}
+			break;
+		case R.id.radio_lot_spot:
+			if (checked)
+			{
+				// specific spot checked
+				Context context = getApplicationContext();
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, selectedLot, duration);
+				toast.show();
+				
+				randomLot=false;
+			}
+			break;
+		}
+	}
+
+	/**
+	 * Spinner Stuff
+	 */
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
+	{
+		//Determines which option for the dropdown list has been clicked on.
+		selectedLot = listOfLots.get(pos);
+	}
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) 
+	{
+		// Generic default
+		selectedLot = listOfLots.get(0);	//default as first lot
+	}
+
+	/**
+	 * Populates Spinner, the dropdown box where
+	 * the user selects from a list of lots.
+	 */
+	public void populateSpinner()
+	{
 		//Add the options to the spinner (dropdown box for student & faculty/staff).
 		spinner = (Spinner)findViewById(R.id.spinner_lots);
 
 		//Async Call for Lot List
-		RequestAsync asyncLogin = new RequestAsync();
-		ArrayList<String> listOfLots;
+		RequestAsync asyncLotList = new RequestAsync();
 
 		try {
-			listOfLots = asyncLogin.execute().get();
+			listOfLots = asyncLotList.execute().get();
 		}
 		catch (Exception e)
 		{
@@ -51,67 +147,31 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			return;
 		}
 
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLots);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 	}
-	
-	public void loadLotStatus(View view)
+
+	private class RequestAsync extends AsyncTask<Void, Void, ArrayList<String>>
 	{
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
-		toast.show();
-		
-		Intent status = new Intent(this, StatusPage.class);
-		startActivity(status);
-	}
-	
-	public void loadDirs(View view)
-	{//39.032356,-84.4654'/'39.03364,-84.466995
-		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
-        String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
+		//Asynchronously goes and sees if the login information is correct
+		@Override
+		protected ArrayList<String> doInBackground(Void... params)
+		{			
+			Map<String, ParkingLot> lots = RequestManager.getSharedInstance().getLotInformation();
+			ArrayList<String> lotNameList = new ArrayList<String>(lots.size());
+			for(String key: lots.keySet() )
+			{
+				lotNameList.add( lots.get(key).getName() );
+			}
 
-//        String uristr = begin + "?q=" + end + "&z=18";
-//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
-//        Uri uri = Uri.parse(uristr);
-    	Intent intent = new Intent(this, WebViewActivity.class);
-    	startActivity(intent);
-        
-//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
-//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//        this.startActivity(intent);
-	}
-
-	public void onRadioButtonClicked(View view) {
-		// Is the button now checked?
-		boolean checked = ((RadioButton) view).isChecked();
-
-		// Check which radio button was clicked
-		switch(view.getId()) 
-		{
-		case R.id.radio_any_spot:
-			if (checked)
-				// anyspot checked
-				break;
-		case R.id.radio_lot_spot:
-			if (checked)
-				// specific spot checked
-				break;
-		}
-	}
-	
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
-	{
-		//Determines which option for the dropdown list has been clicked on.
-		switch(pos)
-		{
-		case 0:
-			break;
+			return lotNameList;
 		}
 	}
 
+
+	// Options Menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{
@@ -155,25 +215,6 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	private class RequestAsync extends AsyncTask<Void, Void, ArrayList<String>>
-	{
-		//Asynchronously goes and sees if the login information is correct
-		@Override
-		protected ArrayList<String> doInBackground(Void... params)
-		{			
-			Map<String, ParkingLot> lots = RequestManager.getSharedInstance().getLotInformation();
-			ArrayList<String> lotNameList = new ArrayList<String>(lots.size());
-			for(String key: lots.keySet() )
-			{
-				lotNameList.add( lots.get(key).getName() );
-			}
 
-			return lotNameList;
-		}
-	}
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
 
-	}
 }

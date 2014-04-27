@@ -30,14 +30,14 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/search_option_two" />
+            android:text="@string/search_option_one" />
 
         <RadioButton
             android:id="@+id/radio_lot_spot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/search_option_one" />
+            android:text="@string/search_option_two" />
     </RadioGroup>
 
     <Button
