@@ -46,21 +46,21 @@ public class StatusPage extends Activity
 
 
 
-		RequestAsync asyncLogin = new RequestAsync();
-		Map<String, ParkingLot> parkingLots;
-		try {
-
-			parkingLots = asyncLogin.execute().get();
-		}
-		catch (Exception e)
-		{
-			new AlertDialog.Builder(this)
-			.setTitle("Error")
-			.setMessage("There was an error contacting the server for lot information.")
-			.setPositiveButton(android.R.string.yes, null)
-			.show();
-			return;
-		}
+//		RequestAsync asyncLogin = new RequestAsync();
+		Map<String, ParkingLot> parkingLots = RequestManager.getSharedInstance().getParkingLotMap(false);
+//		try {
+//
+//			parkingLots = asyncLogin.execute().get();
+//		}
+//		catch (Exception e)
+//		{
+//			new AlertDialog.Builder(this)
+//			.setTitle("Error")
+//			.setMessage("There was an error contacting the server for lot information.")
+//			.setPositiveButton(android.R.string.yes, null)
+//			.show();
+//			return;
+//		}
 		Object[] keyArray = parkingLots.keySet().toArray();
 		lot = parkingLots.get(keyArray[1]);
 

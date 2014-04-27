@@ -29,6 +29,14 @@ public class RequestManager
 		return INSTANCE;
 	}
 	
+	public Map<String, ParkingLot> getParkingLotMap(boolean sync)
+	{
+		if(sync || lotInfo == null)
+			return pullParkingLotInformation();
+		else
+			return lotInfo;
+	}
+	
 	/*
 	 * To correctly use the login function of API:
 	 * 
@@ -339,8 +347,8 @@ public class RequestManager
 	
 	public boolean syncSpacesWithLots()
 	{
-//		try
-//		{
+		try
+		{
 			lotInfo = getLotInformation();
 			parkingSpaceList = pullParkingSpaceInfo();
 			ArrayList<ParkingSpace> temp = new ArrayList<ParkingSpace>(parkingSpaceList);
@@ -368,11 +376,11 @@ public class RequestManager
 			}
 		
 			return true;
-//		}
-//		catch(Exception e)
-//		{
-//			return false;
-//		}
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
 	}
 	
 //	public ArrayList<ParkingSpace> getSpacesForLot(ParkingLot lot)

@@ -23,6 +23,7 @@ public class ParkingLot
 	private int max;
 	public final static int STUDENT_LOT = 0, FACULTY_STAFF_LOT = 1, VISITOR_LOT = 2, OPEN_PARKING = 3, CLOSED_PARKING = 4;
 	private double percentFilled = 0.0;
+	private String status;
 	
 	public ParkingLot(String name, String desc, double latitude, double longitude, int numSpaces, int status)
 	{
@@ -148,6 +149,11 @@ public class ParkingLot
 		}
 		
 		return null;
+	}
+	
+	public String getStatus()
+	{
+		return status;
 	}
 	
 	public String getDescription()

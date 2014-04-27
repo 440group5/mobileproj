@@ -11,6 +11,9 @@
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
@@ -37,6 +40,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 	private LatLng startingCoord;
 	private float zoom = 16.0f;
 	private final double START_LAT = 39.032356, START_LONG = -84.465406;
+	private Map<String, ParkingLot> lotMap;
 	private ArrayList<ParkingLot> lotList = new ArrayList<ParkingLot>();
 	private Location currentLocation;
 	private boolean gpsLoaded = false;
@@ -57,8 +61,47 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         
         //Load the map markers async.
-        new BuildLotsAsync().execute();
+        try 
+        {
+			lotMap = new LoadLotsAsync().execute().get();
+			if(lotMap == null)
+				throw new Exception();
+        }
+		catch (Exception e) 
+		{
+			new AlertDialog.Builder(this)
+			.setTitle("Error")
+			.setMessage("Error contacting the server for the lot information.")
+			.setPositiveButton(android.R.string.yes, null)
+			.show();
+			
+			return;
+		}
         
+        //Load the map markers for each of the lots
+        for(String key : lotMap.keySet())
+		{
+			ParkingLot lot = lotMap.get(key);
+			String desc = String.format("%s Lot", lot.getStatus());
+			map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(desc));
+			map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+			
+				@Override
+				public void onInfoWindowClick(Marker marker) {
+				
+					/* ---Navigate to directions page.---
+			 				 					
+				Intent directions = new Intent(MapPage.this, DirectionsPage.class);
+				startActivity(directions);
+					 */
+				
+					//Pop up a toast when the info window is clicked.
+					Toast.makeText(getBaseContext(), 
+							"Lot Selected", 
+							Toast.LENGTH_SHORT).show();				
+					} 
+				});
+		}
         //Move the camera to NKU
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(startingCoord, zoom));
     }
@@ -72,68 +115,114 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
     	currentLocation = location;
 	}
     
-    private class BuildLotsAsync extends AsyncTask<Void, Void, ArrayList<ParkingLot>>
-	{
-		@Override
-		protected ArrayList<ParkingLot> doInBackground(Void... params)
-		{
+    private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
+    {
+    	@Override
+    	protected Map<String, ParkingLot> doInBackground(Void... params)
+    	{
+    		try
+    		{
+    			return RequestManager.getSharedInstance().getParkingLotMap(true);
+    		}
+    		catch(Exception e)
+    		{
+    			return null;
+    		}
+    	}
+    }
+    
+//    private class BuildLotsAsync extends AsyncTask<Void, Void, Boolean>
+//	{
+//		@Override
+//		protected Boolean doInBackground(Void... params)
+//		{
 			//Build the Lots asynchronously.
 			//ParkingLot Constructor: ParkingLot(name, description, latitude, longitude, number of spaces)
-			lotList.add(new ParkingLot("A", "Lot A - Open Lot", 39.030569, -84.468997, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("C", "Lot C - Faculty/Staff Lot", 39.031650, -84.466539, 0, ParkingLot.FACULTY_STAFF_LOT));
-			lotList.add(new ParkingLot("D", "Lot D - Faculty/Staff Lot", 39.032240, -84.461732, 0, ParkingLot.FACULTY_STAFF_LOT));
-			lotList.add(new ParkingLot("E", "Lot E - Faculty/Staff Lot", 39.033813, -84.465048, 0, ParkingLot.FACULTY_STAFF_LOT));
-			lotList.add(new ParkingLot("F", "Lot F - Student Lot", 39.034353, -84.464137, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("G", "Lot G - Open Lot", 39.029586, -84.469147, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("I", "Lot I - Student Lot", 39.033275, -84.463403, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("J", "Lot J - Faculty/Staff Lot", 39.030242, -84.461554, 0, ParkingLot.FACULTY_STAFF_LOT));
-			lotList.add(new ParkingLot("K", "Lot K - Open Lot", 39.031553, -84.468237, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("L", "Lot L - Open Lot", 39.032869, -84.468344, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("M", "Lot M - Student Lot", 39.033643, -84.466995, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("N", "Lot N - Reserved Lot", 39.02963, -84.462902, 0, ParkingLot.CLOSED_PARKING));
-			lotList.add(new ParkingLot("O", "Lot O - Open/VIP Lot", 39.031161, -84.45933, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("P", "Lot P - Student Lot", 39.034545, -84.467398, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("Q", "Lot Q - Student Lot", 39.036795, -84.46669, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("R", "Lot R - Student Lot (Ceramics Permit)", 39.036931, -84.465037, 0, ParkingLot.CLOSED_PARKING));
-			lotList.add(new ParkingLot("S", "Lot S - Open Lot", 39.028469, -84.466405, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("T", "Lot T - Open Lot", 39.028633, -84.462243, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("U", "Lot U - Student Lot", 39.036169, -84.465173, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("V", "Lot V - Faculty/Staff Lot", 39.028757, -84.4638, 0, ParkingLot.FACULTY_STAFF_LOT));
-			lotList.add(new ParkingLot("W", "Lot W - Student Lot", 39.032522, -84.463036, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("X", "Lot X - Open Lot", 39.027865, -84.462392, 0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("Y", "Lot Y - Student Lot", 39.033911, -84.468868, 0, ParkingLot.STUDENT_LOT));
-			lotList.add(new ParkingLot("Welcome Center Garage", "", 39.032303, -84.460835,0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("University Drive Garage", "", 39.03018, -84.461148,0, ParkingLot.OPEN_PARKING));
-			lotList.add(new ParkingLot("Kenton Drive Garage", "", 39.030286, -84.467913,0, ParkingLot.OPEN_PARKING));
-			return lotList;
-		}
+//			lotList.add(new ParkingLot("A", "Lot A - Open Lot", 39.030569, -84.468997, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("C", "Lot C - Faculty/Staff Lot", 39.031650, -84.466539, 0, ParkingLot.FACULTY_STAFF_LOT));
+//			lotList.add(new ParkingLot("D", "Lot D - Faculty/Staff Lot", 39.032240, -84.461732, 0, ParkingLot.FACULTY_STAFF_LOT));
+//			lotList.add(new ParkingLot("E", "Lot E - Faculty/Staff Lot", 39.033813, -84.465048, 0, ParkingLot.FACULTY_STAFF_LOT));
+//			lotList.add(new ParkingLot("F", "Lot F - Student Lot", 39.034353, -84.464137, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("G", "Lot G - Open Lot", 39.029586, -84.469147, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("I", "Lot I - Student Lot", 39.033275, -84.463403, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("J", "Lot J - Faculty/Staff Lot", 39.030242, -84.461554, 0, ParkingLot.FACULTY_STAFF_LOT));
+//			lotList.add(new ParkingLot("K", "Lot K - Open Lot", 39.031553, -84.468237, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("L", "Lot L - Open Lot", 39.032869, -84.468344, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("M", "Lot M - Student Lot", 39.033643, -84.466995, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("N", "Lot N - Reserved Lot", 39.02963, -84.462902, 0, ParkingLot.CLOSED_PARKING));
+//			lotList.add(new ParkingLot("O", "Lot O - Open/VIP Lot", 39.031161, -84.45933, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("P", "Lot P - Student Lot", 39.034545, -84.467398, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("Q", "Lot Q - Student Lot", 39.036795, -84.46669, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("R", "Lot R - Student Lot (Ceramics Permit)", 39.036931, -84.465037, 0, ParkingLot.CLOSED_PARKING));
+//			lotList.add(new ParkingLot("S", "Lot S - Open Lot", 39.028469, -84.466405, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("T", "Lot T - Open Lot", 39.028633, -84.462243, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("U", "Lot U - Student Lot", 39.036169, -84.465173, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("V", "Lot V - Faculty/Staff Lot", 39.028757, -84.4638, 0, ParkingLot.FACULTY_STAFF_LOT));
+//			lotList.add(new ParkingLot("W", "Lot W - Student Lot", 39.032522, -84.463036, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("X", "Lot X - Open Lot", 39.027865, -84.462392, 0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("Y", "Lot Y - Student Lot", 39.033911, -84.468868, 0, ParkingLot.STUDENT_LOT));
+//			lotList.add(new ParkingLot("Welcome Center Garage", "", 39.032303, -84.460835,0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("University Drive Garage", "", 39.03018, -84.461148,0, ParkingLot.OPEN_PARKING));
+//			lotList.add(new ParkingLot("Kenton Drive Garage", "", 39.030286, -84.467913,0, ParkingLot.OPEN_PARKING));
+//			return lotList;
+//			try 
+//			{
+//				for(String key : lotMap.keySet())
+//				{
+//					ParkingLot lot = lotMap.get(key);
+//					map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
+//					map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+//					
+//						@Override
+//						public void onInfoWindowClick(Marker marker) {
+//						
+//							/* ---Navigate to directions page.---
+//					 				 					
+//						Intent directions = new Intent(MapPage.this, DirectionsPage.class);
+//						startActivity(directions);
+//							 */
+//						
+//							//Pop up a toast when the info window is clicked.
+//							Toast.makeText(getBaseContext(), 
+//									"Lot Selected", 
+//									Toast.LENGTH_SHORT).show();				
+//							} 
+//						});
+//				}
+//				
+//				return true;
+//			}
+//			catch(Exception e)
+//			{
+//				return false;
+//			}
+//		}
 		
-		protected void onPostExecute(ArrayList<ParkingLot> result)
-		{
-			//Add the markers to the map.
-			for(ParkingLot lot : result){
-				map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
-				map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-					
-					@Override
-					public void onInfoWindowClick(Marker marker) {
-						
-					/* ---Navigate to directions page.---
-					 				 					
-					Intent directions = new Intent(MapPage.this, DirectionsPage.class);
-					startActivity(directions);
-					*/
-						
-					//Pop up a toast when the info window is clicked.
-					Toast.makeText(getBaseContext(), 
-					"Lot Selected", 
-					Toast.LENGTH_SHORT).show();				
-					  } 
-					}
-				);
-			  }
-			}
-	}
+//		protected void onPostExecute(ArrayList<ParkingLot> result)
+//		{
+//			//Add the markers to the map.
+//			for(ParkingLot lot : result){
+//				map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
+//				map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+//					
+//					@Override
+//					public void onInfoWindowClick(Marker marker) {
+//						
+//					/* ---Navigate to directions page.---
+//					 				 					
+//					Intent directions = new Intent(MapPage.this, DirectionsPage.class);
+//					startActivity(directions);
+//					*/
+//						
+//					//Pop up a toast when the info window is clicked.
+//					Toast.makeText(getBaseContext(), 
+//					"Lot Selected", 
+//					Toast.LENGTH_SHORT).show();				
+//					  } 
+//					}
+//				);
+//			  }
+//	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) 
