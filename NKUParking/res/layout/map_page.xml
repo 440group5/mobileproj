@@ -6,20 +6,22 @@
   -Jordan Bossman
   
   Copyright 2014 CSCGroup5
- -->
+-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".MapPage">
-    
-    <fragment android:id="@+id/map"
-    	  android:layout_width="match_parent"
-    	  android:layout_height="match_parent"
-    	  android:name="com.google.android.gms.maps.MapFragment" />
+    tools:context=".MapPage" >
 
-    <!-- WebView
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--
+         WebView
         android:id="@+id/webView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -27,8 +29,26 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:scrollbarStyle="insideOverlay"--> 
-      
+        android:scrollbarStyle="insideOverlay"
+    -->
 
+    <Button
+        android:id="@+id/reservebutton_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="13dip"
+        android:layout_toLeftOf="@+id/directionsbutton_map"
+        android:text="@string/status_button" />
+
+    <Button
+        android:id="@+id/directionsbutton_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dip"
+        android:layout_marginRight="50dip"
+        android:text="@string/directions_button" />
 
 </RelativeLayout>

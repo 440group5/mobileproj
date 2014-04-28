@@ -14,17 +14,17 @@
             android:id="@+id/mytablelayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
-
         </TableLayout>
     </ScrollView>
 
-	<Button
+    <Button
         android:id="@+id/reservebuttonstatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/directionsbuttonstatus"
         android:text="@string/reserve_button" />
+
     <Button
         android:id="@+id/directionsbuttonstatus"
         android:layout_width="wrap_content"
@@ -33,5 +33,15 @@
         android:layout_alignParentRight="true"
         android:text="@string/directions_button" />
 
+    <TextView
+        android:id="@+id/lot_name_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/reservebuttonstatus"
+        android:layout_alignBottom="@+id/reservebuttonstatus"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dip"
+        android:text="@string/statphl"
+        android:textColor="@color/generic" />
 
 </RelativeLayout>

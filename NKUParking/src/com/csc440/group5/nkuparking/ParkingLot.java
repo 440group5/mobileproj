@@ -99,7 +99,7 @@ public class ParkingLot
 	
 	public int getNumSpaces()
 	{
-		return spaces.size() - 1;
+		return spaces.size();
 	}
 	
 	public void setSpaces(ArrayList<ParkingSpace> spaces)

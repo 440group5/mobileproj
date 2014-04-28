@@ -42,10 +42,12 @@
     <string name="search_title">Search</string>
     <string name="search_option_one">Any open space</string>
 	<string name="search_option_two">A space in lot:</string>
+	<string name="status_button">Lot Status</string>
 	<string name="reserve_button">Reserve</string>
-	<string name="directions_button">Get Directions</string>
+	<string name="directions_button">Directions</string>
 	<string name="searchspinnertext">Lot</string>
     
-    <string name="statphl">Placeholder Lot #</string>
+    <string name="statphl">Lot #</string>
     <string name="statphb">Waiting</string>
+    
 </resources>

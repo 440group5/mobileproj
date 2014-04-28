@@ -21,12 +21,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class StatusPage extends Activity 
 {
 	public ParkingLot lot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
+	int reserveIndex=-1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -46,23 +48,26 @@ public class StatusPage extends Activity
 
 
 
-//		RequestAsync asyncLogin = new RequestAsync();
+		//		RequestAsync asyncLogin = new RequestAsync();
 		Map<String, ParkingLot> parkingLots = RequestManager.getSharedInstance().getParkingLotMap(false);
-//		try {
-//
-//			parkingLots = asyncLogin.execute().get();
-//		}
-//		catch (Exception e)
-//		{
-//			new AlertDialog.Builder(this)
-//			.setTitle("Error")
-//			.setMessage("There was an error contacting the server for lot information.")
-//			.setPositiveButton(android.R.string.yes, null)
-//			.show();
-//			return;
-//		}
+		//		try {
+		//
+		//			parkingLots = asyncLogin.execute().get();
+		//		}
+		//		catch (Exception e)
+		//		{
+		//			new AlertDialog.Builder(this)
+		//			.setTitle("Error")
+		//			.setMessage("There was an error contacting the server for lot information.")
+		//			.setPositiveButton(android.R.string.yes, null)
+		//			.show();
+		//			return;
+		//		}
 		Object[] keyArray = parkingLots.keySet().toArray();
-		lot = parkingLots.get(keyArray[1]);
+		lot = parkingLots.get(keyArray[12]);
+
+		final TextView textViewToChange = (TextView) findViewById(R.id.lot_name_status);
+		textViewToChange.setText( lot.getName() );
 
 		MakeButtons(); 
 		MakeTable(lot.getSpaces() );
@@ -107,7 +112,7 @@ public class StatusPage extends Activity
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
 		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
 
-		int spaceIndex=0;
+		int spaceIndex=1;
 		// rows
 		//for(int y=0; y<20; y++)
 		while( spaceIndex < spaceList.size() )
@@ -128,6 +133,7 @@ public class StatusPage extends Activity
 					{
 						bttnlist.add(b);	//add to list of clickable spaces
 						b.setBackgroundColor( getResources().getColor(R.color.available) );
+
 						b.setOnClickListener(new View.OnClickListener() 
 						{
 							public void onClick(View v) 
@@ -135,7 +141,17 @@ public class StatusPage extends Activity
 								// Perform action on click
 								for( Button tmp : bttnlist )
 									if (tmp==b )
+									{
+										// spot clicked
 										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
+										reserveIndex=bttnlist.indexOf(tmp);
+
+										// Toast message for button.
+										Context context = getApplicationContext();
+										int duration = Toast.LENGTH_SHORT;
+										Toast toast = Toast.makeText(context, String.format("%d", reserveIndex), duration);
+										toast.show();
+									}
 									else
 										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
 							}
