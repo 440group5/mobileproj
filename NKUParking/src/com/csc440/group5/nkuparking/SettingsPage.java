@@ -66,11 +66,6 @@ public class SettingsPage extends Activity
 			startActivity(map);
 			return true;
 
-		case R.id.action_directions:
-			Intent directions = new Intent(this, DirectionsPage.class);
-			startActivity(directions);
-			return true;
-
 		case R.id.action_search:
 			Intent search = new Intent(this, SearchPage.class);
 			startActivity(search);
