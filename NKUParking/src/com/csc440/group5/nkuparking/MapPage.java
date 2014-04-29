@@ -112,7 +112,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 	}
 
 	/**
-	 * Reservation Button for Map Page.
+	 * View Lot Button for Map Page.
 	 * Opens a Lot Status page so user can select a space to reserve.
 	 * @param view
 	 */
@@ -121,7 +121,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 		if(userSelectedLot == null)
 		{
 			Toast.makeText(getBaseContext(), 
-					"Please select a lot",
+					"Please select a lot.",
 					Toast.LENGTH_SHORT).show();	
 		}
 		else if(userSelectedLot.getName().equals("Welcome Center Garage") || userSelectedLot.getName().equals("University Drive Garage") || userSelectedLot.getName().equals("Kenton Drive Garage"))
@@ -148,7 +148,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 		if(userSelectedLot == null)
 		{
 			Toast.makeText(getBaseContext(), 
-					"Please select a lot",
+					"Please select a lot.",
 					Toast.LENGTH_SHORT).show();	
 		}
 		else

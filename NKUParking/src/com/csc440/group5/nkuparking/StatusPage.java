@@ -14,6 +14,7 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +29,8 @@ import android.widget.Toast;
 public class StatusPage extends Activity 
 {
 	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
-	int reserveIndex=-1;
 	private String selectedLotName;
+	int reserveIndex=-1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -65,11 +66,27 @@ public class StatusPage extends Activity
 		{
 			public void onClick(View v) 
 			{
-				// Perform action on click
-				Context context = getApplicationContext();
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, selectedLotName, duration);
-				toast.show();
+				// User Restrictions
+				SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
+				String userType = prefs.getString("Status", "Visitor");
+
+				if( currentLot.getStatus().equals(userType) )
+				{	
+					// Perform action on click
+					Context context = getApplicationContext();
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, selectedLotName, duration);
+					toast.show();
+				}
+				else
+				{
+					// Perform action on click
+					String restricted = "Reservations in Lot "+selectedLotName+" are restricted to "+currentLot.getStatus()+" users.";
+					Context context = getApplicationContext();
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, restricted, duration);
+					toast.show();
+				}
 			}
 		});
 	}

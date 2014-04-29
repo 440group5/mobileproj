@@ -1,12 +1,21 @@
+/*
+ * SearchPage.java
+ * 
+ * Used to search for a specific lot by name or availability. 
+ * 
+ * -Ryan Lietzenmayer
+ * Copyright (c) 2014 CSCGroup5
+ */
+
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,7 +46,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	}
 
 	/**
-	 * Reservation Button for Search Page.
+	 * View Lot button for Search Page.
 	 * Opens a Lot Status page so user can select a space to reserve.
 	 * @param view
 	 */
@@ -47,23 +56,29 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		Intent status = new Intent(this, StatusPage.class);
 		if( randomLot )
 		{
+			// Find space in same type of lot as the user.
+			SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
+			String userType = prefs.getString("Status", "Visitor");
+
 			boolean foundspace=false;
 			int i=0, j=0;
 			while( foundspace==false )
 			{
 				// Get list of spaces for each lot
 				ArrayList<ParkingSpace> tmpLot =lotInformation.get(listOfLotNames.get(i)).getSpaces();
-				
-				// Go through list of spaces
-				while( j<tmpLot.size() && foundspace==false )
+				if( lotInformation.get(i).getStatus().equals(userType) )
 				{
-					// if one of them is open, set that lot to open as status, then exit loop
-					if( tmpLot.get(i).isAvailable() )
+					// Go through list of spaces
+					while( j<tmpLot.size() && foundspace==false )
 					{
-						status.putExtra( "LotName",listOfLotNames.get(i) );
-						foundspace=true;
+						// if one of them is open, set that lot to open as status, then exit loop
+						if( tmpLot.get(i).isAvailable() )
+						{
+							status.putExtra( "LotName",listOfLotNames.get(i) );
+							foundspace=true;
+						}
+						j++;
 					}
-					j++;
 				}
 				j=0;	//reset j
 				i++;
@@ -80,23 +95,12 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	 */
 	public void loadDirs(View view)
 	{
-		//39.032356,-84.4654'/'39.03364,-84.466995
-		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
-		String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
-
-		//        String uristr = begin + "?q=" + end + "&z=18";
-		//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
-		//        Uri uri = Uri.parse(uristr);
 		Intent intent = new Intent(this, WebViewActivity.class);
 		String lat = String.format("%f", currentLot.getCoordinate().latitude);
 		String lg = String.format("%f", currentLot.getCoordinate().longitude);
 		intent.putExtra("Lat", lat);
 		intent.putExtra("Long", lg);
 		startActivity(intent);
-
-		//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
-		//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		//        this.startActivity(intent);
 	}
 
 	public void onRadioButtonClicked(View view) 
@@ -112,7 +116,6 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			{
 				// any spot checked
 				randomLot=true;
-
 			}
 			break;
 		case R.id.radio_lot_spot:
@@ -166,15 +169,18 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			return;
 		}
 
-
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLotNames);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 	}
 
+	/**
+	 * Asynchronously goes and gets shared parking lot map, lotInformation
+	 * @author ryanlietzenmayer
+	 *
+	 */
 	private class RequestAsync extends AsyncTask<Void, Void, ArrayList<String>>
 	{
-		//Asynchronously goes and sees if the login information is correct
 		@Override
 		protected ArrayList<String> doInBackground(Void... params)
 		{			
