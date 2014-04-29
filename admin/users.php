@@ -2,6 +2,7 @@
     session_start();
     require("session.php");
     require("../config.php");
+    include('../template/header.html');
     
     $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     
@@ -13,7 +14,7 @@
     $users = $db->query($query);
     $db->close();
     
-    echo "<html>";
+    echo "<div class='no_format'>";
     echo "<h1>Users</h1>";
     echo "<a href='/admin'>Back</a><br/><br/>";
     echo "<a href='adduser.php'>Add user</a>";
@@ -34,5 +35,6 @@
             echo"<tr><td>".$user['id']."</td><td>$type</td><td>".$user['username']."</td><td>".$user['email']."</td><td><a href='editspot.php/?id=".$user['spot']."'>Edit</a></td><td><a href='edituser.php/?id=".$user['id']."'>Edit</a></td></tr>";
     }
     echo "</table>";
-    echo "</html>";
+    echo "</div>";
+    include('../template/footer.html');
 ?>

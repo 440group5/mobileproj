@@ -3,6 +3,7 @@
     require("session.php");
     require("../config.php");
     require("../secure.php");
+    include('../template/header.html');
     
     $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     
@@ -117,5 +118,5 @@
         echo "</html>";
     }
     
-    
+    include('../template/footer.html');
 ?>

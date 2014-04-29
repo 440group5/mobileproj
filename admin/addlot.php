@@ -2,6 +2,7 @@
     session_start();
     require("session.php");
     require("../config.php");
+    include('../template/header.html');
     
     if (!empty($_POST)) {
         
@@ -80,5 +81,6 @@
 </html>
 
 <?php
+include('../template/footer.html');
 }
 ?>

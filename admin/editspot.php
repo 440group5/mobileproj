@@ -3,8 +3,9 @@
     require("session.php");
     require("../config.php");
     require("../secure.php");
+    include('../template/header.html');
     
-    $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+    //$db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
     
     if (!empty($_POST)) {  // if post is not empty then form was submited so update the database
     
@@ -13,8 +14,15 @@
         $user = secure($_POST['user']);
         $reserved = secure($_POST['reserved']);
         $expires = secure($_POST['expires']);
+        $occupied = secure($_POST['occupied']);
         
-        $query = "update spots set status='$avail', username='$user', reserve='$reserved', expire='$expires' where id='$id';";
+        $db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+        
+        if($db->connect_errno > 0) {
+            die("Could not connect to database");
+        }
+        
+        $query = "update spots set status='$avail', username='$user', reserve='$reserved', occupied='$occupied' where id='$id';";
         
         $db->query($query);
         
@@ -65,10 +73,12 @@
         echo "</select><br><br>";
         echo "User: <input type='text' name='user' value='".$spot['username']."'><br><br>";
         echo "Reserved: <input type='text' name='reserved' value='".$spot['reserve']."'><br><br>";
-        echo "Expires: <input type='text' name='expires' value='".$spot['expire']."'><br><br>";
+        echo "Occupied: <input type='text' name='occupied' value='".$spot['occupied']."'><br><br>";
         echo "<input type='submit' name='submit' value='Submit'>";
         echo "</form>";
         echo "</html>";
     }
+    
+    include('../template/footer.html');
     
 ?>

@@ -2,6 +2,7 @@
   session_start();
   require("session.php");
   require("../config.php");
+  include('../template/header.html');
   
 ?>
       <h1>Spots</h1>
@@ -56,18 +57,23 @@
       $spots = $db->query($query);
       $db->close();
       echo"<table cellpadding='10'>";
-      echo"<tr><th>ID</th><th>LOT</th><th>Availabiltiy</th><th>User</th><th>Reserved</th><th>Expires</th><th>Edit</th></tr>";
+      echo"<tr><th>ID</th><th>LOT</th><th>Availabiltiy</th><th>User</th><th>Reserved</th><th>Occupied</th><th>Time in Spot</th><th>Edit</th></tr>";
       
       date_default_timezone_set ( "America/New_York");
       
       while($spot = $spots->fetch_array(MYSQLI_ASSOC) ) {
-
-          echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$spot['status']."</td><td>".$spot['username']."</td><td>".$spot['reserve']."</td><td>".$spot['expire']."</td><td><a href='editspot.php/?id=".$spot['id']."'>Edit</a></td></tr>";
+        
+        if($spot['occupied'] == 0)
+            $time = 0;
+        else
+            $time = (time() - strtotime($spot['occupied']) ) / 3600;
+        //$time->format("%H"); // I want time in hours
+        echo"<tr><td>".$spot['id']."</td><td>".$spot['lot']."</td><td>".$spot['status']."</td><td>".$spot['username']."</td><td>".$spot['reserve']."</td><td>".$spot['occupied']."</td><td>$time hours</td><td><a href='editspot.php/?id=".$spot['id']."'>Edit</a></td></tr>";
           
       }
       echo"</table><br/>";
       echo $spot['occupied']."<br/>";
       echo"<a href='/admin'>Admin</a>";
    
-
+    include('../template/footer.html');
 ?>

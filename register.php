@@ -1,5 +1,7 @@
 <?php
 
+    include('/template/header.html');
+
     if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         require("config.php");
@@ -116,5 +118,5 @@
         
     }
     
-    
+    include('/template/footer.html');
 ?>
