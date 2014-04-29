@@ -124,8 +124,12 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 					"Please select a lot",
 					Toast.LENGTH_SHORT).show();	
 		}
-		//TODO crash on loading garage
-
+		else if(userSelectedLot.getName().equals("Welcome Center Garage") || userSelectedLot.getName().equals("University Drive Garage") || userSelectedLot.getName().equals("Kenton Drive Garage"))
+		{
+			Toast.makeText(getBaseContext(), 
+					"Parking Garage Status Restricted",
+					Toast.LENGTH_SHORT).show();	
+		}
 		else
 		{
 			// Starts Status window
@@ -136,7 +140,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 	}
 
 	/**
-	 * Directions Button for Search Page.
+	 * Directions Button for Map Page.
 	 * @param view
 	 */
 	public void loadDirections(View view)
