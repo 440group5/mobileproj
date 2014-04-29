@@ -210,10 +210,28 @@ public class MainActivity extends Activity implements OnTouchListener
 //            	return;
 //            }
     		
+    		int temp = loginCreds.get("status");
+    		String status; 
+    		if(temp == 1)
+    			status = "Admin";
+    		else if(temp == 2)
+    			status = "Faculty/Staff";
+    		else if(temp == 3)
+    			status = "Student";
+    		else
+            {
+        		new AlertDialog.Builder(this)
+    			.setTitle("Error")
+    			.setMessage("There was an error processing the input for the login.")
+    			.setPositiveButton(android.R.string.yes, null)
+    			.show();
+            	return;
+            }
+    		 
     		SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
     		Editor editor = settings.edit();
     		editor.putInt("User_id", loginCreds.get("user_id"));
-    		editor.putInt("Status", loginCreds.get("status"));
+    		editor.putString("Status", status);
     		editor.commit();
     		
     		Intent intent = new Intent(this, MapPage.class);
