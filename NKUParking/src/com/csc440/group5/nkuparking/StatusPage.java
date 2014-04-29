@@ -80,7 +80,7 @@ public class StatusPage extends Activity
 				}
 				else
 				{
-					// Perform action on click
+					// Tell user they can't park here.
 					String restricted = "Reservations in Lot "+selectedLotName+" are restricted to "+currentLot.getStatus()+" users.";
 					Context context = getApplicationContext();
 					int duration = Toast.LENGTH_SHORT;
