@@ -10,18 +10,18 @@
 
 package com.csc440.group5.nkuparking;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -41,9 +41,9 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 	private float zoom = 16.0f;
 	private final double START_LAT = 39.032356, START_LONG = -84.465406;
 	private Map<String, ParkingLot> lotMap;
-	private ArrayList<ParkingLot> lotList = new ArrayList<ParkingLot>();
 	private Location currentLocation;
-	private boolean gpsLoaded = false;
+	private boolean gpsLoaded = false, firstLoad = true;
+	private ProgressDialog spinner;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -60,15 +60,45 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
         map.getUiSettings().setAllGesturesEnabled(true);
         map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         
-        //Load the map markers async.
+        //Move the camera to NKU
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(startingCoord, zoom));
+        
+        //Add the map marker click listener
+        map.setOnMarkerClickListener(new OnMarkerClickListener() {
+			@Override
+			public boolean onMarkerClick(Marker marker)
+			{
+				//Grab the parking lot from the marker clicked
+		    	ParkingLot lot = lotMap.get(marker.getTitle());
+				Toast.makeText(getBaseContext(), 
+						String.format("Lot Clicked: %s", lot.getName()), 
+						Toast.LENGTH_SHORT).show();				
+
+		    	return false;
+			}
+    	});
+        
+        buildLots();
+    }
+    
+    private void buildLots()
+    {
         try 
         {
-			lotMap = new LoadLotsAsync().execute().get();
-			if(lotMap == null)
-				throw new Exception();
+        	//Throw up a progress indicator while the app fetches the lot information
+        	spinner = new ProgressDialog(this);
+        	spinner.setMessage("Loading Lot Information...");
+        	spinner.setCancelable(false);
+        	spinner.show();
+        	
+        	//Asynchronously load the lot data & add map markers
+        	new LoadLotsAsync().execute();
         }
 		catch (Exception e) 
 		{
+			//Dismiss the spinner so it doesn't stay up if there was an error.
+			spinner.dismiss();
+			
 			new AlertDialog.Builder(this)
 			.setTitle("Error")
 			.setMessage("Error contacting the server for the lot information.")
@@ -77,33 +107,61 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 			
 			return;
 		}
-        
-        //Load the map markers for each of the lots
-        for(String key : lotMap.keySet())
-		{
-			ParkingLot lot = lotMap.get(key);
-			String desc = String.format("%s Lot", lot.getStatus());
-			map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(desc));
-			map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-			
-				@Override
-				public void onInfoWindowClick(Marker marker) {
-				
-					/* ---Navigate to directions page.---
-			 				 					
-				Intent directions = new Intent(MapPage.this, DirectionsPage.class);
-				startActivity(directions);
-					 */
-				
-					//Pop up a toast when the info window is clicked.
-					Toast.makeText(getBaseContext(), 
-							"Lot Selected", 
-							Toast.LENGTH_SHORT).show();				
-					} 
-				});
-		}
-        //Move the camera to NKU
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(startingCoord, zoom));
+    }
+   
+    private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
+    {
+    	@Override
+    	protected Map<String, ParkingLot> doInBackground(Void... params)
+    	{
+    		try
+    		{
+    			//Only pull the data unless its the first time loading
+    			if(firstLoad)
+    			{
+    				firstLoad = false;
+    				return RequestManager.getSharedInstance().getParkingLotMap(true);
+    			}
+    			
+    			return RequestManager.getSharedInstance().getParkingLotMap(firstLoad);
+    		}
+    		catch(Exception e)
+    		{
+    			return null;
+    		}
+    	}
+    	
+    	@Override
+    	protected void onPostExecute(Map<String, ParkingLot> lots)
+    	{
+    		if(lotMap == null)
+    			lotMap = new HashMap<String, ParkingLot>();
+    		else
+    			lotMap.clear();
+
+    		lotMap.putAll(lots);
+    		
+    		//Load the map markers for each of the lots
+            for(String key : lotMap.keySet())
+    		{
+    			ParkingLot lot = lotMap.get(key);
+    			String desc = String.format("%s Lot", lot.getStatus());
+    			map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(desc));
+    			map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+    			
+    				@Override
+    				public void onInfoWindowClick(Marker marker) {   				
+    					//Pop up a toast when the info window is clicked.
+    					Toast.makeText(getBaseContext(), 
+    							"Lot Selected", 
+    							Toast.LENGTH_SHORT).show();				
+    					} 
+    				});
+    		}
+            
+            //Dismiss the progress indicator
+            spinner.dismiss();
+    	}
     }
     
     @Override
@@ -114,30 +172,10 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
     	
     	currentLocation = location;
 	}
+   
     
-    private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
-    {
-    	@Override
-    	protected Map<String, ParkingLot> doInBackground(Void... params)
-    	{
-    		try
-    		{
-    			return RequestManager.getSharedInstance().getParkingLotMap(true);
-    		}
-    		catch(Exception e)
-    		{
-    			return null;
-    		}
-    	}
-    }
-    
-//    private class BuildLotsAsync extends AsyncTask<Void, Void, Boolean>
-//	{
-//		@Override
-//		protected Boolean doInBackground(Void... params)
-//		{
-			//Build the Lots asynchronously.
-			//ParkingLot Constructor: ParkingLot(name, description, latitude, longitude, number of spaces)
+//    		OLD PARKING LOT INFORMATION
+//			ParkingLot Constructor: ParkingLot(name, description, latitude, longitude, number of spaces)
 //			lotList.add(new ParkingLot("A", "Lot A - Open Lot", 39.030569, -84.468997, 0, ParkingLot.OPEN_PARKING));
 //			lotList.add(new ParkingLot("C", "Lot C - Faculty/Staff Lot", 39.031650, -84.466539, 0, ParkingLot.FACULTY_STAFF_LOT));
 //			lotList.add(new ParkingLot("D", "Lot D - Faculty/Staff Lot", 39.032240, -84.461732, 0, ParkingLot.FACULTY_STAFF_LOT));
@@ -164,65 +202,6 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 //			lotList.add(new ParkingLot("Welcome Center Garage", "", 39.032303, -84.460835,0, ParkingLot.OPEN_PARKING));
 //			lotList.add(new ParkingLot("University Drive Garage", "", 39.03018, -84.461148,0, ParkingLot.OPEN_PARKING));
 //			lotList.add(new ParkingLot("Kenton Drive Garage", "", 39.030286, -84.467913,0, ParkingLot.OPEN_PARKING));
-//			return lotList;
-//			try 
-//			{
-//				for(String key : lotMap.keySet())
-//				{
-//					ParkingLot lot = lotMap.get(key);
-//					map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
-//					map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-//					
-//						@Override
-//						public void onInfoWindowClick(Marker marker) {
-//						
-//							/* ---Navigate to directions page.---
-//					 				 					
-//						Intent directions = new Intent(MapPage.this, DirectionsPage.class);
-//						startActivity(directions);
-//							 */
-//						
-//							//Pop up a toast when the info window is clicked.
-//							Toast.makeText(getBaseContext(), 
-//									"Lot Selected", 
-//									Toast.LENGTH_SHORT).show();				
-//							} 
-//						});
-//				}
-//				
-//				return true;
-//			}
-//			catch(Exception e)
-//			{
-//				return false;
-//			}
-//		}
-		
-//		protected void onPostExecute(ArrayList<ParkingLot> result)
-//		{
-//			//Add the markers to the map.
-//			for(ParkingLot lot : result){
-//				map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(lot.getDescription()));
-//				map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-//					
-//					@Override
-//					public void onInfoWindowClick(Marker marker) {
-//						
-//					/* ---Navigate to directions page.---
-//					 				 					
-//					Intent directions = new Intent(MapPage.this, DirectionsPage.class);
-//					startActivity(directions);
-//					*/
-//						
-//					//Pop up a toast when the info window is clicked.
-//					Toast.makeText(getBaseContext(), 
-//					"Lot Selected", 
-//					Toast.LENGTH_SHORT).show();				
-//					  } 
-//					}
-//				);
-//			  }
-//	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) 
