@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/directionsbuttonsearch"
-        android:text="@string/reserve_button"
-        android:onClick="loadLotStatus" />
+        android:onClick="loadLotStatus"
+        android:text="@string/status_button" />
 
     <Button
         android:id="@+id/directionsbuttonsearch"
@@ -55,8 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/directions_button"
-        android:onClick="loadDirs" />
+        android:onClick="loadDirs"
+        android:text="@string/directions_button" />
 
     <Spinner
         android:id="@+id/spinner_lots"

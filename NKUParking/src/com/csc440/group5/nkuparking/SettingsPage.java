@@ -71,10 +71,10 @@ public class SettingsPage extends Activity
 			startActivity(search);
 			return true; 
 
-		case R.id.action_status:
-			Intent status = new Intent(this, StatusPage.class);
-			startActivity(status);
-			return true;
+//		case R.id.action_status:
+//			Intent status = new Intent(this, StatusPage.class);
+//			startActivity(status);
+//			return true;
 
 		case R.id.action_settings:
 			Intent settings = new Intent(this, SettingsPage.class);

@@ -3,11 +3,10 @@ package com.csc440.group5.nkuparking;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
+
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,19 +15,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 public class SearchPage extends Activity implements OnItemSelectedListener
 {
 	private Spinner spinner;
-	ArrayList<String> listOfLots;
-	String selectedLot;
-	ParkingLot currentLot;
 	Map<String, ParkingLot> lotInformation;
-	boolean randomLot;
+	ArrayList<String> listOfLotNames;
+	String selectedLotName;
+	ParkingLot currentLot;
+	boolean randomLot=true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -46,15 +43,35 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	 */
 	public void loadLotStatus(View view)
 	{
-		// Toast message for button.
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
-		toast.show();
-
-		// Starts Status window
+		// Starting Status window
 		Intent status = new Intent(this, StatusPage.class);
-		startActivity(status);
+		if( randomLot )
+		{
+			boolean foundspace=false;
+			int i=0, j=0;
+			while( foundspace==false )
+			{
+				// Get list of spaces for each lot
+				ArrayList<ParkingSpace> tmpLot =lotInformation.get(listOfLotNames.get(i)).getSpaces();
+				
+				// Go through list of spaces
+				while( j<tmpLot.size() && foundspace==false )
+				{
+					// if one of them is open, set that lot to open as status, then exit loop
+					if( tmpLot.get(i).isAvailable() )
+					{
+						status.putExtra( "LotName",listOfLotNames.get(i) );
+						foundspace=true;
+					}
+					j++;
+				}
+				j=0;	//reset j
+				i++;
+			}
+		}
+		else
+			status.putExtra("LotName", selectedLotName);
+		startActivity(status);	//Start Status Window
 	}
 
 	/**
@@ -95,17 +112,12 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			{
 				// any spot checked
 				randomLot=true;
+
 			}
 			break;
 		case R.id.radio_lot_spot:
 			if (checked)
 			{
-				// specific spot checked
-				Context context = getApplicationContext();
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, selectedLot, duration);
-				toast.show();
-				
 				randomLot=false;
 			}
 			break;
@@ -119,14 +131,14 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
 	{
 		//Determines which option for the dropdown list has been clicked on.
-		selectedLot = listOfLots.get(pos);
-		currentLot = lotInformation.get(selectedLot);
+		selectedLotName = listOfLotNames.get(pos);
+		currentLot = lotInformation.get(selectedLotName);
 	}
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) 
 	{
 		// Generic default
-		selectedLot = listOfLots.get(0);	//default as first lot
+		selectedLotName = listOfLotNames.get(0);	//default as first lot
 	}
 
 	/**
@@ -142,7 +154,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		RequestAsync asyncLotList = new RequestAsync();
 
 		try {
-			listOfLots = asyncLotList.execute().get();
+			listOfLotNames = asyncLotList.execute().get();
 		}
 		catch (Exception e)
 		{
@@ -155,7 +167,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		}
 
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLots);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listOfLotNames);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
 	}
@@ -167,7 +179,9 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 		protected ArrayList<String> doInBackground(Void... params)
 		{			
 			lotInformation = RequestManager.getSharedInstance().getParkingLotMap(false);
+
 			ArrayList<String> lotNameList = new ArrayList<String>(lotInformation.size());
+
 			for(String key: lotInformation.keySet() )
 			{
 				lotNameList.add( lotInformation.get(key).getName() );
@@ -202,11 +216,6 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			Intent search = new Intent(this, SearchPage.class);
 			startActivity(search);
 			return true; 
-
-		case R.id.action_status:
-			Intent status = new Intent(this, StatusPage.class);
-			startActivity(status);
-			return true;
 
 		case R.id.action_settings:
 			Intent settings = new Intent(this, SettingsPage.class);

@@ -68,7 +68,7 @@ public class ParkingSpace
 	public boolean isHandicapped()
 	{
 		//Returns if the space is handicapped or not.
-		return isHandicapped;
+		return status.equals("Reserved");
 	}
 	
 	public void setAvailable()

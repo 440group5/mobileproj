@@ -39,6 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="13dip"
         android:layout_toLeftOf="@+id/directionsbutton_map"
+        android:onClick="loadLotStatus"
         android:text="@string/status_button" />
 
     <Button
@@ -49,6 +50,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="13dip"
         android:layout_marginRight="50dip"
+        android:onClick="loadDirections"
         android:text="@string/directions_button" />
 
 </RelativeLayout>

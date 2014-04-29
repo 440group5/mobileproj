@@ -128,7 +128,7 @@
                 android:layout_alignBottom="@+id/reguserlab"
                 android:layout_toRightOf="@+id/reguserlab"
                 android:ems="10"
-                android:hint="@string/userhint"
+                android:hint="@string/registerhint"
                 android:inputType="text" />
 
             <EditText
@@ -138,7 +138,7 @@
                 android:layout_alignBaseline="@+id/regpasslab"
                 android:layout_alignLeft="@id/reguserfield"
                 android:ems="10"
-                android:hint="@string/passhint"
+                android:hint="@string/registerhint"
                 android:inputType="textPassword" />
             
             <TextView

@@ -20,8 +20,10 @@
     <string name="lastname">Last Name:</string>
     <string name="fnamehint">First Name</string>
     <string name="lnamehint">Last Name</string>
+    
     <string name="reguserlab">Username:</string>
     <string name="regpasslab">Password:</string>
+    <string name="registerhint">5 char minimum</string>
     <string name="retypepass">Re-type Password</string>
     <string name="retypepasslab">Password:</string>
     <string name="reguserbutton">Register and Login</string>
@@ -42,12 +44,13 @@
     <string name="search_title">Search</string>
     <string name="search_option_one">Any open space</string>
 	<string name="search_option_two">A space in lot:</string>
-	<string name="status_button">Lot Status</string>
+	<string name="status_button">View Lot</string>
 	<string name="reserve_button">Reserve</string>
 	<string name="directions_button">Directions</string>
 	<string name="searchspinnertext">Lot</string>
-    
-    <string name="statphl">Lot #</string>
+	
+	<string name="title_lot">Lot:</string>
+    <string name="statphl">#</string>
     <string name="statphb">Waiting</string>
     
 </resources>

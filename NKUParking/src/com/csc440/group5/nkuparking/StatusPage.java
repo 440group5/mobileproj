@@ -8,9 +8,10 @@
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
+
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,8 +28,9 @@ import android.widget.Toast;
 
 public class StatusPage extends Activity 
 {
-	public ParkingLot lot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
+	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 	int reserveIndex=-1;
+	private String selectedLotName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -36,41 +38,30 @@ public class StatusPage extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_page);
 
-		//testing crap
-
-		ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
-		for(int i=0; i<30; i++)
-		{
-			ParkingSpace p = new ParkingSpace(false, false, i);
-			spaceList.add(p);
-		}
-		lot.setSpaces(spaceList);
-
-
-
-		//		RequestAsync asyncLogin = new RequestAsync();
-		Map<String, ParkingLot> parkingLots = RequestManager.getSharedInstance().getParkingLotMap(false);
-		//		try {
-		//
-		//			parkingLots = asyncLogin.execute().get();
-		//		}
-		//		catch (Exception e)
+		//		//testing crap
+		//		ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
+		//		for(int i=0; i<30; i++)
 		//		{
-		//			new AlertDialog.Builder(this)
-		//			.setTitle("Error")
-		//			.setMessage("There was an error contacting the server for lot information.")
-		//			.setPositiveButton(android.R.string.yes, null)
-		//			.show();
-		//			return;
+		//			ParkingSpace p = new ParkingSpace(false, false, i);
+		//			spaceList.add(p);
 		//		}
-		Object[] keyArray = parkingLots.keySet().toArray();
-		lot = parkingLots.get(keyArray[12]);
+		//		currentLot.setSpaces(spaceList);
+		
+		if( getIntent().hasExtra("LotName") )
+			selectedLotName = getIntent().getExtras().getString("LotName");
+		else
+			selectedLotName="A";
+
+
+		Map<String, ParkingLot> parkingLots = RequestManager.getSharedInstance().getParkingLotMap(false);
+
+		currentLot = parkingLots.get(selectedLotName);
 
 		final TextView textViewToChange = (TextView) findViewById(R.id.lot_name_status);
-		textViewToChange.setText( lot.getName() );
+		textViewToChange.setText( currentLot.getName() );
 
 		MakeButtons(); 
-		MakeTable(lot.getSpaces() );
+		MakeTable(currentLot.getSpaces() );
 	}
 
 	// Makes our Reserve and Directions buttons
@@ -85,34 +76,44 @@ public class StatusPage extends Activity
 				// Perform action on click
 				Context context = getApplicationContext();
 				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, "Reservation Button Pressed", duration);
-				toast.show();
-			}
-		});
-
-		// Directions Button
-		final Button bttnStat = (Button) findViewById(R.id.directionsbuttonstatus);
-		bttnStat.setOnClickListener(new View.OnClickListener() 
-		{
-			public void onClick(View v) 
-			{
-				// Perform action on click
-				Context context = getApplicationContext();
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, "Directions Button Pressed", duration);
+				Toast toast = Toast.makeText(context, selectedLotName, duration);
 				toast.show();
 			}
 		});
 	}
+	
+	/**
+	 * Directions Button for Status Page.
+	 * @param view
+	 */
+	public void loadDirs(View view)
+	{
+		//39.032356,-84.4654'/'39.03364,-84.466995
+		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
+		String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
+
+		//        String uristr = begin + "?q=" + end + "&z=18";
+		//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
+		//        Uri uri = Uri.parse(uristr);
+		Intent intent = new Intent(this, WebViewActivity.class);
+		String lat = String.format("%f", currentLot.getCoordinate().latitude);
+		String lg = String.format("%f", currentLot.getCoordinate().longitude);
+		intent.putExtra("Lat", lat);
+		intent.putExtra("Long", lg);
+		startActivity(intent);
+
+		//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
+		//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		//        this.startActivity(intent);
+	}
 
 	// This is where the rows are added to the TableLayout
 	public void MakeTable(ArrayList<ParkingSpace> spaceList)
-	{	
-
+	{
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
 		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
 
-		int spaceIndex=1;
+		int spaceIndex=0;
 		// rows
 		//for(int y=0; y<20; y++)
 		while( spaceIndex < spaceList.size() )
@@ -145,12 +146,6 @@ public class StatusPage extends Activity
 										// spot clicked
 										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
 										reserveIndex=bttnlist.indexOf(tmp);
-
-										// Toast message for button.
-										Context context = getApplicationContext();
-										int duration = Toast.LENGTH_SHORT;
-										Toast toast = Toast.makeText(context, String.format("%d", reserveIndex), duration);
-										toast.show();
 									}
 									else
 										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
@@ -213,10 +208,22 @@ public class StatusPage extends Activity
 		} //...Here our table is all complete
 	}
 
+	private class RequestAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
+	{
+		//Asynchronously goes and sees if the login information is correct
+		//Returns an object with all the lots
+		@Override
+		protected Map<String, ParkingLot> doInBackground(Void... params)
+		{						
+			Map<String, ParkingLot> lotsObj = RequestManager.getSharedInstance().pullParkingLotInformation();
+			return lotsObj;
+		}
+	}
+
 	// Set which lot this should load. Default is gibberish.
 	public void setLot(ParkingLot tempLot)
 	{
-		lot = tempLot;
+		currentLot = tempLot;
 	}
 
 	@Override
@@ -242,10 +249,10 @@ public class StatusPage extends Activity
 			startActivity(search);
 			return true; 
 
-		case R.id.action_status:
-			Intent status = new Intent(this, StatusPage.class);
-			startActivity(status);
-			return true;
+			//		case R.id.action_status:
+			//			Intent status = new Intent(this, StatusPage.class);
+			//			startActivity(status);
+			//			return true;
 
 		case R.id.action_settings:
 			Intent settings = new Intent(this, SettingsPage.class);
@@ -257,19 +264,5 @@ public class StatusPage extends Activity
 		}
 	}
 
-	private class RequestAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
-	{
-		//Asynchronously goes and sees if the login information is correct
-		//Returns an object with all the lots
-		@Override
-		protected Map<String, ParkingLot> doInBackground(Void... params)
-		{						
-			Map<String, ParkingLot> lotsObj = RequestManager.getSharedInstance().pullParkingLotInformation();
-			//			= RequestManager.getSharedInstance().getLotInformation();
-			//			ArrayList<ParkingSpace> spaceList 
-			//			=RequestManager.getSharedInstance().pullParkingSpaceInfo();
 
-			return lotsObj;
-		}
-	}
 }
