@@ -33,6 +33,7 @@ import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -204,11 +205,76 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 				ParkingLot lot = lotMap.get(key);
 				String desc = "";
 				if(!(key.equals("Welcome Center Garage") || key.equals("University Drive Garage") || key.equals("Kenton Drive Garage")))
+				{
 					desc = String.format("%s Lot", lot.getStatus());
+
+					// Color Map Marker based on type of lot
+					if( lot.getStatus().equals("Open") )
+					{
+						map.addMarker(
+								new MarkerOptions()
+								.position(lot.getCoordinate())
+								.title( lot.getName() )
+								.snippet(desc)
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN) )
+								);
+					}
+					else if( lot.getStatus().equals("Student") )
+					{
+						map.addMarker(
+								new MarkerOptions()
+								.position(lot.getCoordinate())
+								.title( lot.getName() )
+								.snippet(desc)
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE) )
+								);
+					}
+
+					else if( lot.getStatus().equals("Faculty/Staff") )
+					{
+						map.addMarker(
+								new MarkerOptions()
+								.position(lot.getCoordinate())
+								.title( lot.getName() )
+								.snippet(desc)
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE) )
+								);
+					}
+					else if( lot.getStatus().equals("Closed") )
+					{
+						map.addMarker(
+								new MarkerOptions()
+								.position(lot.getCoordinate())
+								.title( lot.getName() )
+								.snippet(desc)
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE) )
+								);
+					}
+					else
+					{
+						map.addMarker(
+								new MarkerOptions()
+								.position(lot.getCoordinate())
+								.title( lot.getName() )
+								.snippet(desc)
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW) )
+								);
+					}
+				}
 				else
+				{
 					desc = lot.getDescription();
 
-				map.addMarker(new MarkerOptions().position(lot.getCoordinate()).title(lot.getName()).snippet(desc));
+					map.addMarker(
+							new MarkerOptions()
+							.position(lot.getCoordinate())
+							.title( lot.getName() )
+							.snippet(desc)
+							.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW) )
+							);
+				}
+
+
 			}
 
 			//Dismiss the progress indicator
