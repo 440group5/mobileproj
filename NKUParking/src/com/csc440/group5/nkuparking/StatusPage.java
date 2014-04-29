@@ -3,18 +3,17 @@
  * 
  * Status page of an individual lot. 
  * 
+ * -Ryan Lietzenmayer
  * Copyright (c) 2014 CSCGroup5
  */
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,15 +37,6 @@ public class StatusPage extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_page);
 
-		//		//testing crap
-		//		ArrayList<ParkingSpace> spaceList = new ArrayList<ParkingSpace>();
-		//		for(int i=0; i<30; i++)
-		//		{
-		//			ParkingSpace p = new ParkingSpace(false, false, i);
-		//			spaceList.add(p);
-		//		}
-		//		currentLot.setSpaces(spaceList);
-		
 		if( getIntent().hasExtra("LotName") )
 			selectedLotName = getIntent().getExtras().getString("LotName");
 		else
@@ -60,12 +50,14 @@ public class StatusPage extends Activity
 		final TextView textViewToChange = (TextView) findViewById(R.id.lot_name_status);
 		textViewToChange.setText( currentLot.getName() );
 
-		MakeButtons(); 
+		MakeReserveButton(); 
 		MakeTable(currentLot.getSpaces() );
 	}
 
-	// Makes our Reserve and Directions buttons
-	public void MakeButtons()
+	/**
+	 *  Makes our Reserve button.
+	 */
+	public void MakeReserveButton()
 	{
 		// Reserve Button
 		final Button bttnDir = (Button) findViewById(R.id.reservebuttonstatus);
@@ -81,30 +73,19 @@ public class StatusPage extends Activity
 			}
 		});
 	}
-	
+
 	/**
 	 * Directions Button for Status Page.
 	 * @param view
 	 */
 	public void loadDirs(View view)
 	{
-		//39.032356,-84.4654'/'39.03364,-84.466995
-		String begin = String.format(Locale.ENGLISH, "%f,%f", 39.032356, -84.4654);
-		String end = String.format(Locale.ENGLISH, "%f,%f", 39.027865, -84.462392);
-
-		//        String uristr = begin + "?q=" + end + "&z=18";
-		//        String uristr = "saddr=" + begin + "&daddr=" + end + "&z=18";
-		//        Uri uri = Uri.parse(uristr);
 		Intent intent = new Intent(this, WebViewActivity.class);
 		String lat = String.format("%f", currentLot.getCoordinate().latitude);
 		String lg = String.format("%f", currentLot.getCoordinate().longitude);
 		intent.putExtra("Lat", lat);
 		intent.putExtra("Long", lg);
 		startActivity(intent);
-
-		//        String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", 39.032356, -84.4654, 39.032356, -84.4654);
-		//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		//        this.startActivity(intent);
 	}
 
 	// This is where the rows are added to the TableLayout
@@ -208,18 +189,6 @@ public class StatusPage extends Activity
 		} //...Here our table is all complete
 	}
 
-	private class RequestAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
-	{
-		//Asynchronously goes and sees if the login information is correct
-		//Returns an object with all the lots
-		@Override
-		protected Map<String, ParkingLot> doInBackground(Void... params)
-		{						
-			Map<String, ParkingLot> lotsObj = RequestManager.getSharedInstance().pullParkingLotInformation();
-			return lotsObj;
-		}
-	}
-
 	// Set which lot this should load. Default is gibberish.
 	public void setLot(ParkingLot tempLot)
 	{
@@ -248,11 +217,6 @@ public class StatusPage extends Activity
 			Intent search = new Intent(this, SearchPage.class);
 			startActivity(search);
 			return true; 
-
-			//		case R.id.action_status:
-			//			Intent status = new Intent(this, StatusPage.class);
-			//			startActivity(status);
-			//			return true;
 
 		case R.id.action_settings:
 			Intent settings = new Intent(this, SettingsPage.class);
