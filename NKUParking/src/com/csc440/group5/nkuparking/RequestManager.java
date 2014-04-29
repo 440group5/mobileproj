@@ -175,6 +175,8 @@ public class RequestManager
 		{
 			inp.in().read(bytes);
 			String val = new String(bytes);
+			val = val.replace("\"", "");
+			val = val.replace(System.getProperty("line.separator"), "");
 			if(val.contains("-1"))
 				return -1;
 			else

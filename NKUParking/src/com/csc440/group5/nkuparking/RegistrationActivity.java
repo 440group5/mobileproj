@@ -100,26 +100,26 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
 				error.append("The two password fields do not match");
 		}
 		
-		RegisterAsync async = new RegisterAsync();
-		
-		int status = 0;
-		if(isStudent)
-			status = 3;
-		else 
-			status = 2;
-		
-		int success = 0;
-		try 
-		{
-			success = async.execute(user, pass, String.format("%d", status)).get();
-		}
-		catch (Exception e) 
-		{
-			error.append("Error creating account, contact support");
-		}
-			
-		if(success < 0)
-			error.append("Error creating your account, please make sure it is properly filled out");
+//		RegisterAsync async = new RegisterAsync();
+//		
+//		int status = 0;
+//		if(isStudent)
+//			status = 3;
+//		else 
+//			status = 2;
+//		
+//		int success = 0;
+//		try 
+//		{
+//			success = async.execute(user, pass, String.format("%d", status)).get();
+//		}
+//		catch (Exception e) 
+//		{
+//			error.append("Error creating account, contact support");
+//		}
+//			
+//		if(success < 0)
+//			error.append("Error creating your account, please make sure it is properly filled out");
 		
 		//If the error string has been built, then there was an error, if not, there was not an error 
 		//and the app should continue normal execution.
@@ -156,6 +156,24 @@ public class RegistrationActivity extends Activity implements OnItemSelectedList
     			.show();
     		}
     		*/
+			
+			RegisterAsync async = new RegisterAsync();
+			
+			int status = 0;
+			if(isStudent)
+				status = 3;
+			else 
+				status = 2;
+			
+			int success = 0;
+			try 
+			{
+				success = async.execute(user, pass, String.format("%d", status)).get();
+			}
+			catch (Exception e) 
+			{
+				error.append("Error creating account, contact support");
+			}
 			
 			SharedPreferences settings = getSharedPreferences("NKUParkingPrefs", 0);
 			SharedPreferences.Editor edit = settings.edit();
