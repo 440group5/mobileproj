@@ -303,14 +303,16 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int context_menu=0x7f0b0000;
+        public static final int status_page_menu=0x7f0b0001;
     }
     public static final class string {
         public static final int action_directions=0x7f06001c;
         public static final int action_map=0x7f06001b;
+        public static final int action_refresh=0x7f060020;
         public static final int action_search=0x7f06001d;
         public static final int action_settings=0x7f06001f;
         public static final int action_status=0x7f06001e;
-        public static final int agreementText=0x7f06003b;
+        public static final int agreementText=0x7f06003c;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -335,7 +337,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
-        public static final int autoLoginText=0x7f06003c;
+        public static final int autoLoginText=0x7f06003d;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -407,44 +409,44 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int directions_button=0x7f060043;
-        public static final int directions_page=0x7f060036;
-        public static final int disclaimer=0x7f06003d;
-        public static final int emailField=0x7f060034;
-        public static final int emailLab=0x7f060033;
-        public static final int firstname=0x7f060029;
-        public static final int fnamehint=0x7f06002b;
-        public static final int hello_world=0x7f060020;
-        public static final int lastname=0x7f06002a;
-        public static final int lnamehint=0x7f06002c;
-        public static final int loginbutton=0x7f060025;
-        public static final int lot_status_page=0x7f060038;
-        public static final int passhint=0x7f060024;
-        public static final int passlab=0x7f060022;
-        public static final int regbutton=0x7f060026;
-        public static final int registerhint=0x7f06002f;
-        public static final int registerlab=0x7f060028;
-        public static final int regpasslab=0x7f06002e;
-        public static final int reguserbutton=0x7f060032;
-        public static final int reguserlab=0x7f06002d;
-        public static final int reserve_button=0x7f060042;
-        public static final int retypepass=0x7f060030;
-        public static final int retypepasslab=0x7f060031;
-        public static final int search_option_one=0x7f06003f;
-        public static final int search_option_two=0x7f060040;
-        public static final int search_title=0x7f06003e;
-        public static final int searchspinnertext=0x7f060044;
-        public static final int settings_page=0x7f06003a;
-        public static final int space_status_page=0x7f060039;
-        public static final int spinnertext=0x7f060035;
-        public static final int statphb=0x7f060047;
-        public static final int statphl=0x7f060046;
-        public static final int status_button=0x7f060041;
-        public static final int status_page=0x7f060037;
-        public static final int title_lot=0x7f060045;
-        public static final int userhint=0x7f060023;
-        public static final int userlab=0x7f060021;
-        public static final int welcomelab=0x7f060027;
+        public static final int directions_button=0x7f060044;
+        public static final int directions_page=0x7f060037;
+        public static final int disclaimer=0x7f06003e;
+        public static final int emailField=0x7f060035;
+        public static final int emailLab=0x7f060034;
+        public static final int firstname=0x7f06002a;
+        public static final int fnamehint=0x7f06002c;
+        public static final int hello_world=0x7f060021;
+        public static final int lastname=0x7f06002b;
+        public static final int lnamehint=0x7f06002d;
+        public static final int loginbutton=0x7f060026;
+        public static final int lot_status_page=0x7f060039;
+        public static final int passhint=0x7f060025;
+        public static final int passlab=0x7f060023;
+        public static final int regbutton=0x7f060027;
+        public static final int registerhint=0x7f060030;
+        public static final int registerlab=0x7f060029;
+        public static final int regpasslab=0x7f06002f;
+        public static final int reguserbutton=0x7f060033;
+        public static final int reguserlab=0x7f06002e;
+        public static final int reserve_button=0x7f060043;
+        public static final int retypepass=0x7f060031;
+        public static final int retypepasslab=0x7f060032;
+        public static final int search_option_one=0x7f060040;
+        public static final int search_option_two=0x7f060041;
+        public static final int search_title=0x7f06003f;
+        public static final int searchspinnertext=0x7f060045;
+        public static final int settings_page=0x7f06003b;
+        public static final int space_status_page=0x7f06003a;
+        public static final int spinnertext=0x7f060036;
+        public static final int statphb=0x7f060048;
+        public static final int statphl=0x7f060047;
+        public static final int status_button=0x7f060042;
+        public static final int status_page=0x7f060038;
+        public static final int title_lot=0x7f060046;
+        public static final int userhint=0x7f060024;
+        public static final int userlab=0x7f060022;
+        public static final int welcomelab=0x7f060028;
     }
     public static final class style {
         /** 

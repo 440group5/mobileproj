@@ -17,6 +17,15 @@
         </TableLayout>
     </ScrollView>
 
+<!--     <Button
+        android:id="@+id/occupiedbuttonstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/reservebuttonstatus"
+        android:onClick="markOccupied"
+        android:text="Taken" /> -->
+
     <Button
         android:id="@+id/reservebuttonstatus"
         android:layout_width="wrap_content"

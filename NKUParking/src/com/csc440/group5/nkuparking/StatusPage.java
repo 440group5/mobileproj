@@ -127,11 +127,10 @@ public class StatusPage extends Activity
 		});
 	}
 
-	//	public void makeOccupiedButton()
-	//	{
-	//		// Occupied Button
-	//		final Button bttnOcc = (Button) findViewById(R.id.occupiedbuttonstatus);
-	//	}
+	public void markOccupied(View view)
+	{
+		
+	}
 
 	public void errorDialog()
 	{
@@ -345,7 +344,7 @@ public class StatusPage extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.context_menu, menu);
+		getMenuInflater().inflate(R.menu.status_page_menu, menu);
 		return true;
 	}
 
@@ -354,6 +353,10 @@ public class StatusPage extends Activity
 
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
+
+		//case R.id.action_refresh:
+			//TODO PULL LOT DATA
+		//	return true;
 
 		case R.id.action_map:
 			Intent map = new Intent(this, MapPage.class);
