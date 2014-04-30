@@ -11,7 +11,12 @@ package com.csc440.group5.nkuparking;
 import java.util.ArrayList;
 import java.util.Map;
 
+import retrofit.RestAdapter;
+
+import com.csc440.group5.nkuparking.RequestManager.Reservation;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,6 +60,11 @@ public class StatusPage extends Activity
 		MakeTable(currentLot.getSpaces() );
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 *  Makes our Reserve button.
 	 */
@@ -70,13 +80,38 @@ public class StatusPage extends Activity
 				SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
 				String userType = prefs.getString("Status", "Visitor");
 
-				if( currentLot.getStatus().equals(userType) )
+				if( currentLot.getStatus().equals(userType) || currentLot.getStatus().equals("Open"))
 				{	
+					/*
 					// Perform action on click
 					Context context = getApplicationContext();
 					int duration = Toast.LENGTH_SHORT;
 					Toast toast = Toast.makeText(context, selectedLotName, duration);
 					toast.show();
+				    */
+					RequestManager req = RequestManager.getSharedInstance();
+					if(!req.reserveLot(reserveIndex, prefs.getInt("User_id", 9), selectedLotName, userType)){
+						//error alert dialog
+						/*
+						new AlertDialog.Builder(this)
+	        			.setTitle("Error")
+	        			.setMessage("There was an error reserving this lot.")
+	        			.setPositiveButton(android.R.string.yes, null)
+	        			.show();
+	        			*/
+						
+						Context context = getApplicationContext();
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, "error", duration);
+						toast.show();
+					}
+					else{
+						//Sucessfully reserved.
+						Context context = getApplicationContext();
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, selectedLotName + " successful reserved.", duration);
+						toast.show();
+					}
 				}
 				else
 				{
