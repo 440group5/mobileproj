@@ -16,9 +16,12 @@ import java.util.Map;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -89,13 +92,13 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 		try 
 		{
 			//Throw up a progress indicator while the app fetches the lot information
-			spinner = new ProgressDialog(this);
-			spinner.setMessage("Loading Lot Information...");
-			spinner.setCancelable(false);
-			spinner.show();
+//			spinner = new ProgressDialog(this);
+//			spinner.setMessage("Loading Lot Information...");
+//			spinner.setCancelable(false);
+//			spinner.show();
 
 			//Asynchronously load the lot data & add map markers
-			new LoadLotsAsync().execute();
+			new LoadLotsAsync(this).execute();
 		}
 		catch (Exception e) 
 		{
@@ -165,6 +168,30 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 
 	private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
 	{
+		private Context context;
+		
+		public LoadLotsAsync(Context context)
+		{
+			this.context = context;
+		}
+		
+		@Override 
+		public void onPreExecute()
+		{
+			int currentOrientation = getResources().getConfiguration().orientation; 
+					  
+			if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
+		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+			else
+		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+			  
+			spinner = new ProgressDialog(context);
+			spinner.setMessage("Loading Lot Information...");
+			spinner.setCancelable(false);
+			spinner.show();
+				
+		}
+		
 		@Override
 		protected Map<String, ParkingLot> doInBackground(Void... params)
 		{
@@ -279,6 +306,8 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 
 			//Dismiss the progress indicator
 			spinner.dismiss();
+			
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		}
 	}
 
