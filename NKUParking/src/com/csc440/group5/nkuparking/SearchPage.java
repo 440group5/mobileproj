@@ -10,6 +10,7 @@
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 import android.app.Activity;
@@ -158,6 +159,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 
 		try {
 			listOfLotNames = asyncLotList.execute().get();
+			Collections.sort(listOfLotNames);
 		}
 		catch (Exception e)
 		{
