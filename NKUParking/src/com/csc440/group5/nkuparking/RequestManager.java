@@ -175,8 +175,10 @@ public class RequestManager
 		{
 			inp.in().read(bytes);
 			String val = new String(bytes);
-			val = val.replace("\"", "");
-			val = val.replace(System.getProperty("line.separator"), "");
+//			val = val.replace("\"", "");
+//			val = val.replace(System.getProperty("line.separator"), "");
+			val = val.replaceAll("[^0-9]", "");
+			
 			if(val.contains("-1"))
 				return -1;
 			else
@@ -532,7 +534,7 @@ public class RequestManager
 		}
 	}
 	
-	/*
+	/**
 	 * Will tell the server that the given spot in the given lot has expired
 	 * Not for use to be called directly, will be used by the ParkingLot class
 	 * To get the User ID for the account on this device = getSharedPreferences("NKUParkingPrefs,0);
@@ -576,6 +578,46 @@ public class RequestManager
 		catch(Exception e)
 		{
 //			throw new RuntimeException("Error parsing server information");
+			return false;
+		}
+	}
+	
+	/** 
+	 * Sets a specified spot id with string lot name as occupied.
+	 */
+	
+	interface Occupied
+	{
+		@GET("/hooks/hooks.php?id=make_occupied")
+		Response setSpotAsOccupied(@Query("lot") String lotName, @Query("spot") int spot_id);
+	}
+	
+	public boolean setSpotAsOccupied(String lotName, int spot_id)
+	{
+		//Method to tell the server that a spot is occupied.
+		RestAdapter adapter = new RestAdapter.Builder()
+			.setEndpoint(URL)
+			.build();
+		
+		Occupied occupiedService = adapter.create(Occupied.class);
+		
+		//Send the request
+		Response res = occupiedService.setSpotAsOccupied(lotName, spot_id);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[32];
+		
+		//Read the HTML
+		try
+		{
+			inp.in().read(bytes);
+			String val = new String(bytes);
+			if(val.contains("-1"))
+				return false;
+			else
+				return true;
+		}
+		catch(Exception e)
+		{
 			return false;
 		}
 	}

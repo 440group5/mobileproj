@@ -167,4 +167,16 @@ public class ParkingLot
 		//Returns the coordinates of this lot.
 		return new LatLng(latitude, longitude);
 	}
+
+	public ParkingSpace getSpaceAtIndex(int index) 
+	{
+		try
+		{
+			return spaces.get(index);
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
+	}
 }

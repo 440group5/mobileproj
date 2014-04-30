@@ -129,7 +129,29 @@ public class StatusPage extends Activity
 
 	public void markOccupied(View view)
 	{
-		
+		if(reserveIndex > -1)
+		{
+			ParkingSpace space = currentLot.getSpaceAtIndex(reserveIndex);
+			if(space != null)
+			{
+				if(space.setOccupied())
+				{
+					Context context = getApplicationContext();
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, String.format("index: %d is now occupied", reserveIndex), duration);
+					toast.show();
+					
+					//TODO: add color to button now or reload data
+				}
+			}
+		}
+		else
+		{
+			Context context = getApplicationContext();
+			int duration = Toast.LENGTH_SHORT;
+			Toast toast = Toast.makeText(context, "Please select a space", duration);
+			toast.show();
+		}
 	}
 
 	public void errorDialog()

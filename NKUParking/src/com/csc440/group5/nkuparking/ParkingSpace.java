@@ -6,11 +6,14 @@
 
 package com.csc440.group5.nkuparking;
 
+import java.util.concurrent.ExecutionException;
+
+import android.os.AsyncTask;
+
 public class ParkingSpace 
 {
 	private boolean isAvailable = false;
 	private boolean isHandicapped = false;
-	//TODO: expiration time
 	private String expirationTime;
 	private int spot_id;
 	private int id;
@@ -76,10 +79,33 @@ public class ParkingSpace
 		status = "Open";
 	}
 	
-	public void setUnavailable()
+	public boolean setOccupied()
 	{
-		status = "Reserved";
+//		return RequestManager.getSharedInstance().setSpotAsOccupied(lotName, spot_id);
+//		return false;
+		
+		try 
+		{
+			return new SetOccupiedAsync().execute().get();
+		} 
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
+	
+	public void setClosed()
+	{
+		status = "Closed";
+	}
+//	
+//	public void setUnavailable()
+//	{
+//		//TODO: occupied
+//		status = "Reserved";
+//	}
 	
 	public boolean isAvailable()
 	{
@@ -88,5 +114,16 @@ public class ParkingSpace
 			return true;
 		else
 			return false;
+	}
+	
+	private class SetOccupiedAsync extends AsyncTask<Void, Void, Boolean>
+	{
+
+		@Override
+		protected Boolean doInBackground(Void... params) 
+		{
+			return RequestManager.getSharedInstance().setSpotAsOccupied(lotName, spot_id);
+		}
+		
 	}
 }
