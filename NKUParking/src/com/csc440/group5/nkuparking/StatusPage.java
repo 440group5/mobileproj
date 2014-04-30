@@ -10,6 +10,7 @@ package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import retrofit.RestAdapter;
 
@@ -20,6 +21,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,8 +91,18 @@ public class StatusPage extends Activity
 					Toast toast = Toast.makeText(context, selectedLotName, duration);
 					toast.show();
 				    */
-					RequestManager req = RequestManager.getSharedInstance();
-					if(!req.reserveLot(reserveIndex, prefs.getInt("User_id", 9), selectedLotName, userType)){
+					boolean isReserved = false;
+					try 
+					{
+						isReserved = new ReserveAsync().execute(userType).get();
+					} 
+					catch (Exception e) 
+					{
+						//error contacting server
+					}
+					
+					if(!isReserved)
+					{
 						//error alert dialog
 						/*
 						new AlertDialog.Builder(this)
@@ -105,7 +117,8 @@ public class StatusPage extends Activity
 						Toast toast = Toast.makeText(context, "error", duration);
 						toast.show();
 					}
-					else{
+					else
+					{
 						//Sucessfully reserved.
 						Context context = getApplicationContext();
 						int duration = Toast.LENGTH_SHORT;
@@ -124,6 +137,18 @@ public class StatusPage extends Activity
 				}
 			}
 		});
+	}
+	
+	private class ReserveAsync extends AsyncTask<String, Void, Boolean>
+	{
+		@Override
+		protected Boolean doInBackground(String... params)
+		{
+			SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
+			int user_id = prefs.getInt("User_id", 9);
+			String status = params[0];
+			return RequestManager.getSharedInstance().reserveLot(reserveIndex, user_id, selectedLotName, status);
+		}
 	}
 
 	/**

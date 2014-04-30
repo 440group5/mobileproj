@@ -213,7 +213,7 @@ public class RequestManager
 	{
 		//Hook for reserving a spot
 		@GET("/hooks/hooks.php?id=reserve")
-		ArrayList<String> reserveLot(@Query("spot") int spot_id, @Query("user_id") int user_id, @Query("lot") String lot, @Query("status") int status);
+		Response reserveLot(@Query("spot") int spot_id, @Query("user_id") int user_id, @Query("lot") String lot, @Query("status") int status);
 	}
 	
 	public boolean reserveLot(int spot_id, int user_id, String lot, String userStatus)
@@ -241,16 +241,36 @@ public class RequestManager
 		}
 		
 		Reservation resService = adapter.create(Reservation.class);
-		ArrayList<String> list = resService.reserveLot(spot_id, user_id, lot, status);
 		
-		if(!list.get(0).contains("-1"))
+		//Send the request to register a person and grab the HTML
+		Response res = resService.reserveLot(spot_id, user_id, lot, status);
+		TypedInput inp = res.getBody();
+		byte[] bytes = new byte[1024];
+		
+		//Read the HTML
+		try
 		{
-			//successfully reserved said spot
-			lotInfo.get(lot).getSpaceAtId(spot_id).setUnavailable();
-			return true;
+			inp.in().read(bytes);
+			String val = new String(bytes);
+			if(val.contains("-1"))
+				return false;
+			else
+				return true;
 		}
-		else
+		catch(Exception e)
+		{
+//			throw new RuntimeException("Error parsing server information");
 			return false;
+		}
+		
+//		if(!list.get(0).contains("-1"))
+//		{
+//			//successfully reserved said spot
+//			lotInfo.get(lot).getSpaceAtId(spot_id).setUnavailable();
+//			return true;
+//		}
+//		else
+//			return false;
 	}
 	
 	/*
