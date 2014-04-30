@@ -37,7 +37,7 @@ public class RequestManager
 			return lotInfo;
 	}
 	
-	/*
+	/**
 	 * To correctly use the login function of API:
 	 * 
 	 * 1) request a shared instance of this class via the getSharedInstance() method
@@ -132,7 +132,7 @@ public class RequestManager
 //			return id;
 	}
 	
-	/*
+	/**
 	 * To correctly use the registration function of API:
 	 * 
 	 * 1) request a shared instance of this class via the getSharedInstance() method
@@ -153,7 +153,7 @@ public class RequestManager
 	{
 		//Hook for registration of users
 		@GET("/hooks/hooks.php?id=register")
-		Response registerUser(@Query("username") String user, @Query("password") String pass, @Query("status") int status);
+		Response registerUser(@Query("username") String user, @Query("password") String pass, @Query("selection") int status);
 	}
 	
 	public int register(String user, String pass, int status)
@@ -203,12 +203,11 @@ public class RequestManager
 //			return null;
 	}
 	
-	/*
+	/**
 	 * This method reserves a given spot.
 	 * To call this method, you need the spot id, user id, lot name and status of the user.
 	 * To get the user_id and status from the user, you can easily just pull it from preferences.
 	 */
-	
 	interface Reservation
 	{
 		//Hook for reserving a spot
@@ -216,6 +215,11 @@ public class RequestManager
 		Response reserveLot(@Query("spot") int spot_id, @Query("user_id") int user_id, @Query("lot") String lot, @Query("status") int status);
 	}
 	
+	/**
+	 * This method reserves a given spot.
+	 * To call this method, you need the spot id, user id, lot name and status of the user.
+	 * To get the user_id and status from the user, you can easily just pull it from preferences.
+	 */
 	public boolean reserveLot(int spot_id, int user_id, String lot, String userStatus)
 	{
 		RestAdapter adapter = new RestAdapter.Builder()
@@ -273,7 +277,7 @@ public class RequestManager
 //			return false;
 	}
 	
-	/*
+	/**
 	 * Call the getParkingLotInformation() and it will return a map of parking lots
 	 * Each parking lot can be accessed by its appropriate key which is its name
 	 */
@@ -422,19 +426,25 @@ public class RequestManager
 //		return newList;
 //	}
 	
-	/*
+
+	/**
 	 * User hook
 	 * This returns the spot that a user has registered
 	 * or null if the user has nothing registered.
 	 * It requires the username to be passed in.
 	 */
-	
 	interface User
 	{
 		@GET("/hooks/hooks.php?id=user")
 		Response getUserSpotInfo(@Query("username") String user);
 	}
 	
+	/**
+	 * User hook
+	 * This returns the spot that a user has registered
+	 * or null if the user has nothing registered.
+	 * It requires the username to be passed in.
+	 */
 	public ParkingSpace getUserSpotInfo(String user)
 	{
 		//Method to check if a spot is expired or not
@@ -479,10 +489,7 @@ public class RequestManager
 		}
 	}
 	
-	/*
-	 * Check if lot is expired
-	 * This will not be called directly, but from the ParkingLot class
-	 */
+
 	
 	interface CheckExpire
 	{
@@ -490,6 +497,10 @@ public class RequestManager
 		Response checkIfSpotIsExpired(@Query("lot") String lotName, @Query("spot") int spot_id);
 	}
 	
+	/**
+	 * Check if space is expired
+	 * This will not be called directly, but from the ParkingLot class
+	 */
 	public boolean checkIfSpotIsExpired(String lotName, int spot_id)
 	{
 		//Method to check if a spot is expired or not

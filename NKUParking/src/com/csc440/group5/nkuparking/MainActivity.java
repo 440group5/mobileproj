@@ -152,9 +152,15 @@ public class MainActivity extends Activity implements OnTouchListener
     	startActivity(intent);
     }
     
+    /**
+     * Login Button call.
+     * @param view
+     */
     public void loginUser(View view)
     {
-    	
+    	InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		manager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+
 //		Intent intent = new Intent(this, MapPage.class);
 //		startActivity(intent);
     	

@@ -10,9 +10,6 @@ package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
-import retrofit.RestAdapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,7 +32,9 @@ public class StatusPage extends Activity
 {
 	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 	private String selectedLotName;
-	int reserveIndex=-1, reservedSpace=-1;
+	int reserveIndex=-1, userClickedIndex=-1;
+	ParkingSpace userReservedSpace = null;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -76,47 +75,63 @@ public class StatusPage extends Activity
 				SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
 				String userType = prefs.getString("Status", "Visitor");
 
-				if( currentLot.getStatus().equals(userType) || currentLot.getStatus().equals("Open"))
-				{	
+				if( reserveIndex > -1 )
+				{
+					if( currentLot.getStatus().equals(userType) || currentLot.getStatus().equals("Open"))
+					{
+						boolean spaceWasReserved = false;
+						try {
+							spaceWasReserved = new ReserveAsync().execute(userType).get();
+						} catch (Exception e) {//error contacting server
+						}
 
-					// Perform action on click
-					boolean spaceWasReserved = false;
-					try 
-					{
-						spaceWasReserved = new ReserveAsync().execute(userType).get();
-					} 
-					catch (Exception e) 
-					{
-						//error contacting server
-					}
 
-					if(!spaceWasReserved)
-					{
-						errorDialog();
+						if(!spaceWasReserved)
+						{
+							//Not reserved.
+							Context context = getApplicationContext();
+							int duration = Toast.LENGTH_SHORT;
+							Toast toast = Toast.makeText(context, "Space was not reserved. Error.", duration);
+							toast.show();
+							//errorDialog();
+						}
+						else
+						{
+							//Successfully reserved.
+							Context context = getApplicationContext();
+							int duration = Toast.LENGTH_SHORT;
+							Toast toast = Toast.makeText(context, selectedLotName + " successfully reserved.", duration);
+							toast.show();
+
+							userReservedSpace=currentLot.getSpaceAtId(reserveIndex);
+						}
 					}
 					else
 					{
-						//Successfully reserved.
-						reservedSpace=reserveIndex;
-
+						// Tell user they can't park here.
+						String restricted = "Reservations in Lot "+selectedLotName+" are restricted to "+currentLot.getStatus()+" users.";
 						Context context = getApplicationContext();
 						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, selectedLotName + " successfully reserved.", duration);
+						Toast toast = Toast.makeText(context, restricted, duration);
 						toast.show();
 					}
 				}
 				else
 				{
-					// Tell user they can't park here.
-					String restricted = "Reservations in Lot "+selectedLotName+" are restricted to "+currentLot.getStatus()+" users.";
 					Context context = getApplicationContext();
 					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, restricted, duration);
+					Toast toast = Toast.makeText(context, "Please select a space.", duration);
 					toast.show();
-				}
+				}					
 			}
 		});
 	}
+
+	//	public void makeOccupiedButton()
+	//	{
+	//		// Occupied Button
+	//		final Button bttnOcc = (Button) findViewById(R.id.occupiedbuttonstatus);
+	//	}
 
 	public void errorDialog()
 	{
@@ -139,6 +154,17 @@ public class StatusPage extends Activity
 		}
 	}
 
+	//	private class CheckReserveAsync extends AsyncTask<String, Void, ParkingSpace>
+	//	{
+	//		@Override
+	//		protected ParkingSpace doInBackground(String... params)
+	//		{
+	//			SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
+	//			String user = prefs.getString("Username", "");
+	//			return RequestManager.getSharedInstance().getUserSpotInfo(user);
+	//		}
+	//	}
+
 	/**
 	 * Directions Button for Status Page.
 	 * @param view
@@ -153,11 +179,19 @@ public class StatusPage extends Activity
 		startActivity(intent);
 	}
 
-	// This is where the rows are added to the TableLayout
+
+	/**
+	 * Makes the table of buttons which represent spaces and spacing.
+	 * @param spaceList
+	 */
 	public void MakeTable(ArrayList<ParkingSpace> spaceList)
 	{
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
 		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
+
+		//		try {
+		//			userReservedSpace = new CheckReserveAsync().execute().get();
+		//		} catch (InterruptedException e) {} catch (ExecutionException e) {}
 
 		int spaceIndex=0;
 		// rows
@@ -172,7 +206,6 @@ public class StatusPage extends Activity
 
 				if( x!=1 && x!=4 && x!=7 && spaceIndex<spaceList.size() )	// not spacing columns
 				{
-
 					// Available Space
 					if( spaceList.get(spaceIndex).isAvailable() )	
 					{
@@ -186,21 +219,19 @@ public class StatusPage extends Activity
 								// Perform action on click
 								for( Button tmp : bttnlist )
 								{
-									if (tmp==b )
+									if ( tmp==b )
 									{
 										// spot clicked
 										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
-										reserveIndex=bttnlist.indexOf(tmp);
+										userClickedIndex=bttnlist.indexOf(tmp); 
+										setReserveIndex();
 									}
+									else if( isUserReservedSpace( bttnlist.indexOf(tmp) ) )
+										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
 									else
 										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
+									// if this user has reserved this space
 
-
-									if( reservedSpace>=0 && reservedSpace<bttnlist.size() ) 
-										if ( bttnlist.get(reservedSpace) == tmp )
-										{
-											tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
-										}
 								}
 							}
 						});
@@ -220,36 +251,7 @@ public class StatusPage extends Activity
 				else
 					b.setBackgroundColor( getResources().getColor(R.color.generic) );
 
-				// Row UI Specifications
-				row.addView(b); //Attach TextView to its parent (row)
-
-				//Warning: do not call t.setLayoutParams(params)
-				//before attaching the view to the parent, 
-				//else null reference will result
-
-				//Use the following lines only if special formatting
-				//as shown below is needed. If not, skip.
-				//
-
-				TableRow.LayoutParams params = 
-						(TableRow.LayoutParams)b.getLayoutParams();
-				params.column= x; //place at xth columns.
-
-				params.setMargins(1,1,1,1); //To "draw" margins
-				//around (outside) the ButtonView, skip if not needed
-
-				params.weight=1;	// Giving weight means they will fill and share evenly
-
-
-				//Set width and height as needed
-				//params.width=20;
-				params.height = TableRow.LayoutParams.WRAP_CONTENT;
-
-				b.setPadding(2, 2, 2, 2); 
-				//Skip padding (space around text) above if not needed
-
-				b.setLayoutParams(params); // causes layout update. 
-				//Skip above if no special setting is needed
+				setRowOptions(row, b, x);
 
 			}
 			// Add the new row to the table
@@ -260,10 +262,84 @@ public class StatusPage extends Activity
 		} //...Here our table is all complete
 	}
 
-	// Set which lot this should load. Default is gibberish.
-	public void setLot(ParkingLot tempLot)
+	/**
+	 * Sets various options for the row of buttons.
+	 * @param row
+	 * @param b
+	 * @param x
+	 */
+	public void setRowOptions(TableRow row, Button b, int x)
 	{
-		currentLot = tempLot;
+		// Row UI Specifications
+		row.addView(b); //Attach TextView to its parent (row)
+
+		//Warning: do not call t.setLayoutParams(params)
+		//before attaching the view to the parent, 
+		//else null reference will result
+
+		//Use the following lines only if special formatting
+		//as shown below is needed. If not, skip.
+		//
+
+		TableRow.LayoutParams params = 
+				(TableRow.LayoutParams)b.getLayoutParams();
+		params.column= x; //place at xth columns.
+
+		params.setMargins(1,1,1,1); //To "draw" margins
+		//around (outside) the ButtonView, skip if not needed
+
+		params.weight= 1;	// Giving weight means they will fill and share evenly
+
+
+		//Set width and height as needed
+		//params.width=20;
+		params.height = TableRow.LayoutParams.WRAP_CONTENT;
+
+		b.setPadding(2, 2, 2, 2); 
+		//Skip padding (space around text) above if not needed
+
+		b.setLayoutParams(params); // causes layout update. 
+		//Skip above if no special setting is needed
+	}
+
+	/**
+	 * Sets the reserve index as a place in the list of spaces,
+	 * regardless of availability.
+	 */
+	public void setReserveIndex()
+	{
+		//userClickedSpace=4,  so reserveIndex could be 30 or something. 0123
+		ArrayList<ParkingSpace> list = currentLot.getSpaces();
+
+		int i=0, j=0;
+		boolean found =false;
+		while( i<list.size() && found==false )
+		{
+			if( list.get(i).isAvailable() )
+			{
+				if(j==userClickedIndex)
+				{
+					reserveIndex=i;
+					found=true;
+				}
+				j++;
+			}
+			i++;
+		}
+	}
+
+	/**
+	 * Returns true if given index 
+	 * matches the User's reserved space.
+	 * @param i
+	 * @return
+	 */
+	public boolean isUserReservedSpace(int i)
+	{
+		if( userReservedSpace != null )
+			if( userReservedSpace.equals( currentLot.getSpaces().get(i) ) ) 
+				return true;
+		return false;
 	}
 
 	@Override
@@ -298,6 +374,4 @@ public class StatusPage extends Activity
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-
 }
