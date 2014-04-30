@@ -186,6 +186,18 @@
        else
          echo "-1";
     }
+    
+    else if($id == "make_occupied")
+    {
+       $lot = $_GET['lot'];
+       $spot = $_GET['spot'];
+       $query = "update spots set status = 'Occupied' where spot_id = '".$spot."' and lot = '".$lot."'";
+       $result = mysqli_query($db, $query) or die(mysqli_error($db));
+       if($result)
+         echo "0";
+       else
+         echo "-1";
+    }
 
     else if($id == "checkexpire")
     {
