@@ -63,30 +63,46 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 
 			boolean foundspace=false;
 			int i=0, j=0;
-			while( foundspace==false )
+			while( foundspace==false && i<listOfLotNames.size() )
 			{
-				// Get list of spaces for each lot
-				ArrayList<ParkingSpace> tmpLot =lotInformation.get(listOfLotNames.get(i)).getSpaces();
-				if( lotInformation.get(i).getStatus().equals(userType) )
+				if ( i<listOfLotNames.size() )
 				{
-					// Go through list of spaces
-					while( j<tmpLot.size() && foundspace==false )
+					// Get list of spaces for each lot
+					ParkingLot testing = lotInformation.get( listOfLotNames.get(i) );
+					ArrayList<ParkingSpace> tmpLot = testing.getSpaces();
+
+					String nameTmp = testing.getStatus();
+					if( nameTmp.equals(userType) )
 					{
-						// if one of them is open, set that lot to open as status, then exit loop
-						if( tmpLot.get(i).isAvailable() )
+						// Go through list of spaces
+						while( j<tmpLot.size() && foundspace==false )
 						{
-							status.putExtra( "LotName",listOfLotNames.get(i) );
-							foundspace=true;
+							// if one of them is open, set that lot to open as status, then exit loop
+							if( tmpLot.get(i).isAvailable() )
+							{
+								status.putExtra( "LotName", listOfLotNames.get(i) );
+								foundspace=true;
+							}
+							j++;
 						}
-						j++;
 					}
+				}
+				else
+				{
+					foundspace=true;
+					
+					new AlertDialog.Builder(this)
+        			.setTitle("Sorry")
+        			.setMessage("It looks like every space has been taken!")
+        			.setPositiveButton(android.R.string.yes, null)
+        			.show();
 				}
 				j=0;	//reset j
 				i++;
 			}
 		}
 		else
-			status.putExtra("LotName", selectedLotName);
+			status.putExtra( "LotName", selectedLotName );
 		startActivity(status);	//Start Status Window
 	}
 
@@ -148,6 +164,7 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	/**
 	 * Populates Spinner, the dropdown box where
 	 * the user selects from a list of lots.
+	 * Also sorts the list of lots.
 	 */
 	public void populateSpinner()
 	{
@@ -179,7 +196,6 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 	/**
 	 * Asynchronously goes and gets shared parking lot map, lotInformation
 	 * @author ryanlietzenmayer
-	 *
 	 */
 	private class RequestAsync extends AsyncTask<Void, Void, ArrayList<String>>
 	{
@@ -234,6 +250,4 @@ public class SearchPage extends Activity implements OnItemSelectedListener
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-
 }

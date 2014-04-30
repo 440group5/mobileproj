@@ -62,11 +62,7 @@ public class StatusPage extends Activity
 		MakeTable(currentLot.getSpaces() );
 	}
 
-	
-	
-	
-	
-	
+
 	/**
 	 *  Makes our Reserve button.
 	 */
@@ -84,13 +80,13 @@ public class StatusPage extends Activity
 
 				if( currentLot.getStatus().equals(userType) || currentLot.getStatus().equals("Open"))
 				{	
-					/*
+
 					// Perform action on click
-					Context context = getApplicationContext();
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, selectedLotName, duration);
-					toast.show();
-				    */
+					//					Context context = getApplicationContext();
+					//					int duration = Toast.LENGTH_SHORT;
+					//					Toast toast = Toast.makeText(context, selectedLotName, duration);
+					//					toast.show();
+
 					boolean isReserved = false;
 					try 
 					{
@@ -100,7 +96,7 @@ public class StatusPage extends Activity
 					{
 						//error contacting server
 					}
-					
+
 					if(!isReserved)
 					{
 						//error alert dialog
@@ -110,8 +106,8 @@ public class StatusPage extends Activity
 	        			.setMessage("There was an error reserving this lot.")
 	        			.setPositiveButton(android.R.string.yes, null)
 	        			.show();
-	        			*/
-						
+						 */
+
 						Context context = getApplicationContext();
 						int duration = Toast.LENGTH_SHORT;
 						Toast toast = Toast.makeText(context, "error", duration);
@@ -138,7 +134,7 @@ public class StatusPage extends Activity
 			}
 		});
 	}
-	
+
 	private class ReserveAsync extends AsyncTask<String, Void, Boolean>
 	{
 		@Override
