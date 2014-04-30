@@ -40,9 +40,9 @@ public class StatusPage extends Activity
 	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 	private String selectedLotName;
 	int reserveIndex=-1, userClickedIndex=-1;
+	ArrayList<ParkingSpace> occupiedSpots = new ArrayList<ParkingSpace>();
 	ParkingSpace userReservedSpace = null;
 	private ProgressDialog spinner;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -144,12 +144,7 @@ public class StatusPage extends Activity
 			{
 				if(space.setOccupied())
 				{
-					Context context = getApplicationContext();
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, String.format("index: %d is now occupied", reserveIndex), duration);
-					toast.show();
-					
-					//TODO: add color to button now or reload data
+					occupiedSpots.add(space);
 				}
 			}
 		}
@@ -160,6 +155,13 @@ public class StatusPage extends Activity
 			Toast toast = Toast.makeText(context, "Please select a space", duration);
 			toast.show();
 		}
+	}
+	public boolean markedOccupied(int i)
+	{
+		if( occupiedSpots != null )
+			if( occupiedSpots.contains( currentLot.getSpaces().get(i) ) ) 
+				return true;
+		return false;
 	}
 
 	public void errorDialog()
@@ -182,17 +184,6 @@ public class StatusPage extends Activity
 			return RequestManager.getSharedInstance().reserveLot(reserveIndex, user_id, selectedLotName, status);
 		}
 	}
-
-	//	private class CheckReserveAsync extends AsyncTask<String, Void, ParkingSpace>
-	//	{
-	//		@Override
-	//		protected ParkingSpace doInBackground(String... params)
-	//		{
-	//			SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
-	//			String user = prefs.getString("Username", "");
-	//			return RequestManager.getSharedInstance().getUserSpotInfo(user);
-	//		}
-	//	}
 
 	/**
 	 * Directions Button for Status Page.
@@ -218,10 +209,6 @@ public class StatusPage extends Activity
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
 		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
 
-		//		try {
-		//			userReservedSpace = new CheckReserveAsync().execute().get();
-		//		} catch (InterruptedException e) {} catch (ExecutionException e) {}
-
 		int spaceIndex=0;
 		// rows
 		while( spaceIndex < spaceList.size() )
@@ -235,8 +222,10 @@ public class StatusPage extends Activity
 
 				if( x!=1 && x!=4 && x!=7 && spaceIndex<spaceList.size() )	// not spacing columns
 				{
+					//Decide how many handicapped spaces
+					int numHandi = (int) (spaceList.size() * 0.04);	// 5 spaces, index of 01234
 					// Available Space
-					if( spaceList.get(spaceIndex).isAvailable() )	
+					if( spaceList.get(spaceIndex).isAvailable() && spaceIndex>numHandi )	
 					{
 						bttnlist.add(b);	//add to list of clickable spaces
 						b.setBackgroundColor( getResources().getColor(R.color.available) );
@@ -257,10 +246,10 @@ public class StatusPage extends Activity
 									}
 									else if( isUserReservedSpace( bttnlist.indexOf(tmp) ) )
 										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
+									else if( markedOccupied ( bttnlist.indexOf(tmp) )  ) 
+										tmp.setBackgroundColor( getResources().getColor(R.color.unavailable) );
 									else
 										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
-									// if this user has reserved this space
-
 								}
 							}
 						});
@@ -272,6 +261,8 @@ public class StatusPage extends Activity
 						// Handicapped Space
 						if( spaceList.get(spaceIndex).isHandicapped() )
 							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
+						if( spaceIndex<numHandi )
+							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
 					}
 					spaceIndex++;
 
@@ -281,7 +272,6 @@ public class StatusPage extends Activity
 					b.setBackgroundColor( getResources().getColor(R.color.generic) );
 
 				setRowOptions(row, b, x);
-
 			}
 			// Add the new row to the table
 			table.addView( row, 
@@ -290,6 +280,7 @@ public class StatusPage extends Activity
 							android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 		} //...Here our table is all complete
 	}
+
 
 	/**
 	 * Sets various options for the row of buttons.
@@ -371,6 +362,7 @@ public class StatusPage extends Activity
 		return false;
 	}
 
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -407,38 +399,38 @@ public class StatusPage extends Activity
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private void reloadActivity()
 	{
 		this.recreate();
 	}
-	
+
 	private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
 	{
 		private Context context;
-		
+
 		public LoadLotsAsync(Context context)
 		{
 			this.context = context;
 		}
-		
+
 		@Override 
 		public void onPreExecute()
 		{
 			int currentOrientation = getResources().getConfiguration().orientation; 
-					  
+
 			if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
-		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
 			else
-		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-			  
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+
 			spinner = new ProgressDialog(context);
 			spinner.setMessage("Loading Lot Information...");
 			spinner.setCancelable(false);
 			spinner.show();
-				
+
 		}
-		
+
 		@Override
 		protected Map<String, ParkingLot> doInBackground(Void... params)
 		{
@@ -457,7 +449,7 @@ public class StatusPage extends Activity
 		{
 			//Dismiss the progress indicator
 			spinner.dismiss();
-			
+
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 			reloadActivity();
 		}
