@@ -9,13 +9,20 @@
 package com.csc440.group5.nkuparking;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +41,7 @@ public class StatusPage extends Activity
 	private String selectedLotName;
 	int reserveIndex=-1, userClickedIndex=-1;
 	ParkingSpace userReservedSpace = null;
+	private ProgressDialog spinner;
 
 
 	@Override
@@ -376,9 +384,9 @@ public class StatusPage extends Activity
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 
-		//case R.id.action_refresh:
-			//TODO PULL LOT DATA
-		//	return true;
+		case R.id.action_refresh:
+			new LoadLotsAsync(this).execute();
+			return true;
 
 		case R.id.action_map:
 			Intent map = new Intent(this, MapPage.class);
@@ -397,6 +405,61 @@ public class StatusPage extends Activity
 
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	private void reloadActivity()
+	{
+		this.recreate();
+	}
+	
+	private class LoadLotsAsync extends AsyncTask<Void, Void, Map<String, ParkingLot>>
+	{
+		private Context context;
+		
+		public LoadLotsAsync(Context context)
+		{
+			this.context = context;
+		}
+		
+		@Override 
+		public void onPreExecute()
+		{
+			int currentOrientation = getResources().getConfiguration().orientation; 
+					  
+			if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
+		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+			else
+		        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+			  
+			spinner = new ProgressDialog(context);
+			spinner.setMessage("Loading Lot Information...");
+			spinner.setCancelable(false);
+			spinner.show();
+				
+		}
+		
+		@Override
+		protected Map<String, ParkingLot> doInBackground(Void... params)
+		{
+			try
+			{
+				return RequestManager.getSharedInstance().getParkingLotMap(true);
+			}
+			catch(Exception e)
+			{
+				return null;
+			}
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, ParkingLot> lots)
+		{
+			//Dismiss the progress indicator
+			spinner.dismiss();
+			
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+			reloadActivity();
 		}
 	}
 }
