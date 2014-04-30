@@ -14,8 +14,6 @@ import java.util.concurrent.ExecutionException;
 
 import retrofit.RestAdapter;
 
-import com.csc440.group5.nkuparking.RequestManager.Reservation;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -37,7 +35,7 @@ public class StatusPage extends Activity
 {
 	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 	private String selectedLotName;
-	int reserveIndex=-1;
+	int reserveIndex=-1, reservedSpace=-1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -82,43 +80,28 @@ public class StatusPage extends Activity
 				{	
 
 					// Perform action on click
-					//					Context context = getApplicationContext();
-					//					int duration = Toast.LENGTH_SHORT;
-					//					Toast toast = Toast.makeText(context, selectedLotName, duration);
-					//					toast.show();
-
-					boolean isReserved = false;
+					boolean spaceWasReserved = false;
 					try 
 					{
-						isReserved = new ReserveAsync().execute(userType).get();
+						spaceWasReserved = new ReserveAsync().execute(userType).get();
 					} 
 					catch (Exception e) 
 					{
 						//error contacting server
 					}
 
-					if(!isReserved)
+					if(!spaceWasReserved)
 					{
-						//error alert dialog
-						/*
-						new AlertDialog.Builder(this)
-	        			.setTitle("Error")
-	        			.setMessage("There was an error reserving this lot.")
-	        			.setPositiveButton(android.R.string.yes, null)
-	        			.show();
-						 */
-
-						Context context = getApplicationContext();
-						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, "error", duration);
-						toast.show();
+						errorDialog();
 					}
 					else
 					{
-						//Sucessfully reserved.
+						//Successfully reserved.
+						reservedSpace=reserveIndex;
+
 						Context context = getApplicationContext();
 						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, selectedLotName + " successful reserved.", duration);
+						Toast toast = Toast.makeText(context, selectedLotName + " successfully reserved.", duration);
 						toast.show();
 					}
 				}
@@ -133,6 +116,15 @@ public class StatusPage extends Activity
 				}
 			}
 		});
+	}
+
+	public void errorDialog()
+	{
+		new AlertDialog.Builder(this)
+		.setTitle("Error")
+		.setMessage("There was an error reserving this lot.")
+		.setPositiveButton(android.R.string.yes, null)
+		.show();
 	}
 
 	private class ReserveAsync extends AsyncTask<String, Void, Boolean>
@@ -169,7 +161,6 @@ public class StatusPage extends Activity
 
 		int spaceIndex=0;
 		// rows
-		//for(int y=0; y<20; y++)
 		while( spaceIndex < spaceList.size() )
 		{
 			TableRow row = new TableRow(this);
@@ -178,7 +169,6 @@ public class StatusPage extends Activity
 			{
 				// create a new button         
 				final Button b = new Button(this);
-				//b.setText(x+","+y); // text on button
 
 				if( x!=1 && x!=4 && x!=7 && spaceIndex<spaceList.size() )	// not spacing columns
 				{
@@ -195,6 +185,7 @@ public class StatusPage extends Activity
 							{
 								// Perform action on click
 								for( Button tmp : bttnlist )
+								{
 									if (tmp==b )
 									{
 										// spot clicked
@@ -203,6 +194,14 @@ public class StatusPage extends Activity
 									}
 									else
 										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
+
+
+									if( reservedSpace>=0 && reservedSpace<bttnlist.size() ) 
+										if ( bttnlist.get(reservedSpace) == tmp )
+										{
+											tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
+										}
+								}
 							}
 						});
 					}
@@ -221,9 +220,8 @@ public class StatusPage extends Activity
 				else
 					b.setBackgroundColor( getResources().getColor(R.color.generic) );
 
-
+				// Row UI Specifications
 				row.addView(b); //Attach TextView to its parent (row)
-				//row.setWeightSum(9);
 
 				//Warning: do not call t.setLayoutParams(params)
 				//before attaching the view to the parent, 
