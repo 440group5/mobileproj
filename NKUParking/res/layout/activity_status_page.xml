@@ -19,27 +19,33 @@
 
     <Button
         android:id="@+id/occupiedbuttonstatus"
+        style="@style/btnStyleOrange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/reservebuttonstatus"
+        android:layout_marginRight="15dp"
         android:onClick="markOccupied"
         android:text="Taken" />
 
     <Button
         android:id="@+id/reservebuttonstatus"
+        style="@style/btnStyleOrange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/directionsbuttonstatus"
         android:text="@string/reserve_button" />
 
     <Button
         android:id="@+id/directionsbuttonstatus"
+        style="@style/btnStyleOrange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
         android:onClick="loadDirs"
         android:text="@string/directions_button" />
 

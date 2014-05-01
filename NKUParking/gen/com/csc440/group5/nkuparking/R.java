@@ -226,12 +226,13 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_launcher=0x7f020018;
-        public static final int ic_plusone_medium_off_client=0x7f020019;
-        public static final int ic_plusone_small_off_client=0x7f02001a;
-        public static final int ic_plusone_standard_off_client=0x7f02001b;
-        public static final int ic_plusone_tall_off_client=0x7f02001c;
-        public static final int nkulogo=0x7f02001d;
+        public static final int custom_btn_orange=0x7f020018;
+        public static final int ic_launcher=0x7f020019;
+        public static final int ic_plusone_medium_off_client=0x7f02001a;
+        public static final int ic_plusone_small_off_client=0x7f02001b;
+        public static final int ic_plusone_standard_off_client=0x7f02001c;
+        public static final int ic_plusone_tall_off_client=0x7f02001d;
+        public static final int nkulogo=0x7f02001e;
     }
     public static final class id {
         public static final int action_map=0x7f050036;
@@ -245,8 +246,8 @@ containing a value of this type.
         public static final int btnlayout=0x7f050016;
         public static final int button1=0x7f05000e;
         public static final int class_spinner=0x7f050030;
-        public static final int directionsbutton_map=0x7f050023;
-        public static final int directionsbuttonsearch=0x7f050017;
+        public static final int directionsbutton_map=0x7f050022;
+        public static final int directionsbuttonsearch=0x7f050018;
         public static final int directionsbuttonstatus=0x7f05001e;
         public static final int disclaimerLab=0x7f050035;
         public static final int disclaimerLayout=0x7f050034;
@@ -273,8 +274,8 @@ containing a value of this type.
         public static final int regpasslab=0x7f050029;
         public static final int reguserfield=0x7f05002a;
         public static final int reguserlab=0x7f050028;
-        public static final int reservebutton_map=0x7f050022;
-        public static final int reservebuttonsearch=0x7f050018;
+        public static final int reservebutton_map=0x7f050023;
+        public static final int reservebuttonsearch=0x7f050017;
         public static final int reservebuttonstatus=0x7f05001d;
         public static final int retypepassfield=0x7f05002d;
         public static final int retypepasslab=0x7f05002c;
@@ -479,6 +480,7 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
+        public static final int btnStyleOrange=0x7f0a0002;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

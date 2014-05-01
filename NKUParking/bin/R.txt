@@ -61,12 +61,13 @@ int drawable common_signin_btn_text_normal_dark 0x7f020014
 int drawable common_signin_btn_text_normal_light 0x7f020015
 int drawable common_signin_btn_text_pressed_dark 0x7f020016
 int drawable common_signin_btn_text_pressed_light 0x7f020017
-int drawable ic_launcher 0x7f020018
-int drawable ic_plusone_medium_off_client 0x7f020019
-int drawable ic_plusone_small_off_client 0x7f02001a
-int drawable ic_plusone_standard_off_client 0x7f02001b
-int drawable ic_plusone_tall_off_client 0x7f02001c
-int drawable nkulogo 0x7f02001d
+int drawable custom_btn_orange 0x7f020018
+int drawable ic_launcher 0x7f020019
+int drawable ic_plusone_medium_off_client 0x7f02001a
+int drawable ic_plusone_small_off_client 0x7f02001b
+int drawable ic_plusone_standard_off_client 0x7f02001c
+int drawable ic_plusone_tall_off_client 0x7f02001d
+int drawable nkulogo 0x7f02001e
 int id action_map 0x7f050036
 int id action_refresh 0x7f050039
 int id action_search 0x7f050037
@@ -78,8 +79,8 @@ int id bottomlayout 0x7f05000c
 int id btnlayout 0x7f050016
 int id button1 0x7f05000e
 int id class_spinner 0x7f050030
-int id directionsbutton_map 0x7f050023
-int id directionsbuttonsearch 0x7f050017
+int id directionsbutton_map 0x7f050022
+int id directionsbuttonsearch 0x7f050018
 int id directionsbuttonstatus 0x7f05001e
 int id disclaimerLab 0x7f050035
 int id disclaimerLayout 0x7f050034
@@ -106,8 +107,8 @@ int id regpassfield 0x7f05002b
 int id regpasslab 0x7f050029
 int id reguserfield 0x7f05002a
 int id reguserlab 0x7f050028
-int id reservebutton_map 0x7f050022
-int id reservebuttonsearch 0x7f050018
+int id reservebutton_map 0x7f050023
+int id reservebuttonsearch 0x7f050017
 int id reservebuttonstatus 0x7f05001d
 int id retypepassfield 0x7f05002d
 int id retypepasslab 0x7f05002c
@@ -210,6 +211,7 @@ int string userlab 0x7f060022
 int string welcomelab 0x7f060028
 int style AppBaseTheme 0x7f0a0000
 int style AppTheme 0x7f0a0001
+int style btnStyleOrange 0x7f0a0002
 int[] styleable AdsAttrs { 0x7f010000, 0x7f010001, 0x7f010002 }
 int styleable AdsAttrs_adSize 0
 int styleable AdsAttrs_adSizes 1

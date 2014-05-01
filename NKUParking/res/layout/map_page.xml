@@ -33,24 +33,27 @@
     -->
 
     <Button
-        android:id="@+id/reservebutton_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dip"
-        android:layout_toLeftOf="@+id/directionsbutton_map"
-        android:onClick="loadLotStatus"
-        android:text="@string/status_button" />
-
-    <Button
         android:id="@+id/directionsbutton_map"
+        style="@style/btnStyleOrange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="13dip"
-        android:layout_marginRight="50dip"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="60dp"
         android:onClick="loadDirections"
         android:text="@string/directions_button" />
+
+    <Button
+        android:id="@+id/reservebutton_map"
+        style="@style/btnStyleOrange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/directionsbutton_map"
+        android:layout_alignBottom="@+id/directionsbutton_map"
+        android:layout_marginRight="23dp"
+        android:layout_toLeftOf="@+id/directionsbutton_map"
+        android:onClick="loadLotStatus"
+        android:text="@string/status_button" />
 
 </RelativeLayout>
