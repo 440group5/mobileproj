@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/nkugold"
-    android:gravity="right" >
+    android:gravity="top" >
 
     <TextView
         android:id="@+id/searchlab"
@@ -14,55 +14,73 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="@string/search_title"
-        android:textSize="30sp"
+        android:textSize="33sp"
         android:textStyle="bold" />
+	
+	<RelativeLayout
+	    android:id="@+id/radiolayout"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/searchlab"
+	    android:paddingTop="25dp"
+	    android:paddingBottom="25dp"
+	    android:layout_centerHorizontal="true">
+ 	 
+		<RadioGroup
+   	    	android:id="@+id/radioGroup1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical" >
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchlab"
-        android:orientation="vertical" >
+        	<RadioButton
+        	    android:id="@+id/radio_any_spot"
+       		    android:layout_width="wrap_content"
+      	    	android:layout_height="wrap_content"
+            	android:textSize="22sp"
+            	android:checked="true"
+            	android:onClick="onRadioButtonClicked"
+            	android:text="@string/search_option_one" />
 
-        <RadioButton
-            android:id="@+id/radio_any_spot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/search_option_one" />
+        	<RadioButton
+          		android:id="@+id/radio_lot_spot"
+            	android:layout_width="match_parent"
+            	android:layout_height="wrap_content"
+            	android:textSize="22sp"
+            	android:onClick="onRadioButtonClicked"
+            	android:text="@string/search_option_two" />
+    	</RadioGroup>
+    
+        <Spinner
+        	android:id="@+id/spinner_lots"
+        	android:layout_width="150dp"
+        	android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+        	android:layout_below="@+id/radioGroup1" />
+	</RelativeLayout>
 
-        <RadioButton
-            android:id="@+id/radio_lot_spot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/search_option_two" />
-    </RadioGroup>
+	<RelativeLayout 
+    	android:id="@+id/btnlayout"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_centerHorizontal="true"
+    	android:layout_below="@+id/radiolayout">
 
-    <Button
-        android:id="@+id/reservebuttonsearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/directionsbuttonsearch"
-        android:onClick="loadLotStatus"
-        android:text="@string/status_button" />
+    	<Button
+       		android:id="@+id/reservebuttonsearch"
+        	android:layout_width="150dp"
+        	android:layout_height="wrap_content"
+        	android:textSize="22sp"
+        	android:onClick="loadLotStatus"
+        	android:text="@string/status_button" />
 
-    <Button
-        android:id="@+id/directionsbuttonsearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="loadDirs"
-        android:text="@string/directions_button" />
+    	<Button
+        	android:id="@+id/directionsbuttonsearch"
+        	android:layout_width="150dp"
+        	android:layout_height="wrap_content"
+        	android:textSize="22sp"
+        	android:layout_toRightOf="@+id/reservebuttonsearch"
+        	android:onClick="loadDirs"
+        	android:text="@string/directions_button" />
 
-    <Spinner
-        android:id="@+id/spinner_lots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/radioGroup1" />
-
+	</RelativeLayout>
 </RelativeLayout>
