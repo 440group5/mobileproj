@@ -83,7 +83,7 @@ public class ParkingSpace
 	{
 //		return RequestManager.getSharedInstance().setSpotAsOccupied(lotName, spot_id);
 //		return false;
-		
+		status = "Occupied";
 		try 
 		{
 			return new SetOccupiedAsync().execute().get();

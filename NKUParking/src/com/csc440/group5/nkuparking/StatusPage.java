@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -39,10 +36,12 @@ public class StatusPage extends Activity
 {
 	public ParkingLot currentLot = new ParkingLot("#", "Filler Text Lorem Ipsum", -39.031495, -84.4640840, 100, 0);
 	private String selectedLotName;
-	int reserveIndex=-1, userClickedIndex=-1;
+	//int reserveIndex=-1, userClickedIndex=-1;
 	ArrayList<ParkingSpace> occupiedSpots = new ArrayList<ParkingSpace>();
 	ParkingSpace userReservedSpace = null;
+	ParkingSpace userClickedSpace = null;
 	private ProgressDialog spinner;
+	final Map<ParkingSpace, Button> bttnlist = new HashMap<ParkingSpace, Button>();		//list of all available spaces
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -54,7 +53,6 @@ public class StatusPage extends Activity
 			selectedLotName = getIntent().getExtras().getString("LotName");
 		else
 			selectedLotName="A";
-
 
 		Map<String, ParkingLot> parkingLots = RequestManager.getSharedInstance().getParkingLotMap(false);
 
@@ -83,7 +81,7 @@ public class StatusPage extends Activity
 				SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
 				String userType = prefs.getString("Status", "Visitor");
 
-				if( reserveIndex > -1 )
+				if( userClickedSpace != null )
 				{
 					if( currentLot.getStatus().equals(userType) || currentLot.getStatus().equals("Open"))
 					{
@@ -111,7 +109,7 @@ public class StatusPage extends Activity
 							Toast toast = Toast.makeText(context, selectedLotName + " successfully reserved.", duration);
 							toast.show();
 
-							userReservedSpace=currentLot.getSpaceAtId(reserveIndex);
+							userReservedSpace=userClickedSpace;
 						}
 					}
 					else
@@ -137,16 +135,18 @@ public class StatusPage extends Activity
 
 	public void markOccupied(View view)
 	{
-		if(reserveIndex > -1)
+		//if(reserveIndex > -1)
+		if( userClickedSpace != null )
 		{
-			ParkingSpace space = currentLot.getSpaceAtIndex(reserveIndex);
-			if(space != null)
-			{
-				if(space.setOccupied())
-				{
-					occupiedSpots.add(space);
-				}
-			}
+			userClickedSpace.setOccupied();
+			//ParkingSpace space = currentLot.getSpaceAtIndex(reserveIndex);
+			//if(space != null)
+			//{
+			//				if(space.setOccupied())
+			//				{
+			//					occupiedSpots.add(space);
+			//				}
+			//}
 		}
 		else
 		{
@@ -156,13 +156,13 @@ public class StatusPage extends Activity
 			toast.show();
 		}
 	}
-	public boolean markedOccupied(int i)
-	{
-		if( occupiedSpots != null )
-			if( occupiedSpots.contains( currentLot.getSpaces().get(i) ) ) 
-				return true;
-		return false;
-	}
+	//	public boolean markedOccupied(int i)
+	//	{
+	//		if( occupiedSpots != null )
+	//			if( occupiedSpots.contains( currentLot.getSpaces().get(i) ) ) 
+	//				return true;
+	//		return false;
+	//	}
 
 	public void errorDialog()
 	{
@@ -181,7 +181,9 @@ public class StatusPage extends Activity
 			SharedPreferences prefs = getSharedPreferences("NKUParkingPrefs", 0);
 			int user_id = prefs.getInt("User_id", 9);
 			String status = params[0];
-			return RequestManager.getSharedInstance().reserveLot(reserveIndex, user_id, selectedLotName, status);
+			//eturn RequestManager.getSharedInstance().reserveLot(reserveIndex, user_id, selectedLotName, status);
+			return RequestManager.getSharedInstance().reserveLot(userClickedSpace.getSpotID(), user_id, selectedLotName, status);
+
 		}
 	}
 
@@ -207,7 +209,7 @@ public class StatusPage extends Activity
 	public void MakeTable(ArrayList<ParkingSpace> spaceList)
 	{
 		TableLayout table = (TableLayout) findViewById(R.id.mytablelayout);
-		final ArrayList<Button> bttnlist = new ArrayList<Button>();		//list of all available spaces
+
 
 		int spaceIndex=0;
 		// rows
@@ -217,50 +219,82 @@ public class StatusPage extends Activity
 			// columns
 			for(int x=0; x<9; x++)
 			{
-				// create a new button         
-				final Button b = new Button(this);
+				final Button b = new Button(this);							// create a new button
 
 				if( x!=1 && x!=4 && x!=7 && spaceIndex<spaceList.size() )	// not spacing columns
 				{
-					//Decide how many handicapped spaces
-					int numHandi = (int) (spaceList.size() * 0.04);	// 5 spaces, index of 01234
-					// Available Space
-					if( spaceList.get(spaceIndex).isAvailable() && spaceIndex>numHandi )	
-					{
-						bttnlist.add(b);	//add to list of clickable spaces
-						b.setBackgroundColor( getResources().getColor(R.color.available) );
+					bttnlist.put(spaceList.get(spaceIndex), b);				//add to list of clickable spaces
+					final int numHandi = (int) (spaceList.size() * 0.04);			//Decide how many handicapped spaces
 
+					if( spaceList.get(spaceIndex).isAvailable() && spaceIndex>numHandi )	
+						//if( spaceIndex>numHandi )
+					{
+						b.setBackgroundColor( getResources().getColor(R.color.available) );
 						b.setOnClickListener(new View.OnClickListener() 
 						{
+							// When a button is clicked.
 							public void onClick(View v) 
 							{
-								// Perform action on click
-								for( Button tmp : bttnlist )
+								int h=0;
+								//for( Button tmp : bttnlist )
+								for( ParkingSpace key : bttnlist.keySet() ) // go through all buttons
 								{
-									if ( tmp==b )
+									// Available Spaces
+									if(key.getSpotID()>numHandi)
 									{
-										// spot clicked
-										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
-										userClickedIndex=bttnlist.indexOf(tmp); 
-										setReserveIndex();
+										if( key.isAvailable() )
+										{
+											// If this button is the one that was clicked.
+											if ( bttnlist.get(key) == b )
+											{
+												// spot clicked
+												bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.reserved) );
+												//userClickedIndex=bttnlist.indexOf(tmp); 
+												//setReserveIndex();
+												userClickedSpace=key;
+											}
+											// If this button is the reserved one
+											//else if( isUserReservedSpace( bttnlist.indexOf(tmp) ) )
+											else if( key==userReservedSpace )
+											{
+												bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.nkugold) );
+											}
+											// If this button was marked occupied
+											//										else if( markedOccupied ( bttnlist.indexOf(tmp) )  ) 
+											//										{
+											//											bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.unavailable) );
+											//										}
+
+											else
+												bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.available) );
+										}
+										//Unavailable Spaces
+										else 
+										{
+											bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.unavailable) );
+											bttnlist.get(key).setOnClickListener(null);
+											// Handicapped Space
+											if( key.isHandicapped() )
+												bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.handicapped) );
+										}
 									}
-									else if( isUserReservedSpace( bttnlist.indexOf(tmp) ) )
-										tmp.setBackgroundColor( getResources().getColor(R.color.reserved) );
-									else if( markedOccupied ( bttnlist.indexOf(tmp) )  ) 
-										tmp.setBackgroundColor( getResources().getColor(R.color.unavailable) );
 									else
-										tmp.setBackgroundColor( getResources().getColor(R.color.available) );
+									{
+										h++;
+										bttnlist.get(key).setBackgroundColor( getResources().getColor(R.color.handicapped) );
+									}
 								}
 							}
 						});
 					}
-					// Unavailable Space
+					//Unavailable Space
 					else
 					{
 						b.setBackgroundColor( getResources().getColor(R.color.unavailable) );
-						// Handicapped Space
-						if( spaceList.get(spaceIndex).isHandicapped() )
-							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
+						b.setOnClickListener(null);
+						//						// Handicapped Space
+						//						if( spaceList.get(spaceIndex).isHandicapped() )
+						//							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
 						if( spaceIndex<numHandi )
 							b.setBackgroundColor( getResources().getColor(R.color.handicapped) );
 					}
@@ -326,27 +360,27 @@ public class StatusPage extends Activity
 	 * Sets the reserve index as a place in the list of spaces,
 	 * regardless of availability.
 	 */
-	public void setReserveIndex()
-	{
-		//userClickedSpace=4,  so reserveIndex could be 30 or something. 0123
-		ArrayList<ParkingSpace> list = currentLot.getSpaces();
-
-		int i=0, j=0;
-		boolean found =false;
-		while( i<list.size() && found==false )
-		{
-			if( list.get(i).isAvailable() )
-			{
-				if(j==userClickedIndex)
-				{
-					reserveIndex=i;
-					found=true;
-				}
-				j++;
-			}
-			i++;
-		}
-	}
+	//	public void setReserveIndex()
+	//	{
+	//		//userClickedSpace=4,  so reserveIndex could be 30 or something. 0123
+	//		ArrayList<ParkingSpace> list = currentLot.getSpaces();
+	//
+	//		int i=0, j=0;
+	//		boolean found =false;
+	//		while( i<list.size() && found==false )
+	//		{
+	//			if( list.get(i).isAvailable() )
+	//			{
+	//				if(j==userClickedIndex)
+	//				{
+	//					reserveIndex=i;
+	//					found=true;
+	//				}
+	//				j++;
+	//			}
+	//			i++;
+	//		}
+	//	}
 
 	/**
 	 * Returns true if given index 
