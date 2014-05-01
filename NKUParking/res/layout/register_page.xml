@@ -33,7 +33,8 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <!--RelativeLayout
+        <!--
+        RelativeLayout
             android:id="@+id/namelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,8 +86,9 @@
                 android:ems="10"
                 android:hint="@string/lnamehint"
                 android:inputType="text" />
-        </RelativeLayout-->
-        
+        </RelativeLayout
+        -->
+
         <RelativeLayout
             android:id="@+id/userpasslayout"
             android:layout_width="wrap_content"
@@ -112,9 +114,9 @@
                 android:id="@+id/regpasslab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
                 android:layout_alignParentTop="false"
                 android:layout_below="@id/reguserlab"
+                android:layout_marginBottom="25dp"
                 android:text="@string/regpasslab"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20sp" />
@@ -140,7 +142,7 @@
                 android:ems="10"
                 android:hint="@string/registerhint"
                 android:inputType="textPassword" />
-            
+
             <TextView
                 android:id="@+id/retypepasslab"
                 android:layout_width="wrap_content"
@@ -150,7 +152,7 @@
                 android:text="@string/retypepasslab"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20sp" />
-                        
+
             <EditText
                 android:id="@+id/retypepassfield"
                 android:layout_width="wrap_content"
@@ -161,9 +163,8 @@
                 android:ems="10"
                 android:hint="@string/retypepass"
                 android:inputType="textPassword" />
-            
         </RelativeLayout>
-        
+
         <RelativeLayout
             android:id="@+id/spinnerlayout"
             android:layout_width="wrap_content"
@@ -173,22 +174,21 @@
             android:layout_marginTop="20dp"
             android:paddingBottom="10dp"
             android:paddingTop="10dp" >
-           
+
             <TextView
                 android:id="@+id/spinnerlab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/spinnertext"
                 android:layout_alignParentLeft="true"
+                android:text="@string/spinnertext"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-            
+
             <Spinner
                 android:id="@+id/class_spinner"
                 android:layout_width="250dp"
                 android:layout_height="fill_parent"
                 android:layout_alignBaseline="@id/spinnerlab"
                 android:layout_toRightOf="@id/spinnerlab" />
-            
         </RelativeLayout>
 
         <RelativeLayout
@@ -198,15 +198,14 @@
             android:layout_below="@+id/spinnerlayout"
             android:layout_centerHorizontal="true" >
 
-			<CheckBox 
-			    android:id="@+id/agreementbox"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="@string/agreementText"
-			    android:onClick="agreementClicked" />
-			
+            <CheckBox
+                android:id="@+id/agreementbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="agreementClicked"
+                android:text="@string/agreementText" />
         </RelativeLayout>
-        
+
         <RelativeLayout
             android:id="@+id/bottomlayout"
             android:layout_width="wrap_content"
@@ -216,12 +215,13 @@
 
             <Button
                 android:id="@+id/registerbutton"
+                style="@style/btnStyleOrange"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:onClick="register"
                 android:text="@string/reguserbutton" />
         </RelativeLayout>
-        
+
         <RelativeLayout
             android:id="@+id/disclaimerLayout"
             android:layout_width="350dp"
@@ -238,7 +238,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="15sp" />
         </RelativeLayout>
-        
     </RelativeLayout>
 
 </ScrollView>

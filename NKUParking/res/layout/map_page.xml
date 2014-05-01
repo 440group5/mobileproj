@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/directionsbutton_map"
         android:layout_alignBottom="@+id/directionsbutton_map"
-        android:layout_marginRight="23dp"
+        android:layout_marginRight="17dp"
         android:layout_toLeftOf="@+id/directionsbutton_map"
         android:onClick="loadLotStatus"
         android:text="@string/status_button" />

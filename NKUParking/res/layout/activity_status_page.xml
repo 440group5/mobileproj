@@ -23,10 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/reservebuttonstatus"
-        android:layout_marginRight="15dp"
         android:onClick="markOccupied"
-        android:text="Taken" />
+        android:text="@string/taken_button" />
 
     <Button
         android:id="@+id/reservebuttonstatus"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/directionsbuttonstatus"
         android:text="@string/reserve_button" />
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="5dp"
         android:onClick="loadDirs"
         android:text="@string/directions_button" />
 
@@ -53,11 +53,12 @@
         android:id="@+id/lot_name_title_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/reservebuttonstatus"
-        android:layout_alignBottom="@+id/reservebuttonstatus"
+        android:layout_alignBaseline="@+id/occupiedbuttonstatus"
+        android:layout_alignBottom="@+id/occupiedbuttonstatus"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dip"
+        android:layout_marginLeft="14dp"
         android:text="@string/title_lot"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/generic" />
 
     <TextView
@@ -66,9 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/lot_name_title_status"
         android:layout_alignBottom="@+id/lot_name_title_status"
-        android:layout_marginLeft="10dip"
         android:layout_toRightOf="@+id/lot_name_title_status"
         android:text="@string/statphl"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/generic" />
 
 </RelativeLayout>

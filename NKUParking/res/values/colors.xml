@@ -10,4 +10,6 @@
     <color name="unavailable">#1F3647</color>
     <color name="available">#02AD9D</color>
     <color name="generic">#AE9995</color>
+    
+    <color name="genericalt">#FAF0DB</color>
 </resources>

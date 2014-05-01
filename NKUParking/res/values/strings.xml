@@ -48,6 +48,7 @@
 	<string name="status_button">View Lot</string>
 	<string name="reserve_button">Reserve</string>
 	<string name="directions_button">Directions</string>
+	<string name="taken_button">Taken</string>
 	<string name="searchspinnertext">Lot</string>
 	
 	<string name="title_lot">Lot:</string>

@@ -180,9 +180,10 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f040011;
-        public static final int common_signin_btn_text_light=0x7f040012;
+        public static final int common_signin_btn_text_dark=0x7f040012;
+        public static final int common_signin_btn_text_light=0x7f040013;
         public static final int generic=0x7f040010;
+        public static final int genericalt=0x7f040011;
         public static final int handicapped=0x7f04000d;
         public static final int nkublack=0x7f04000a;
         /**  NKU goldish background hex: #ffdf81 
@@ -440,15 +441,16 @@ containing a value of this type.
         public static final int search_option_one=0x7f060040;
         public static final int search_option_two=0x7f060041;
         public static final int search_title=0x7f06003f;
-        public static final int searchspinnertext=0x7f060045;
+        public static final int searchspinnertext=0x7f060046;
         public static final int settings_page=0x7f06003b;
         public static final int space_status_page=0x7f06003a;
         public static final int spinnertext=0x7f060036;
-        public static final int statphb=0x7f060048;
-        public static final int statphl=0x7f060047;
+        public static final int statphb=0x7f060049;
+        public static final int statphl=0x7f060048;
         public static final int status_button=0x7f060042;
         public static final int status_page=0x7f060038;
-        public static final int title_lot=0x7f060046;
+        public static final int taken_button=0x7f060045;
+        public static final int title_lot=0x7f060047;
         public static final int userhint=0x7f060024;
         public static final int userlab=0x7f060022;
         public static final int welcomelab=0x7f060028;
