@@ -243,7 +243,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 								.position(lot.getCoordinate())
 								.title( lot.getName() )
 								.snippet(desc)
-								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN) )
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN) )
 								);
 					}
 					else if( lot.getStatus().equals("Student") )
@@ -264,7 +264,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 								.position(lot.getCoordinate())
 								.title( lot.getName() )
 								.snippet(desc)
-								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE) )
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET) )
 								);
 					}
 					else if( lot.getStatus().equals("Closed") )
@@ -284,11 +284,11 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 								.position(lot.getCoordinate())
 								.title( lot.getName() )
 								.snippet(desc)
-								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW) )
+								.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED) )
 								);
 					}
 				}
-				else
+				else	//colors garages
 				{
 					desc = lot.getDescription();
 
@@ -297,7 +297,7 @@ public class MapPage extends Activity implements OnMyLocationChangeListener
 							.position(lot.getCoordinate())
 							.title( lot.getName() )
 							.snippet(desc)
-							.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW) )
+							.icon( BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA) )
 							);
 				}
 

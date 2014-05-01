@@ -36,7 +36,7 @@
     <string name="status_page">Status Page</string>
     <string name="lot_status_page">Lot Status Page</string>
     <string name="space_status_page">Space Status Page</string>
-    <string name="settings_page">Settings Page</string>
+    <string name="settings_page">Settings</string>
     
     <string name="agreementText">I agree that I am solely responsible if I use this app while driving.</string>
     <string name="autoLoginText">Save username and password on the device and auto login each time</string>

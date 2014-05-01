@@ -26,7 +26,8 @@
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/reservebuttonstatus"
         android:onClick="markOccupied"
-        android:text="@string/taken_button" />
+        android:text="@string/taken_button"
+        android:textColor="@color/generic" />
 
     <Button
         android:id="@+id/reservebuttonstatus"
@@ -36,7 +37,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/directionsbuttonstatus"
-        android:text="@string/reserve_button" />
+        android:text="@string/reserve_button"
+        android:textColor="@color/generic" />
 
     <Button
         android:id="@+id/directionsbuttonstatus"
@@ -47,7 +49,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
         android:onClick="loadDirs"
-        android:text="@string/directions_button" />
+        android:text="@string/directions_button"
+        android:textColor="@color/generic" />
 
     <TextView
         android:id="@+id/lot_name_title_status"
